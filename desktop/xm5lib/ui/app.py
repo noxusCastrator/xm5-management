@@ -116,6 +116,18 @@ def main(argv=None) -> int:
     ap.add_argument("--no-autoscan", action="store_true", help="do not scan on first start")
     args, _ = ap.parse_known_args(argv)
     try:
+        from ..core.installation import acquire_program_activity
+        acquire_program_activity()
+        locations = PortablePaths.discover(APP)
+        app = QApplication.instance() or QApplication([sys.argv[0]])
+        app.setApplicationName(APP_NAME)
+        app.setStyle(QuietWheelStyle("Fusion"))
+        app.setStyleSheet(style.QSS)
+        if locations.mode == "installed" and not locations.config.exists():
+            from .profile_import import choose_installed_profile
+            i18n.set_language(locations.initial_language or "zh")
+            if not choose_installed_profile(locations):
+                return 0
         app, win = build(autoscan=not args.no_autoscan)
     except (ConfigError, OSError) as exc:
         app = QApplication.instance() or QApplication([sys.argv[0]])

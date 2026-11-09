@@ -12,7 +12,7 @@ Installed applications keep `config.json`, `data/`, `cache/` and `runtime/` in `
 
 An explicit `distribution.json` selects `installed` or `portable` mode. Development checkouts without that file retain portable behavior. The GUI, backend, local command client, session discovery and log paths use the same resolver. Process-local `XM5LIB_HOME` selects an explicit profile for scripts or tests, relative to the program directory if necessary. `XM5LIB_BACKEND_HOME` keeps its existing backend-only override.
 
-No automatic import from earlier installations occurs. Keep an existing portable folder intact. Select a separate empty destination for setup; it refuses to convert a portable folder in place. Existing backend profile-copy tools remain explicit developer APIs, not a full GUI profile-import feature.
+Before the first installed launch creates a profile, you can choose **Import profile**, **Continue fresh**, or **Cancel**. To import, close the portable application and select its folder containing `config.json` and `data/backend`. The application copies validated settings, playlists, favorites, notes and EQ presets into a new installed profile. Relative music and PEQ folder locations continue to point to the original portable folder; music stays in place. Runtime sessions, discovery tokens, active locks and caches are excluded. The portable folder remains unchanged. A failed import shows its reason and leaves the destination uncreated; it never silently substitutes an empty profile. Existing installed profiles open without this prompt. Keep the portable folder intact, and choose a separate empty program destination for setup; setup refuses to convert a portable folder in place.
 
 ## Update and uninstall
 
