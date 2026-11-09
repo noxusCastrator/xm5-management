@@ -121,6 +121,10 @@ def main(argv=None) -> int:
         locations = PortablePaths.discover(APP)
         app = QApplication.instance() or QApplication([sys.argv[0]])
         app.setApplicationName(APP_NAME)
+        icon = APP / "xm5lib" / "ui" / "assets" / "studio" / "app.ico"
+        if icon.is_file():
+            app.setWindowIcon(QIcon(str(icon)))
+        app.setApplicationName(APP_NAME)
         app.setStyle(QuietWheelStyle("Fusion"))
         app.setStyleSheet(style.QSS)
         if locations.mode == "installed" and not locations.config.exists():

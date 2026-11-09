@@ -71,7 +71,8 @@ class WindowsVolumes:
     @staticmethod
     def _usb_roots():
         # OS storage inventory only. No device commands, raw handles or writes.
-        command = ("$ErrorActionPreference='Stop'; @(" 
+        command = (
+                   "$ErrorActionPreference='Stop'; @("
                    "Get-CimInstance Win32_DiskDrive | Where-Object InterfaceType -eq 'USB' | "
                    "Get-CimAssociatedInstance -Association Win32_DiskDriveToDiskPartition | "
                    "Get-CimAssociatedInstance -Association Win32_LogicalDiskToPartition | "
@@ -105,7 +106,7 @@ class WindowsVolumes:
         identity = f'{guid.value}|{serial.value:08x}'
         return {'id': hashlib.sha256((root.upper()+identity).encode()).hexdigest(), 'identity': identity,
                 'root': root, 'label': label.value or root, 'capacity': usage.total, 'free': usage.free,
-                'filesystem': filesystem.value, 'kind': kind}
+                'filesystem': filesystem.value, 'kind': kind, 'read_only': bool(flags.value & 0x80000)}
 
     def list_targets(self):
         if os.name != 'nt':
@@ -118,6 +119,9 @@ class WindowsVolumes:
                 continue
             root = chr(65+index)+':\\'
             try:
+                kind = ctypes.windll.kernel32.GetDriveTypeW(ctypes.c_wchar_p(root))
+                if kind != 2 and not (kind == 3 and root in usb):
+                    continue
                 row = self._read(root)
                 if row['kind'] != 2 and not (row['kind'] == 3 and root in usb):
                     continue
@@ -171,8 +175,12 @@ class FirmwareCardService:
             raise FirmwareCardError('The selected root contains a link or changed mount.')
         if row['filesystem'].upper() not in {'FAT', 'FAT32', 'EXFAT'}:
             raise FirmwareCardError('Use a FAT/FAT32/exFAT card; this operation does not format drives.')
+        if row.get('read_only'):
+            raise FirmwareCardError('The selected volume is write-protected.')
         from .portable import PortablePaths
-        protected = [self.app_root, PortablePaths.discover(self.app_root).root, Path.home()]
+        locations = PortablePaths.discover(self.app_root)
+        protected = [self.app_root, locations.root.resolve(), locations.backend.resolve(),
+                     locations.runtime.resolve(), locations.cache.resolve(), Path.home().resolve()]
         for name in ('SystemRoot', 'WINDIR', 'ProgramFiles', 'ProgramFiles(x86)'):
             if os.environ.get(name):
                 protected.append(Path(os.environ[name]).resolve())
@@ -266,13 +274,13 @@ class FirmwareCardService:
                             started = True
                             path.unlink()  # Unlink symlinks themselves, never their targets.
                         completed += 1
-                        notify('clearing')
+                        notify('clear')
             with source.open('rb') as original, _directory(root):
                 clear(root)
                 check()
                 if any(root.iterdir()):
                     raise FirmwareCardError('New files appeared while clearing the drive.')
-                notify('copying')
+                notify('copy')
                 temporary = root / 'update.bin.tmp'
                 with temporary.open('xb') as output:
                     started = True
@@ -281,6 +289,7 @@ class FirmwareCardService:
                         output.write(block)
                     output.flush()
                     os.fsync(output.fileno())
+                notify('verify')
                 if _hash(temporary) != firmware['sha256']:
                     raise FirmwareCardError('Copied firmware failed verification.')
                 check()

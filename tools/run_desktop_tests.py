@@ -19,7 +19,8 @@ def main() -> int:
     suite = unittest.TestLoader().discover(str(ROOT / "tests"), pattern="test_*.py")
     if args.gui:
         sys.path.insert(0, str(ROOT / "tests"))
-        suite.addTests(unittest.TestLoader().loadTestsFromName("gui_desktop_smoke"))
+        for module in ("gui_desktop_smoke", "gui_firmware_card", "gui_profile_import"):
+            suite.addTests(unittest.TestLoader().loadTestsFromName(module))
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     return 0 if result.wasSuccessful() else 1
 

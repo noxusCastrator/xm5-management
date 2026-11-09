@@ -117,7 +117,7 @@ var Attributes: Cardinal; Parent: String;
 begin
   Result := False;
   while Path <> '' do begin
-    Attributes := GetFileAttributes(Path);
+    Attributes := GetFileAttributes(PathConvertNormalToSuper(Path));
     if (Attributes <> $FFFFFFFF) and ((Attributes and $400) <> 0) then exit;
     Parent := ExtractFileDir(Path);
     if CompareText(Parent, Path) = 0 then break;
@@ -187,18 +187,9 @@ begin
   Result := True;
 end;
 
-function InCurrentFiles(Path: String; Lines: TArrayOfString): Boolean;
-var Index: Integer; Current, Hash: String;
-begin
-  Result := False;
-  for Index := 0 to GetArrayLength(Lines) - 1 do
-    if RelativeEntry(Lines[Index], Current, Hash) and (CompareText(Current, Path) = 0) then begin
-      Result := True; exit;
-    end;
-end;
-
 function InspectObsolete(Delete_: Boolean): String;
 var Previous, Current: TArrayOfString; Index: Integer; Path, Hash, Target: String;
+    CurrentPaths: TStringList;
 begin
   Result := '';
   if not OwnedDirectory(ExpandConstant('{app}')) then exit;
@@ -206,9 +197,16 @@ begin
      not LoadStringsFromFile(ExpandConstant('{tmp}\OWNED-FILES.sha256'), Current) then begin
     Result := CustomMessage('NotOwned'); exit;
   end;
+  CurrentPaths := TStringList.Create;
+  try
+  CurrentPaths.Sorted := True;
+  for Index := 0 to GetArrayLength(Current) - 1 do begin
+    if not RelativeEntry(Current[Index], Path, Hash) then begin Result := CustomMessage('NotOwned'); exit; end;
+    CurrentPaths.Add(Lowercase(Path));
+  end;
   for Index := 0 to GetArrayLength(Previous) - 1 do begin
     if not RelativeEntry(Previous[Index], Path, Hash) then begin Result := CustomMessage('NotOwned'); exit; end;
-    if not InCurrentFiles(Path, Current) then begin
+    if CurrentPaths.IndexOf(Lowercase(Path)) < 0 then begin
       Target := ExpandConstant('{app}\') + Path;
       StringChangeEx(Target, '/', '\', True);
       if not NoLinks(Target) then begin Result := FmtMessage(CustomMessage('Modified'), [Path]); exit; end;
@@ -219,6 +217,9 @@ begin
         if Delete_ and not DeleteFile(Target) then begin Result := FmtMessage(CustomMessage('Modified'), [Path]); exit; end;
       end;
     end;
+  end;
+  finally
+    CurrentPaths.Free;
   end;
 end;
 
@@ -267,7 +268,7 @@ function InitializeUninstall: Boolean;
 begin
   CreateMutex('Global\XM5Studio.Setup.167851CF-0701-4B99-8FE4-AC2EB066C7D8');
   Result := not CheckForMutexes(ActivityMutex);
-  if not Result then MsgBox(CustomMessage('CloseStudio'), mbError, MB_OK);
+  if not Result then SuppressibleMsgBox(CustomMessage('CloseStudio'), mbError, MB_OK, IDOK);
 end;
 
 procedure DeinitializeSetup;

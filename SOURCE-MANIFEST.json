@@ -1,7 +1,7 @@
 {
   "schema": "xm5.public-source.v2",
   "project": "xm5-management",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "files": {
     ".gitattributes": {
       "size": 73,
@@ -16,20 +16,24 @@
       "sha256": "fe886707672b1f47fec667bedbd747ca95ef03c99597f5b1fc5f5f9c2c1ff8fd"
     },
     "README.md": {
-      "size": 3838,
-      "sha256": "19a7199f6ae05c5d38c9db778d7a713ce99d7fb5f5865e2fce1163d39cbb320e"
+      "size": 4681,
+      "sha256": "f91b62028eb807a5333b1fbd27302c1121bc7d0637c15fcb3b50859eed0a7142"
     },
     "THIRD_PARTY.md": {
       "size": 1837,
       "sha256": "b90aad59105abdd45f436b42f95ad309641c3927dc44f3285fb70963a412b807"
     },
     "desktop/XM5Library.cmd": {
-      "size": 539,
-      "sha256": "6d570b268a570ea51630131cdd8f22af530695313bc3b766d7fa75fbff8c47c3"
+      "size": 635,
+      "sha256": "9b53144634ee51c185fc285cfec6d466b3fd6cb57c81689bc2b067596629b75a"
     },
     "desktop/bootstrap.py": {
-      "size": 2933,
-      "sha256": "37effc6977b6b9b5f0fb5a2b7fc77c2b61afcb53ea9548186c2cce796c4e9bb9"
+      "size": 3047,
+      "sha256": "e05ddbec904a3a8420a6f57d8225b5fd0110f2f863699ff997c8416e5ce4bcd8"
+    },
+    "desktop/firmware/manifest.json": {
+      "size": 343,
+      "sha256": "5d4f50ab413e8d266b3a6228754ee8530e3422a3559bd03118f3a1cf558468e1"
     },
     "desktop/requirements.txt": {
       "size": 1954,
@@ -44,8 +48,8 @@
       "sha256": "6fbfe5d163ccd63d8cc5407d4bb438a449ce55f6ab076dec8225762e830751f7"
     },
     "desktop/xm5lib/__init__.py": {
-      "size": 350,
-      "sha256": "9dac67f1f76c691a871f07c74394e9669db8f4bd429bb30f7f1faa392ab0e5ab"
+      "size": 348,
+      "sha256": "4ed3cbebbc3ed27a17965076196633a575bdcf5aa23d3a0077659baf3813570d"
     },
     "desktop/xm5lib/__main__.py": {
       "size": 51,
@@ -104,8 +108,8 @@
       "sha256": "04a2a75f3be8fa61ae15bb623656e1c40bdafb2960bf79595eb7f12582b47ac2"
     },
     "desktop/xm5lib/automation/runtime.py": {
-      "size": 6049,
-      "sha256": "3d096b25f3ff08767a37d010c87bbee60088a78a1a2f84ea084411495cac2236"
+      "size": 6149,
+      "sha256": "af1432386516a9f941771adb3b46f59e7e9216a35aefdeb8e9e0e0c39e432363"
     },
     "desktop/xm5lib/automation/script_actions.py": {
       "size": 43709,
@@ -227,6 +231,10 @@
       "size": 22764,
       "sha256": "a43d6bec73589db591c0cadaac23c671a621e994664471ca4c6ea33193510478"
     },
+    "desktop/xm5lib/core/firmware_card.py": {
+      "size": 14997,
+      "sha256": "89c9278fda37b02ad0c55b10c4413473f2a583e4e49cb6f479e7924f1e3f8c8c"
+    },
     "desktop/xm5lib/core/foobar.py": {
       "size": 8137,
       "sha256": "707d22fb6b7965b2d16a83df3576639ad43df05b74dd631291179170569d5f03"
@@ -267,6 +275,10 @@
       "size": 20936,
       "sha256": "c561eb0d7b4a6db0fddaea49e6279439dba5165b69823b6ff9dd30446a89f2dd"
     },
+    "desktop/xm5lib/core/installation.py": {
+      "size": 1798,
+      "sha256": "3369d6050d2f781c96912c0958d4f9f535c8d0c4c2da01187dd34bb52cc4e304"
+    },
     "desktop/xm5lib/core/library.py": {
       "size": 4499,
       "sha256": "b468f8f61b601465df40821cd1e9dfff5312fb1bd08879ed354acfb117e36dfc"
@@ -300,8 +312,8 @@
       "sha256": "d9dfa90f2fa8ae8ccd6eb97fe70e722b14b33e034809ec240979f93627166ab5"
     },
     "desktop/xm5lib/core/paths.py": {
-      "size": 1619,
-      "sha256": "3d109fd22696a9720cdb3b7663003beab63b94dc096df1b43298c701bea1deb1"
+      "size": 999,
+      "sha256": "2a553df4fa87738ca600a2749ad80da89680eb74e4161509753a64d0ff06c199"
     },
     "desktop/xm5lib/core/payload.py": {
       "size": 3544,
@@ -332,12 +344,16 @@
       "sha256": "b45258101f02ac854ddc753b144766d261bf070c0accfcada8e4723eb82e0236"
     },
     "desktop/xm5lib/core/portable.py": {
-      "size": 19876,
-      "sha256": "161d3c73e60cd3bd682f77c87f7d664b937d163e4e7b17a65648cb99fb1aeef0"
+      "size": 21328,
+      "sha256": "d3adb0504e3ffa55a7d766df4a0d8302856e93ce073e327c3ac508a5c9dc42b6"
     },
     "desktop/xm5lib/core/preset_sources.py": {
       "size": 3391,
       "sha256": "cf64721c196f1a9e358d7d2aad8659d85b7779e7189aa44c4becaff4148b47af"
+    },
+    "desktop/xm5lib/core/profile_import.py": {
+      "size": 6094,
+      "sha256": "43230d72a7a9d51ebd110617d3307b1d632ea3ee7e575b444d7db685f05194a0"
     },
     "desktop/xm5lib/core/restore_card.py": {
       "size": 35765,
@@ -408,8 +424,8 @@
       "sha256": "ec392dd5b7495bb95f2b8a5be8807f3c108946885eb41bfd51dc5355ce68f9eb"
     },
     "desktop/xm5lib/ui/app.py": {
-      "size": 4834,
-      "sha256": "d98484cc0ef9a03a7c26bbf2aa5d30142e5d503d007614beaf3cc76c5973afed"
+      "size": 6317,
+      "sha256": "90d0592108f92bfd846dad403d64a00199d4797f2cdc89456b668bfab21b8cff"
     },
     "desktop/xm5lib/ui/assets/NOTICE.md": {
       "size": 1118,
@@ -734,6 +750,22 @@
     "desktop/xm5lib/ui/assets/sandblast.png": {
       "size": 31080,
       "sha256": "1c9b04c7a06ef0aebcf44f4b62b9a0bc7e191a916ccb3ed501183bf1cfc35f55"
+    },
+    "desktop/xm5lib/ui/assets/studio/app-256.png": {
+      "size": 18368,
+      "sha256": "282babf406d08ca52005bc280f1d9bc459264e21f48928bca01f23c8c9dc30ce"
+    },
+    "desktop/xm5lib/ui/assets/studio/app.ico": {
+      "size": 38699,
+      "sha256": "9a81bde8f7a908760a11cd9a4550a1b2d5b279992e81447c8693b1dca9928968"
+    },
+    "desktop/xm5lib/ui/assets/studio/app.png": {
+      "size": 93810,
+      "sha256": "49d920f47f647a1ac33004286238ec33386ca3895ba03a252b72f5e4adc5f86d"
+    },
+    "desktop/xm5lib/ui/assets/studio/app.svg": {
+      "size": 1689,
+      "sha256": "10d0ffc391bc7fddfd24b7d92a823a0500b18cda957ad9dca227ab737570a2e7"
     },
     "desktop/xm5lib/ui/assets/xm5/bar_pause.png": {
       "size": 209,
@@ -3615,6 +3647,14 @@
       "size": 41115,
       "sha256": "606508c2ebefb1a27219137d12c060a831a1aa90a183d79bb3f61f65ab528291"
     },
+    "desktop/xm5lib/ui/firmware_card_dialog.py": {
+      "size": 19268,
+      "sha256": "183c5a19158395f50bea259c4c563d2abb75df1fa16eba0835d312f7899eaa4d"
+    },
+    "desktop/xm5lib/ui/first_run.py": {
+      "size": 2728,
+      "sha256": "23eb284ebf4699bf0e105b7d321740752b91d9d519b57f8b3af61bcd702f03bc"
+    },
     "desktop/xm5lib/ui/hardware.py": {
       "size": 45582,
       "sha256": "b247f617741f7eebe585417a95dd573965f07e5899f13509ea41b5d13a4fe1b7"
@@ -3644,8 +3684,8 @@
       "sha256": "a31b8d625f5873ee1912e20347e9e4130c16efe2e8f118440cc32debe6f5b624"
     },
     "desktop/xm5lib/ui/main_window.py": {
-      "size": 72058,
-      "sha256": "7f9e4d24d048f17743e47d94a182d7cfe6a82983854eb85f88c95ffb99ccb020"
+      "size": 72047,
+      "sha256": "ec185df25a2ed12246784f802129a10ec01215a216424b445b6d4d45a12b2cff"
     },
     "desktop/xm5lib/ui/models.py": {
       "size": 12465,
@@ -3667,13 +3707,17 @@
       "size": 3313,
       "sha256": "bbc049dd85a81a26da4fb80eb354c13fe96fd01ac7d76d2b9695318032a07ee8"
     },
+    "desktop/xm5lib/ui/profile_import.py": {
+      "size": 5773,
+      "sha256": "7534d01d4c73dbd80f3757aba6eaa514dcb52b44ab9650818e56ee86a24996ef"
+    },
     "desktop/xm5lib/ui/service.py": {
       "size": 18940,
       "sha256": "46491c63a84045c252068f3314a35591ca978fd32b2f14f9b0acae5de45a5458"
     },
     "desktop/xm5lib/ui/settings_page.py": {
-      "size": 9232,
-      "sha256": "7d61993d6ac799bf73b0e05ae5e8ddfe07c1b0cd616c7ab3e4389870a590c785"
+      "size": 10391,
+      "sha256": "5813957b34952ea4dffed67f2dff0d7c7e5f77781de0b44dbceb7b5ce900ae1f"
     },
     "desktop/xm5lib/ui/state.py": {
       "size": 32553,
@@ -3704,8 +3748,8 @@
       "sha256": "b0352fc255bb04c88f315e3fce3637ff531b9070d64d69133e984c4fb571bdc2"
     },
     "docs/BUILD_STABLE.md": {
-      "size": 4651,
-      "sha256": "0fab77489ee3fd2336f9b8c790cd2dfcfc890a0c5aea976db71c0b2c706fcd88"
+      "size": 5145,
+      "sha256": "6f1d54da8930c9f7fdb7023a09b09e1a664c9cb424d01b093b6db27429a25794"
     },
     "docs/CHANGELOG.md": {
       "size": 1095,
@@ -3720,8 +3764,20 @@
       "sha256": "719c688f35e62a3e0f5a90ec56a5e849dfd04e1f3a87b747086483cd21e02dd3"
     },
     "docs/DEVELOPMENT.md": {
-      "size": 3322,
-      "sha256": "583e0c8d8abbe65e34c664dc8857d4e85d01460f3238e96838ccdd100b9f094a"
+      "size": 3819,
+      "sha256": "11c1ef4c3c33dca163c2b28f5906865d9ca896c17e6379fb79a9fa07521ec994"
+    },
+    "docs/FIRMWARE_CARD.md": {
+      "size": 3392,
+      "sha256": "42e68bed8e427b383a78cbf187a1725e5005b37567b9824bf3ee95db6cd9fc5c"
+    },
+    "docs/ICON.md": {
+      "size": 2764,
+      "sha256": "a9dd0461bc6213cb7e5dc1e6fe03369cddebc66ad33555159af4c01e34a330ae"
+    },
+    "docs/INSTALLATION.md": {
+      "size": 7444,
+      "sha256": "8d52c93d1531eee14a60b8be0875f072376ed9d6c170caeb0f78eb03e596c31b"
     },
     "docs/PROJECT_CHOICE.md": {
       "size": 2504,
@@ -3732,8 +3788,8 @@
       "sha256": "069b2e592446536cf4fd0d6d00f45a36add6a039e79b43f084ba364d13c6960e"
     },
     "docs/RUNTIME_DISTRIBUTION.md": {
-      "size": 2633,
-      "sha256": "30618f8c5b883bc7a032e93fb8b66beffc91cc36d9d94aa5fc230641ff7b9d9a"
+      "size": 3170,
+      "sha256": "3d1c5b0448e4bb6c859f329ae464cf4386f97035dde44bed22ccaaae68d6ec7f"
     },
     "docs/SCRIPTING.md": {
       "size": 6283,
@@ -3751,13 +3807,17 @@
       "size": 3498,
       "sha256": "b98c931b824ad94f3b900cdf2d812c24231fd800550648ba99e14ddc8541f7f3"
     },
+    "docs/VALIDATION_0.2.2.md": {
+      "size": 3941,
+      "sha256": "dfec5ec4984603abbb354aceb4be767a04e74a7c1202fc4d7c24b254eba2b7dd"
+    },
     "release.json": {
-      "size": 2782,
-      "sha256": "6483109e2bc03a6f10732b10e11362bb24a2b191a5ec8013a9e455bfb0f55467"
+      "size": 4146,
+      "sha256": "b3a4373346b72b9df1dc13db2d756be0624e89c673daa8a32faa0ab31ac2b07f"
     },
     "src/AI_CONTEXT.md": {
-      "size": 3281,
-      "sha256": "30b0e3518a6afb7cd6f9f79254cd37bddb2ae9c01b44eef453d94eb15f45ef66"
+      "size": 3683,
+      "sha256": "a428a05e8cf35b81f2e2bd66a131b27c651f6d731fd7cc1f02a4a300720ff158"
     },
     "src/audio/layers.h": {
       "size": 779,
@@ -3954,6 +4014,18 @@
     "src/audio_storage/player-info1/test_managed.c": {
       "size": 5035,
       "sha256": "3a86767c151d75494babda5c9d2de6e607fb4ca24c35e9e946f3c8f7361b4058"
+    },
+    "src/desktop_launcher/launcher.manifest": {
+      "size": 988,
+      "sha256": "18bde5e690f42dd83198aaba5cf1e4ce1c83239f0bf997abd8c64cbb93b24249"
+    },
+    "src/desktop_launcher/launcher.rc": {
+      "size": 626,
+      "sha256": "482d5134ec5ba90ebe2a423c65dd02c7a3387c92b4dacb96592a7837c1897d12"
+    },
+    "src/desktop_launcher/main.c": {
+      "size": 4744,
+      "sha256": "660b41fcbbe96ed919ca87273268a14c3336df11505d1504d7365927a11c31e8"
     },
     "src/native_storage/EXTRA-HOOKS.json": {
       "size": 2093,
@@ -4311,6 +4383,18 @@
       "size": 15282,
       "sha256": "45d5d5fb185a6d9b7177c1a4f77d7116d75b982bdd93f978fe0339a356014f55"
     },
+    "tests/gui_firmware_card.py": {
+      "size": 15280,
+      "sha256": "1cb3dab7a0c74c43f162fef55cf0cfa1b5800c62f0b334812d4ee680cccadb7c"
+    },
+    "tests/gui_profile_import.py": {
+      "size": 6466,
+      "sha256": "cb306ee4fa3f55cd51589007bb2768a30c139b96103b649a46b5b0013ffb618e"
+    },
+    "tests/test_build_installer.py": {
+      "size": 6912,
+      "sha256": "202a4df511c204f438354dd68aa8e377281c52dd4bc76baa675863c4bb1d3d6d"
+    },
     "tests/test_build_portable.py": {
       "size": 10874,
       "sha256": "f9637b9f81259b9166561672e1bf7ad08108ef569b329f651b16505fe424075d"
@@ -4318,6 +4402,18 @@
     "tests/test_desktop_workflows.py": {
       "size": 11987,
       "sha256": "4340c691a318f0167635a2a844a829309fc68bf311c5e836348392511f7b7a09"
+    },
+    "tests/test_firmware_card.py": {
+      "size": 7527,
+      "sha256": "9c6139094aae76761fb3e6b9c2bd8d5c9776098c4ae2573d36374c2e19e9a0c8"
+    },
+    "tests/test_installed_distribution.py": {
+      "size": 4631,
+      "sha256": "76d176c4fcbfdb9317974d2f99c85f793f053e0ab3ad524b556658f1df56b9c6"
+    },
+    "tests/test_profile_import.py": {
+      "size": 14615,
+      "sha256": "1dcd79f9644f13dbe463a715b7d802503416a6217cf41f35323e9fa125186b71"
     },
     "tests/test_setup_desktop.py": {
       "size": 12063,
@@ -4351,9 +4447,17 @@
       "size": 5822,
       "sha256": "fd34058a61c9bdc8e722e86c1b19b9d92110294637ee1a58e3373a975f1ffcdc"
     },
+    "tools/build_installer.py": {
+      "size": 9161,
+      "sha256": "ec303f3b1acbe7186241f22c6fd83b61d51a16ec0112fc88aaf38062f5c44c3c"
+    },
+    "tools/build_launcher.py": {
+      "size": 3027,
+      "sha256": "c942bb057c37e1654c8a9ca1507fd2ea7b13d87495256e4412f00cd8cd9c2b3e"
+    },
     "tools/build_portable.py": {
-      "size": 8199,
-      "sha256": "46e3a73ac604637c8e0b14ea995d6c975e2b4a6f1f647917888c95a1fd43ee76"
+      "size": 9952,
+      "sha256": "c5b0d67f7889d52ef1568fda5827d8725ef6a4a427320ff8d583381ff0f59283"
     },
     "tools/build_stable.py": {
       "size": 6337,
@@ -4366,6 +4470,10 @@
     "tools/elf_compact.py": {
       "size": 7465,
       "sha256": "a0126f8871032fe42068c92409ce22f084c0e39677b0935355822ca958dd58e5"
+    },
+    "tools/installer/XM5Studio.iss": {
+      "size": 11541,
+      "sha256": "e6f3dfa9780d21d84c0a70c48ac84ac63e7e99eb138adb47de6b9e6732ddfe3e"
     },
     "tools/package/build_candidate.py": {
       "size": 26853,
@@ -4471,9 +4579,13 @@
       "size": 23019,
       "sha256": "ccd15039e6e59302be80e2cfd9750f915932b4b99a91df67980665ca2b72e153"
     },
+    "tools/render_studio_icon.py": {
+      "size": 7536,
+      "sha256": "ccb4f6c07f50957403ce1ea716457912a853c70bf8f43eb11fbe7bc7be9db01a"
+    },
     "tools/run_desktop_tests.py": {
-      "size": 978,
-      "sha256": "4acf1d4ff82bca8049374c1e4d9ec8c321502c901304b34d8523422c03a241d4"
+      "size": 1057,
+      "sha256": "f17c6b1df43c9e662cff7cc64ab4dd60cf3c542a2008dab2e2dde0e26d584f3e"
     },
     "tools/runtime-source/README.md": {
       "size": 3620,

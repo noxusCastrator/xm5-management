@@ -13,9 +13,9 @@ from . import i18n
 
 
 _TEXT = {
-    "title": ("制作升级卡", "Create update card"),
+    "title": ("制作更新盘", "Create update card"),
     "section": ("播放器固件", "Player firmware"),
-    "intro": ("选择可移动盘，制作固件升级卡。此操作不会刷写播放器。", "Prepare a removable drive for the firmware update. This does not flash the player."),
+    "intro": ("选择可移动盘，制作固件更新盘。此操作不会刷写播放器。", "Prepare a removable drive for the firmware update. This does not flash the player."),
     "app": ("应用版本", "Application version"),
     "firmware": ("配套固件", "Paired firmware"),
     "hash": ("固件 SHA-256", "Firmware SHA-256"),
@@ -26,7 +26,7 @@ _TEXT = {
     "confirm": ("确认", "Confirm"),
     "cancel": ("取消", "Cancel"),
     "loading": ("正在检查固件并查找可移动盘…", "Checking firmware and finding removable drives…"),
-    "ready": ("先备份目标盘，再选择要制作升级卡的盘。", "Back up the target drive, then select the drive to prepare."),
+    "ready": ("先备份目标盘，再选择要制作更新盘的盘。", "Back up the target drive, then select the drive to prepare."),
     "no_drives": ("没有找到可移动盘或 USB 存储。连接读卡器后点击刷新。", "No removable drive or USB storage found. Connect a card reader and refresh."),
     "unavailable": ("无法使用配套固件：{0}", "Paired firmware unavailable: {0}"),
     "unavailable_reason": ("缺少固件或固件校验未通过。", "Firmware is missing or failed verification."),
@@ -39,18 +39,18 @@ _TEXT = {
     "plan_details": ("卷标：{0}\n容量：{1}\n将删除：{2} 个文件，{3}\n配套固件：{4}", "Label: {0}\nCapacity: {1}\nTo remove: {2} files, {3}\nPaired firmware: {4}"),
     "backup": ("请先手动备份目标盘。也可<a href=\"export\">打开 TF 卡导出页面</a>。", "Back up the selected drive manually before continuing. You can also <a href=\"export\">open TF Card Export</a>."),
     "cancelled": ("已取消。目标盘未作更改。", "Cancelled. No changes were made to the drive."),
-    "working": ("正在制作升级卡。请勿断开目标盘；完成前不能关闭此窗口。", "Creating the update card. Keep the drive connected; this window must stay open until completion."),
+    "working": ("正在制作更新盘。请勿断开目标盘；完成前不能关闭此窗口。", "Creating the update card. Keep the drive connected; this window must stay open until completion."),
     "wait": ("请等待当前操作完成后再关闭窗口。", "Wait for the current operation to finish before closing this window."),
     "phase_clear": ("正在清空目标盘…", "Clearing the target drive…"),
     "phase_copy": ("正在复制 update.bin…", "Copying update.bin…"),
     "phase_verify": ("正在校验已复制的固件…", "Verifying the copied firmware…"),
     "phase_prepare": ("正在重新检查目标盘…", "Rechecking the target drive…"),
-    "success": ("升级卡已制作完成：{0}\n已复制文件的 SHA-256：{1}\n请安全弹出目标盘，然后按照官方 XM5 升级步骤安装固件。", "Update card ready: {0}\nCopied file SHA-256: {1}\nSafely eject the drive, then follow the official XM5 update procedure to install the firmware."),
-    "failed": ("制作升级卡失败：{0}\n目标盘可能已被部分清空。请检查目标盘并恢复备份后再使用。", "Creating the update card failed: {0}\nThe drive may be partially cleared. Inspect it and restore your backup before using it."),
+    "success": ("更新盘已制作完成：{0}\n已复制文件的 SHA-256：{1}\n请安全弹出目标盘，然后按照官方 XM5 升级步骤安装固件。", "Update card ready: {0}\nCopied file SHA-256: {1}\nSafely eject the drive, then follow the official XM5 update procedure to install the firmware."),
+    "failed": ("制作更新盘失败：{0}\n目标盘可能已被部分清空。请检查目标盘并恢复备份后再使用。", "Creating the update card failed: {0}\nThe drive may be partially cleared. Inspect it and restore your backup before using it."),
     "inspect_failed": ("无法检查目标盘或固件：{0}\n未开始清空目标盘。", "Could not inspect the drive or firmware: {0}\nClearing the drive has not started."),
     "jobs_busy": ("请先等待扫描或导入任务完成。", "Wait for the scan or import job to finish first."),
     "export_busy": ("请先等待 TF 卡任务完成。", "Wait for the TF card job to finish first."),
-    "playback_busy": ("请先停止电脑端播放，再制作升级卡。", "Stop desktop playback before creating an update card."),
+    "playback_busy": ("请先停止电脑端播放，再制作更新盘。", "Stop desktop playback before creating an update card."),
 }
 
 

@@ -339,7 +339,7 @@ class FirmwareCardWidgets(unittest.TestCase):
     def test_chinese_dialog_and_warning_use_local_translation(self):
         i18n.set_language("zh")
         self.open_dialog()
-        self.assertEqual(self.dialog.windowTitle(), "制作升级卡")
+        self.assertEqual(self.dialog.windowTitle(), "制作更新盘")
         self.assertEqual(text("section"), "播放器固件")
 
         def cancel(box):

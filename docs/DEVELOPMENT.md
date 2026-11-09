@@ -7,7 +7,9 @@ python tools/setup_desktop.py
 
 Setup downloads the exact approved [0.2.0 portable application](https://github.com/noxusCastrator/xm5-management/releases/tag/v0.2.0), checks its SHA-256 against the pinned release, and verifies the runtime manifest and every dependency file. It installs only `desktop/vendor/`, omitting generated Python bytecode and removing those cache entries from the installed manifest. The dependency base remains 0.2.0 when editing later project versions. The ZIP cache and temporary staging stay under ignored `.local/dev-setup/`. Source files, artwork and application profiles are left intact.
 
-Desktop source version 0.2.1 keeps paired firmware version 0.2.0. Edit the Python files under `desktop/xm5lib/`, close the application, and run `.\desktop\XM5Library.cmd` again. The bundled isolated Python runtime imports those live repository files through its existing `python314._pth`; no Python, Qt or media compilation is needed. Windows x64 is the only tested desktop platform.
+Desktop source version 0.2.2 keeps paired firmware version 0.2.0. Edit the Python files under `desktop/xm5lib/`, close the application, and run `.\desktop\XM5Library.cmd` again. The bundled isolated Python runtime imports those live repository files through its existing `python314._pth`; no Python, Qt or media compilation is needed for Python edits. Windows x64 is the only tested desktop platform.
+
+To exercise update-card preparation from source, copy the matching release's standalone `update.bin` to `desktop/firmware/update.bin`. It is an ignored binary input; `desktop/firmware/manifest.json` pins its hash, size and paired version. The dialog reports missing or changed firmware instead of allowing preparation. Public tests use synthetic temporary directories and never require a real card. Build a native launcher and installer using [INSTALLATION.md](INSTALLATION.md).
 
 | Source | Purpose |
 | --- | --- |

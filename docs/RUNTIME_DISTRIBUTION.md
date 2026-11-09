@@ -1,5 +1,7 @@
 # Desktop runtime distribution
 
+The XM5 Studio 0.2.2 candidate reuses the exact 0.2.0 media binaries. Its `XM5Studio-runtime-source-0.2.2.zip` is byte-identical to `XM5Library-runtime-source-0.2.0.zip` (SHA-256 `7f792e9c34b68e719f95f94d9f56f0f6ebaa3c083dc83d8439477697fa8b3357`); the internal 0.2.0 directory name remains. Both names refer to the same corresponding sources. The separate project-source ZIP includes the native launcher and installer scripts. See [the installation guide](INSTALLATION.md) for the Inno Setup 7.1.1 tool input and launcher build recipe.
+
 The companion uses separate mpv and FFmpeg processes, plus an embedded CPython/PySide6 runtime. Each component retains its original license. Shanling's project publication permission does not relicense unrelated components, and the repository has no blanket license for all project and vendor material.
 
 The 0.2.0 media runtime is built from the exact sources in `tools/runtime-source/SOURCES.json`. It uses mpv commit `902818753849d9ad8f0096fad6ca5aeaa37113b9` with GPL code disabled and FFmpeg 8.0.3 without GPL, nonfree, version3 or network features. It replaces the earlier general-purpose GPL CI binaries rather than redistributing their unresolved dependency inventory.

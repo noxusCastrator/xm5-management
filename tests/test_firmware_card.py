@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from xm5lib.core.firmware_card import FirmwareCardError, FirmwareCardService
 
@@ -105,6 +106,30 @@ class FirmwareCardTests(unittest.TestCase):
             self.service.execute(plan['token'], confirmed=True)
         self.assertEqual((self.card/'new-file').read_bytes(), b'preserve')
 
+    def test_backend_override_volume_is_protected(self):
+        with patch.dict(os.environ, {'XM5LIB_BACKEND_HOME': str(self.card/'backend')}):
+            self.assertEqual(self.service.list_targets(), [])
+            with self.assertRaisesRegex(FirmwareCardError, 'running-application drive'):
+                self.plan()
+
+    def test_write_protected_volume_is_not_offered(self):
+        self.volumes.row['read_only'] = True
+        self.assertEqual(self.service.list_targets(), [])
+
+    def test_resolved_home_location_is_protected(self):
+        actual_home = self.card/'personal'
+        actual_home.mkdir()
+        alias = self.root/'home-alias'
+        if os.name == 'nt':
+            import subprocess
+            result = subprocess.run(['cmd.exe', '/d', '/c', 'mklink', '/J', str(alias), str(actual_home)],
+                                    capture_output=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+        else:
+            alias.symlink_to(actual_home, target_is_directory=True)
+        with patch.object(Path, 'home', return_value=alias):
+            self.assertEqual(self.service.list_targets(), [])
+
     def test_links_removed_without_traversing_outside_target(self):
         outside = self.root/'outside'
         outside.mkdir()
@@ -124,7 +149,7 @@ class FirmwareCardTests(unittest.TestCase):
 
     def test_interrupted_copy_never_reports_success(self):
         def interrupt(event):
-            if event['phase'] == 'copying':
+            if event['phase'] == 'copy':
                 raise OSError('synthetic interruption')
         with self.assertRaisesRegex(FirmwareCardError, 'partially cleared'):
             self.service.execute(self.plan()['token'], confirmed=True, progress=interrupt)

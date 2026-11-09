@@ -1,10 +1,11 @@
-# XM5 Management source context
+# XM5 Studio source context
 
-Read the project README and AGENTS.md before changes. This repository contains desktop manager version 0.2.1 and paired V2.43-LIB01 storage firmware version 0.2.0. For desktop edits, use [DEVELOPMENT.md](../docs/DEVELOPMENT.md) to prepare dependencies, run the live source and run the public tests. Firmware build inputs are needed only for firmware work. The standalone stock-media PEQ project is https://github.com/noxusCastrator/xm5-peq .
+Read the project README and AGENTS.md before changes. This repository contains XM5 Studio desktop version 0.2.2 and paired V2.43-LIB01 storage firmware version 0.2.0. The 0.2.2 snapshot is a local candidate awaiting the owner's publication request. For desktop edits, use [DEVELOPMENT.md](../docs/DEVELOPMENT.md) to prepare dependencies, run the live source and run the public tests. Use [INSTALLATION.md](../docs/INSTALLATION.md) for installed versus portable profiles and the Windows launcher/installer. Firmware build inputs are needed only for firmware work. The standalone stock-media PEQ project is https://github.com/noxusCastrator/xm5-peq .
 
 ## Source map
 
 - `../desktop/`: portable companion, backend Engine, Qt views and local command interface.
+- `../desktop/xm5lib/core/firmware_card.py`: explicitly confirmed, pinned update-card preparation. Tests use owned temporary directories; normal exports retain their separate non-clearing semantics.
 - `native_storage/`: verified inline artwork reads, original UI hooks, image ownership, relative playlist/favorites exchange and USB ownership gates.
 - `audio_storage/`: original sample-peak correction before PEQ, stock EQ ordering and safe stream gates.
 - `organizer/`: bounded native FLAC preparation and index rebuilding; ordinary audio and original metadata are preserved.

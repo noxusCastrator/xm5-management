@@ -849,7 +849,7 @@ class MainWindow(QMainWindow):
             b.setEnabled(len(self.player.queue) > 0)
         self._player_time()
         if not tracks:
-            self.now_title.setText("XM5 Music Manager")
+            self.now_title.setText(APP_NAME)
             self.now_sub.setText(tr("选择歌曲或专辑"))
             self.now_cover.setPixmap(QPixmap(style.icon_path("default_cover")).scaled(
                 54, 54, Qt.KeepAspectRatio, Qt.SmoothTransformation))

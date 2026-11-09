@@ -97,6 +97,8 @@ def main():
     ap.add_argument("--public",action="store_true")
     ap.add_argument("--source-review",type=Path)
     ap.add_argument("--offline",action="store_true")
+    ap.add_argument("--firmware",type=Path,help="Paired update.bin matching desktop/firmware/manifest.json")
+    ap.add_argument("--launcher",type=Path,help="Source-built Windows x64 XM5Studio.exe")
     a=ap.parse_args();source=a.source.resolve();output=a.output.resolve()
     if output.exists():ap.error("Output exists; choose a new directory.")
     if source.is_relative_to(output) or output.is_relative_to(source):ap.error("Source and output must be separate.")
@@ -109,6 +111,29 @@ def main():
         rel=p.relative_to(source)
         if not p.is_file() or any(x in BAD for x in rel.parts) or is_bytecode_path(rel.as_posix()) or p.name in BAD_NAMES or p.name.casefold()==".env" or p.name.casefold().startswith(".env.") or (p.name.startswith("config.json") and p.name.endswith(".tmp")) or "BASELINE" in p.name or p.suffix in {".sqlite",".sqlite3",".db",".log",".key",".pem",".peace",".dll",".exe"}:continue
         regular(p);source_files[rel.as_posix()]=p
+    for name in ("INSTALLATION.md","FIRMWARE_CARD.md"):
+        guide=REPO/"docs"/name
+        if guide.is_file():
+            regular(guide);source_files["docs/"+name]=guide
+    source_files.pop("firmware/update.bin",None)
+    firmware_manifest=source/"firmware/manifest.json"
+    firmware=None
+    if firmware_manifest.exists():
+        regular(firmware_manifest)
+        firmware=a.firmware or source/"firmware/update.bin"
+        regular(firmware)
+        metadata=json.loads(firmware_manifest.read_text(encoding="utf-8"))
+        if (metadata.get("schema")!="xm5.firmware-bundle.v1" or metadata.get("file")!="update.bin"
+                or metadata.get("app_version")!=version or firmware.stat().st_size!=metadata.get("size")
+                or sha(firmware)!=metadata.get("sha256")):
+            ap.error("Paired firmware/version integrity check failed before packaging.")
+    if a.launcher:
+        regular(a.launcher)
+        with a.launcher.open("rb") as executable:
+            head=executable.read(64)
+            if head[:2]!=b"MZ":ap.error("Launcher is not a PE executable.")
+            executable.seek(int.from_bytes(head[60:64],"little"))
+            if executable.read(6)!=b"PE\0\0\x64\x86":ap.error("Launcher must target Windows x64.")
     runtime,runtime_manifest=runtime_files(a.runtime_dir.resolve()) if a.runtime_dir else (None,None)
     review=None
     if a.public:
@@ -124,6 +149,11 @@ def main():
         for name,p in {**source_files,**runtime}.items():
             dest=output/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,dest)
         (output/"vendor/runtime-manifest.json").write_bytes(runtime_manifest)
+    if firmware:
+        (output/"firmware").mkdir(exist_ok=True)
+        shutil.copyfile(firmware,output/"firmware/update.bin")
+    if a.launcher:shutil.copyfile(a.launcher,output/"XM5Studio.exe")
+    (output/"distribution.json").write_bytes(b'{"schema":"xm5.distribution.v1","mode":"portable"}\n')
     if not review:
         (output/"LOCAL-RUNTIME-REVIEW.txt").write_text("Local validation package. The existing bundled media runtime has not completed corresponding-source review. Do not upload this ZIP as a public binary distribution.\n",encoding="utf-8")
     manifest={"schema":"xm5.portable-build.v2","version":version,"public_runtime_source_review":"approved" if review else "pending","source_review_sha256":sha(a.source_review) if review else None,"files":{}}

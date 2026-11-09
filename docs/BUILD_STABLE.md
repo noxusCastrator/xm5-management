@@ -42,11 +42,15 @@ To rebuild those media dependencies, use [the runtime recipe](../tools/runtime-s
 ```powershell
 python tools/build_portable.py --source desktop `
   --runtime-dir C:\path\to\reviewed\runtime `
+  --firmware C:\path\to\matching\update.bin `
+  --launcher C:\path\to\XM5Studio.exe `
   --output C:\path\to\new\XM5Library `
-  --zip C:\path\to\new\XM5Library-0.2.1-win-x64.zip `
+  --zip C:\path\to\new\XM5Studio-0.2.2-Windows-x64-Portable.zip `
   --public --source-review C:\path\to\RUNTIME-SOURCE-REVIEW.json
 ```
 
 The builder copies only source files and runtime-manifest-listed dependency files. It excludes profiles, databases, caches, credentials and logs. Run `XM5Library.cmd --check` in the extracted output to verify its bundled runtime; no installed Peace, Mp3tag or foobar2000 is used.
+
+The 0.2.2 payload includes the manifest-pinned paired firmware, native launcher, icon and a portable distribution descriptor. Firmware mismatch fails before packaging. Use [the installation guide](INSTALLATION.md) to create the native launcher and wrap the same payload in an offline installer. Installer compilation requires Inno Setup 7.1.1 or newer for the full dependency tree's long paths.
 
 The historical `tools/portable/assemble.py` and its original download lock remain available for reconstructing the older dependency baseline. Its general-purpose GPL media executables are not the 0.2.0 release runtime. Public runtime builds require the exact executable/source-archive review shown above. See [runtime distribution](RUNTIME_DISTRIBUTION.md). Include the corresponding-source ZIP alongside the portable binary download.
