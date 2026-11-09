@@ -1,42 +1,40 @@
-# XM5 PEQ
+# XM5 Management
 
-Adds a parametric equalizer (PEQ) to the ONIX XM5.
+A local music manager and paired firmware for a better ONIX XM5 experience.
 
-Users can save EQ presets to a TF card, then select and apply them on the player. Compatible Equalizer APO and AutoEQ text presets are supported. The player reads their filter frequencies, gains, Q values and preamp settings for local music playback.
+Prepare a card from music folders you already use, organize it on your computer, and bring back playlist and favorite edits from the player. The Windows companion prepares the data; its paired firmware, based on official XM5 V2.43, reads it on the XM5.
 
-This project is based on the official V2.43 firmware.
-
-The companion XM5 Library application manages local music, playlists, favorites and PEQ presets on a computer. It prepares an `xm5` folder for the player's TF card or USB storage. Your original computer files stay unchanged. See the [desktop guide](docs/DESKTOP.md) and [card format](docs/STORAGE_FORMAT.md).
-
-[Download version 0.2.0](https://github.com/noxusCastrator/XM5_PEQ/releases/tag/v0.2.0): paired firmware and the Windows portable companion. See the [validation record](docs/VALIDATION_0.2.0.md) for test scope and the [build guide](docs/BUILD_STABLE.md) for source builds.
+For PEQ with the factory music and artwork handling, use [xm5-peq](https://github.com/noxusCastrator/xm5-peq). Copy presets into the card's root `EQ` folder; no companion is needed. The management firmware already includes PEQ. See [which project to choose](docs/PROJECT_CHOICE.md).
 
 ## Features
 
-- Keeps the factory EQ and adds a separate PEQ page. Swipe left from the factory EQ page to open it.
-- Independent switches for PEQ and the factory EQ. Can be used separately or together.
-- Supports up to 30 active filters.
-- PEQ supports local PCM playback up to 192 kHz. The factory EQ remains limited to 48 kHz. PEQ does not apply to DSD playback or USB DAC mode.
-- The interface follows the factory XM5 style and supports Simplified Chinese and English.
+- Keep existing folder structures inside `xm5/music/<source folder>`.
+- Create ordered playlists with covers. Bring back playlists and Favorites edited on the player, with explicit conflict choices.
+- Add 80-, 160- and 330-pixel images, optional lyrics and original sample-peak information to supported song copies. Keep the original artwork.
+- Transfer new or changed files during updates. Unchanged music stays in place, replaced files have backups, and unmanaged card data is preserved.
+- Manage PEQ and use basic desktop playback to check tracks. The Windows portable package includes its tools; installed Peace, Mp3tag and foobar2000 are not required.
+- Control the running application with function scripts through its console or local client.
 
 ## Usage
 
-For firmware installation, refer to the [XM5 TF-card update instructions provided by ONIX](https://onixhiend.co.uk/overture-firmware-update/).
+Download the paired firmware and portable application from [version 0.2.0](https://github.com/noxusCastrator/xm5-management/releases/tag/v0.2.0).
 
-1. Create an `EQ` folder at the TF card root. Place your presets inside it as UTF-8 `.txt` files.
-2. Swipe left from the factory EQ page to open the PEQ page.
-3. Tap `PEQ OFF` to open the preset list, then tap `Rescan` to scan for files.
-4. Select a preset and enable PEQ.
+1. Install `update.bin` using the official XM5 update procedure.
+2. Extract the complete application into a writable folder and run `XM5Library.cmd`.
+3. Add music folders in **Folders** and preset folders in **PEQ**. Create playlists and choose their covers.
+4. In **TF Card**, select sources and a destination, preview, then export. A card reader and the player's USB storage connection use the same layout.
+5. Safely disconnect storage before playback. Use **Bring back / Restore** to inspect edits made on the XM5.
 
-For a managed library card, select presets in the companion and export them with the library. The player reads the converted presets from `xm5/Struct/peq`; the original preset files stay in `xm5/EQ`.
+Export manages one `xm5` folder containing `music`, `EQ` and `Struct`. It refuses an unrelated existing `xm5` folder; the rest of the card need not be cleared. Export leaves PC originals unchanged. Explicit source-tag and rename actions are separate and can change selected originals.
 
-See the [configuration documentation](docs/CONFIG_FORMAT.md) for preset formats and limits. To convert other formats, give an AI your EQ settings together with the [AI conversion guide](docs/AI_EQ_CONVERSION.md) provided by this project.
+Read the [desktop guide](docs/DESKTOP.md), [card format](docs/STORAGE_FORMAT.md), [scripting guide](docs/SCRIPTING.md), [build instructions](docs/BUILD_STABLE.md) and [PEQ format](docs/CONFIG_FORMAT.md).
 
 ## Warning
 
-This is unofficial modified firmware. The earlier PEQ08 build was confirmed usable on one XM5 owned by the author. Check this release's validation record for the scope of later storage changes. This does not guarantee successful installation or operation on other devices. Flashing may cause data loss or boot failure, and repairs may be necessary. Physical recovery after a failed flash has not been validated for version 0.2.0.
+This is unofficial modified firmware. Version 0.2.0 has software and VM validation; its new storage firmware has not been physically tested. Earlier one-device feedback applies to PEQ08. Read the [validation record](docs/VALIDATION_0.2.0.md).
 
-Before flashing, back up your data and keep the official recovery package and instructions.
+Flashing can cause data loss or boot failure. Back up your music and card, and keep the official recovery package and instructions. Recovery is not guaranteed. Update backups and journals do not replace a separate music backup. Keep the paired firmware and companion together: older stock firmware can scan retained backup music.
 
-Excessive EQ gain can cause clipping or distortion, especially when both EQ layers are enabled. Keep the preset's preamp setting and lower it further if necessary.
+EQ boosts can clip. Keep the preset's preamp setting and lower it further if needed.
 
-Thanks to Shanling for their technical support.
+Thanks to Shanling for their technical support and the official recovery package.

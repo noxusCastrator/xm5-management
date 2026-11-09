@@ -23,6 +23,8 @@ __pycache__/
 *.peace
 
 # Required stock UI layouts and images; no executable runtime files.
+# Local release packages, original inputs and development material.
+/.local/
 !desktop/xm5lib/ui/assets/**/*.bin
 /desktop/vendor/
 /desktop/data/
