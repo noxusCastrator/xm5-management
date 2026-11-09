@@ -74,6 +74,14 @@ class InstallerBuildTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Private or generated"):
             builder.verified_payload(self.payload)
 
+    def test_reviewed_runtime_package_data_is_not_a_profile(self):
+        path = self.payload / "vendor/python/Lib/site-packages/mutagen.data/data/share/man/fixture.1"
+        path.parent.mkdir(parents=True)
+        path.write_bytes(b"reviewed runtime documentation")
+        self.manifest()
+        _, files = builder.verified_payload(self.payload)
+        self.assertIn(path.relative_to(self.payload).as_posix(), files)
+
     def test_manifest_paths_are_windows_safe(self):
         for name in ("../escape", "C:/escape", "/absolute", "vendor//file", "file.", "NUL.txt", "one\\two", "two:stream"):
             with self.subTest(name=name), self.assertRaises(ValueError):

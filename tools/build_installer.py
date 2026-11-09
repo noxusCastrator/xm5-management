@@ -59,7 +59,8 @@ def verified_payload(payload, allow_unreviewed=False):
         if name.casefold() in folded:
             raise ValueError("Case-colliding payload paths")
         folded.add(name.casefold())
-        if (any(p.casefold() in PRIVATE for p in rel.parts) or rel.name.casefold().startswith("config.json")
+        if (rel.parts[0].casefold() in PRIVATE or "__pycache__" in {p.casefold() for p in rel.parts}
+                or rel.name.casefold().startswith("config.json")
                 or rel.name.casefold().startswith(".env") or rel.suffix.casefold() in {".sqlite", ".sqlite3", ".db", ".log", ".pyc", ".pyo", ".key", ".pem"}):
             raise ValueError(f"Private or generated payload file: {name}")
         file = payload / rel
