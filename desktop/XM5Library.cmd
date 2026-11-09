@@ -11,8 +11,8 @@ if not exist "%APPDIR%vendor\python\python.exe" (
 if /i "%~1"=="cli" goto console
 if /i "%~1"=="script" goto console
 if /i "%~1"=="--check" goto console
-start "XM5 Library" "%APPDIR%vendor\python\pythonw.exe" "%APPDIR%bootstrap.py" %*
+start "XM5 Library" "%APPDIR%vendor\python\pythonw.exe" -B "%APPDIR%bootstrap.py" %*
 exit /b 0
 :console
-"%APPDIR%vendor\python\python.exe" "%APPDIR%bootstrap.py" %*
+"%APPDIR%vendor\python\python.exe" -B "%APPDIR%bootstrap.py" %*
 exit /b %errorlevel%

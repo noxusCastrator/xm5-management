@@ -15,8 +15,10 @@ import sys
 import zipfile
 
 REPO=Path(__file__).resolve().parents[1]
-BAD={".git","__pycache__","vendor",".venv","data","cache","runtime","logs","build","out","tests"}
-BAD_NAMES={"config.json","connection.json","credentials.json","library.sqlite","library.db","BASELINE.json","CHANGES.json"}
+BAD={".git",".local","__pycache__","vendor",".venv","data","cache","runtime","logs","build","out","tests"}
+BAD_NAMES={"config.json","config.json.bak","config.json.lock","connection.json","credentials.json","library.sqlite","library.db","BASELINE.json","CHANGES.json"}
+RESERVED={"CON","PRN","AUX","NUL","CONIN$","CONOUT$"}
+RESERVED.update(prefix+digit for prefix in ("COM","LPT") for digit in "123456789¹²³")
 
 def sha(p):
     with p.open("rb") as f:return hashlib.file_digest(f,"sha256").hexdigest()
@@ -25,18 +27,46 @@ def regular(p):
     if p.is_symlink() or not p.is_file() or getattr(p.lstat(),"st_file_attributes",0)&0x400:
         raise ValueError(f"Refuse nonordinary input: {p}")
 
+def is_bytecode_path(name):
+    """Interpreter caches are derived output, never immutable runtime inputs."""
+    parts=name.replace("\\","/").casefold().split("/")
+    return "__pycache__" in parts or parts[-1].endswith((".pyc",".pyo"))
+
+def runtime_relative(name):
+    if not isinstance(name,str) or not name or "\\" in name:
+        raise ValueError("Unsafe runtime manifest path")
+    parts=name.split("/")
+    if len(parts)<2 or parts[0]!="vendor" or name=="vendor/runtime-manifest.json":
+        raise ValueError("Unsafe runtime manifest path")
+    for part in parts:
+        if (not part or part in {".",".."} or part.endswith(("."," "))
+                or any(ord(ch)<32 or ch in '<>:"|?*' for ch in part)
+                or part.split(".",1)[0].upper() in RESERVED):
+            raise ValueError("Unsafe runtime manifest path")
+    return PurePosixPath(name)
+
+def runtime_input(root,relative):
+    p=root/relative
+    if not p.resolve().is_relative_to(root.resolve()):raise ValueError(f"Runtime input leaves its root: {relative}")
+    regular(p)
+    return p
+
 def runtime_files(root):
-    mf=root/"vendor/runtime-manifest.json";regular(mf)
+    mf=runtime_input(root,"vendor/runtime-manifest.json")
     data=json.loads(mf.read_text(encoding="utf-8-sig"));rows={}
-    if data.get("schema")!="xm5.bundled-runtime.v1":raise ValueError("Unknown runtime manifest")
+    if data.get("schema")!="xm5.bundled-runtime.v1" or not isinstance(data.get("files"),dict):raise ValueError("Unknown runtime manifest")
+    folded=set()
     for name,record in data["files"].items():
-        rel=PurePosixPath(name)
-        if rel.is_absolute() or ".." in rel.parts or rel.parts[0]!="vendor":raise ValueError("Unsafe runtime manifest path")
-        p=root/rel;regular(p)
+        rel=runtime_relative(name)
+        if name.casefold() in folded:raise ValueError("Case-colliding runtime manifest path")
+        folded.add(name.casefold())
+        if is_bytecode_path(name):continue
+        p=runtime_input(root,rel)
         if p.stat().st_size!=record["size"] or sha(p)!=record["sha256"]:raise ValueError(f"Runtime mismatch: {name}")
         rows[rel.as_posix()]=p
-    rows["vendor/runtime-manifest.json"]=mf
-    return rows
+    data["files"]={name:record for name,record in data["files"].items() if not is_bytecode_path(name)}
+    normalized=(json.dumps(data,sort_keys=True,indent=2,ensure_ascii=False)+"\n").encode("utf-8")
+    return rows,normalized
 
 def public_review(path,files):
     if not path:raise ValueError("Public builds require --source-review; existing GPL runtime review is incomplete.")
@@ -70,14 +100,16 @@ def main():
     a=ap.parse_args();source=a.source.resolve();output=a.output.resolve()
     if output.exists():ap.error("Output exists; choose a new directory.")
     if source.is_relative_to(output) or output.is_relative_to(source):ap.error("Source and output must be separate.")
+    version=json.loads((REPO/"release.json").read_text(encoding="utf-8-sig"))["version"]
+    if not isinstance(version,str) or not version.strip():ap.error("release.json must contain a nonempty version.")
     for name in ("bootstrap.py","XM5Library.cmd","xm5lib/ui/assets/NOTICE.md","xm5lib/core/bundled_runtime.py"):
         if not (source/name).is_file():ap.error(f"Complete source missing {name}")
     source_files={}
     for p in sorted(source.rglob("*")):
         rel=p.relative_to(source)
-        if not p.is_file() or any(x in BAD for x in rel.parts) or p.name in BAD_NAMES or "BASELINE" in p.name or p.suffix in {".pyc",".sqlite",".sqlite3",".db",".log",".key",".pem",".peace",".dll",".exe"}:continue
+        if not p.is_file() or any(x in BAD for x in rel.parts) or is_bytecode_path(rel.as_posix()) or p.name in BAD_NAMES or p.name.casefold()==".env" or p.name.casefold().startswith(".env.") or (p.name.startswith("config.json") and p.name.endswith(".tmp")) or "BASELINE" in p.name or p.suffix in {".sqlite",".sqlite3",".db",".log",".key",".pem",".peace",".dll",".exe"}:continue
         regular(p);source_files[rel.as_posix()]=p
-    runtime=runtime_files(a.runtime_dir.resolve()) if a.runtime_dir else None
+    runtime,runtime_manifest=runtime_files(a.runtime_dir.resolve()) if a.runtime_dir else (None,None)
     review=None
     if a.public:
         if runtime is None:ap.error("Public build first requires an approved existing runtime.")
@@ -91,9 +123,10 @@ def main():
         output.mkdir(parents=True)
         for name,p in {**source_files,**runtime}.items():
             dest=output/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,dest)
+        (output/"vendor/runtime-manifest.json").write_bytes(runtime_manifest)
     if not review:
         (output/"LOCAL-RUNTIME-REVIEW.txt").write_text("Local validation package. The existing bundled media runtime has not completed corresponding-source review. Do not upload this ZIP as a public binary distribution.\n",encoding="utf-8")
-    manifest={"schema":"xm5.portable-build.v2","version":"0.2.0","public_runtime_source_review":"approved" if review else "pending","source_review_sha256":sha(a.source_review) if review else None,"files":{}}
+    manifest={"schema":"xm5.portable-build.v2","version":version,"public_runtime_source_review":"approved" if review else "pending","source_review_sha256":sha(a.source_review) if review else None,"files":{}}
     for p in sorted(output.rglob("*")):
         if p.is_file() and p.name!="BUILD-MANIFEST.json":manifest["files"][p.relative_to(output).as_posix()]={"size":p.stat().st_size,"sha256":sha(p)}
     (output/"BUILD-MANIFEST.json").write_text(json.dumps(manifest,indent=2)+"\n",encoding="utf-8")

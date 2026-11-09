@@ -95,7 +95,7 @@ def dispose(app, win) -> None:
 
 def restart() -> bool:
     """Start the program again the way it was started (after the language changed)."""
-    ok = QProcess.startDetached(sys.executable, [str(Path(sys.argv[0]).resolve())] + sys.argv[1:])
+    ok = QProcess.startDetached(sys.executable, ["-B", str(Path(sys.argv[0]).resolve())] + sys.argv[1:])
     return bool(ok[0] if isinstance(ok, tuple) else ok)
 
 

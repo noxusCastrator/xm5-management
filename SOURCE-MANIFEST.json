@@ -1,39 +1,35 @@
 {
   "schema": "xm5.public-source.v2",
   "project": "xm5-management",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "files": {
     ".gitattributes": {
       "size": 73,
       "sha256": "65d292d8fe2b9b392b4b67f7d82b750133580ee500047a99845eb08ba134b0d8"
     },
     ".gitignore": {
-      "size": 521,
-      "sha256": "36bab69204adfb5519957077331d44a2470efbedd5a03adfd10d521b8a6a1fb8"
+      "size": 616,
+      "sha256": "caebfdfb77898e4d1a2bf08d0107cdc1b6a107bd3a5765a969f7daf7d2d5b227"
     },
     "AGENTS.md": {
       "size": 1160,
       "sha256": "fe886707672b1f47fec667bedbd747ca95ef03c99597f5b1fc5f5f9c2c1ff8fd"
     },
     "README.md": {
-      "size": 3319,
-      "sha256": "4a42543e7a126ab495f5f07c4fe488ae5e772dd9398c22d960a5af38e5208f49"
+      "size": 3838,
+      "sha256": "19a7199f6ae05c5d38c9db778d7a713ce99d7fb5f5865e2fce1163d39cbb320e"
     },
     "THIRD_PARTY.md": {
       "size": 1837,
       "sha256": "b90aad59105abdd45f436b42f95ad309641c3927dc44f3285fb70963a412b807"
     },
-    "release.json": {
-      "size": 2060,
-      "sha256": "94e7f8d6a2d32979b62169b57ac3dfedb947fafeb89ac89faf854f9215e2a188"
-    },
     "desktop/XM5Library.cmd": {
-      "size": 533,
-      "sha256": "ca92a38cf577fcbdd26f471cebcc1dfa04d3b454cd47f44f3a27a22562365246"
+      "size": 539,
+      "sha256": "6d570b268a570ea51630131cdd8f22af530695313bc3b766d7fa75fbff8c47c3"
     },
     "desktop/bootstrap.py": {
-      "size": 2898,
-      "sha256": "b980959f7d13281dd5e768c299c3fbefe4c075d6d83f1de34e0ad84bf481e1f7"
+      "size": 2933,
+      "sha256": "37effc6977b6b9b5f0fb5a2b7fc77c2b61afcb53ea9548186c2cce796c4e9bb9"
     },
     "desktop/requirements.txt": {
       "size": 1954,
@@ -44,20 +40,16 @@
       "sha256": "d24d06d90c6ee9b691546649e3cc87c5daee8c0742a478f883d2634d591be15a"
     },
     "desktop/xm5.cmd": {
-      "size": 249,
-      "sha256": "e348c020a011630d03b5be188241a5f37995cee0fd3301e59a3e70a378105fab"
+      "size": 252,
+      "sha256": "6fbfe5d163ccd63d8cc5407d4bb438a449ce55f6ab076dec8225762e830751f7"
     },
     "desktop/xm5lib/__init__.py": {
-      "size": 355,
-      "sha256": "5d580ea25b93fd709dd6465b4c9fd6a1a82f5d697fc4d18d4591c5fdfb63dbfd"
+      "size": 350,
+      "sha256": "9dac67f1f76c691a871f07c74394e9669db8f4bd429bb30f7f1faa392ab0e5ab"
     },
     "desktop/xm5lib/__main__.py": {
       "size": 51,
       "sha256": "f3fc252770e7740811a9db90068cd4f6bb0198a7bf9e07bc68ed932fb2edb772"
-    },
-    "desktop/xm5lib/cli.py": {
-      "size": 261,
-      "sha256": "51735658f468e7fd26e3754c411efa86c17527363aa7cd59d0ce1b72613cb5ad"
     },
     "desktop/xm5lib/application/__init__.py": {
       "size": 180,
@@ -130,6 +122,10 @@
     "desktop/xm5lib/automation/storage_actions.py": {
       "size": 13680,
       "sha256": "70667314ce98804b15b58ccbf874a074511322401b3593cad2c784821052ef37"
+    },
+    "desktop/xm5lib/cli.py": {
+      "size": 261,
+      "sha256": "51735658f468e7fd26e3754c411efa86c17527363aa7cd59d0ce1b72613cb5ad"
     },
     "desktop/xm5lib/console/COMMANDS.json": {
       "size": 238934,
@@ -239,6 +235,38 @@
       "size": 27749,
       "sha256": "5934e046e2d61e4eb6bbf257de028bac9425ea5c0309ee4bffce66a4efd600cb"
     },
+    "desktop/xm5lib/core/inline_card/__init__.py": {
+      "size": 64,
+      "sha256": "6253024a48119713166ced43688d6011a39a152ceb0749e7ab4ae9afcca115da"
+    },
+    "desktop/xm5lib/core/inline_card/delta.py": {
+      "size": 28102,
+      "sha256": "ac6b3d49cd7595399a6b5cfbc51fd0a2c55aad779616f59063fe235bf382de84"
+    },
+    "desktop/xm5lib/core/inline_card/export_card.py": {
+      "size": 11589,
+      "sha256": "83899bf6833bb6fcfb24bcb11c622b2248619c4ce4ddb9c3a6af45c40b9b5f4c"
+    },
+    "desktop/xm5lib/core/inline_card/formats.py": {
+      "size": 14891,
+      "sha256": "7bc67e77fae1ef6b5725eeaef961a318ec5000e60218f51159e9b75c89a97085"
+    },
+    "desktop/xm5lib/core/inline_card/library.py": {
+      "size": 26357,
+      "sha256": "c69009c948a41e6f1bd21c2782907f6ebbf25a3db4852f5ee25ed416958856c6"
+    },
+    "desktop/xm5lib/core/inline_card/organize_card.py": {
+      "size": 13158,
+      "sha256": "3409a1555a9bdd6cf0e8eceba891c3d5a46e8b6d2289a7be038ee8e1515b7f81"
+    },
+    "desktop/xm5lib/core/inline_card/relative_playlists.py": {
+      "size": 4739,
+      "sha256": "cabf09bbbb59ef9486f44413ad6a3eebb39d512fd3af769a55f77e69aca44104"
+    },
+    "desktop/xm5lib/core/inline_card/xm5_inline.py": {
+      "size": 20936,
+      "sha256": "c561eb0d7b4a6db0fddaea49e6279439dba5165b69823b6ff9dd30446a89f2dd"
+    },
     "desktop/xm5lib/core/library.py": {
       "size": 4499,
       "sha256": "b468f8f61b601465df40821cd1e9dfff5312fb1bd08879ed354acfb117e36dfc"
@@ -343,38 +371,6 @@
       "size": 8048,
       "sha256": "f60f4979de3bf3f77b744f2100e3e8b02abf5ccc12451450146ff8813112aebb"
     },
-    "desktop/xm5lib/core/inline_card/__init__.py": {
-      "size": 64,
-      "sha256": "6253024a48119713166ced43688d6011a39a152ceb0749e7ab4ae9afcca115da"
-    },
-    "desktop/xm5lib/core/inline_card/delta.py": {
-      "size": 28102,
-      "sha256": "ac6b3d49cd7595399a6b5cfbc51fd0a2c55aad779616f59063fe235bf382de84"
-    },
-    "desktop/xm5lib/core/inline_card/export_card.py": {
-      "size": 11589,
-      "sha256": "83899bf6833bb6fcfb24bcb11c622b2248619c4ce4ddb9c3a6af45c40b9b5f4c"
-    },
-    "desktop/xm5lib/core/inline_card/formats.py": {
-      "size": 14891,
-      "sha256": "7bc67e77fae1ef6b5725eeaef961a318ec5000e60218f51159e9b75c89a97085"
-    },
-    "desktop/xm5lib/core/inline_card/library.py": {
-      "size": 26357,
-      "sha256": "c69009c948a41e6f1bd21c2782907f6ebbf25a3db4852f5ee25ed416958856c6"
-    },
-    "desktop/xm5lib/core/inline_card/organize_card.py": {
-      "size": 13158,
-      "sha256": "3409a1555a9bdd6cf0e8eceba891c3d5a46e8b6d2289a7be038ee8e1515b7f81"
-    },
-    "desktop/xm5lib/core/inline_card/relative_playlists.py": {
-      "size": 4739,
-      "sha256": "cabf09bbbb59ef9486f44413ad6a3eebb39d512fd3af769a55f77e69aca44104"
-    },
-    "desktop/xm5lib/core/inline_card/xm5_inline.py": {
-      "size": 20936,
-      "sha256": "c561eb0d7b4a6db0fddaea49e6279439dba5165b69823b6ff9dd30446a89f2dd"
-    },
     "desktop/xm5lib/scripting/__init__.py": {
       "size": 842,
       "sha256": "c48618a3ac6b9311746b7673e4bbe34ade3063cfde13c83c457141a4bdc78e47"
@@ -412,128 +408,12 @@
       "sha256": "ec392dd5b7495bb95f2b8a5be8807f3c108946885eb41bfd51dc5355ce68f9eb"
     },
     "desktop/xm5lib/ui/app.py": {
-      "size": 4828,
-      "sha256": "34daa937483d7586113b4d5be4430056eef895833e3d85814c16c3cda31e1a7b"
-    },
-    "desktop/xm5lib/ui/backend_player.py": {
-      "size": 17921,
-      "sha256": "778d65b0869f072dcc51e4ea2b40664b2db569115e6ae886eb7ecb8598de2b0e"
-    },
-    "desktop/xm5lib/ui/catalog.py": {
-      "size": 6559,
-      "sha256": "6a740cc383346dbe3f1d27428e08e58859e97fac432b102fea055ce71ec8fd34"
-    },
-    "desktop/xm5lib/ui/console_backend_actions.py": {
-      "size": 32128,
-      "sha256": "9770f1f7ab71412e968b8fd169b2179ef6d77aeb7c1118953f118cfa398b81b1"
-    },
-    "desktop/xm5lib/ui/console_gui_actions.py": {
-      "size": 35042,
-      "sha256": "10cc3f74507ba16734cc1aa2b6188afb02d0472d60529ff0658fce937f2bd0fc"
-    },
-    "desktop/xm5lib/ui/console_live.py": {
-      "size": 62121,
-      "sha256": "79f7e367eeff653b13667e16575275c8e581c30b66f1260c4e5bc615190d4af7"
-    },
-    "desktop/xm5lib/ui/console_panel.py": {
-      "size": 10253,
-      "sha256": "140540a0a5f15f4d4490fd0fa65fdd4a9aace937c3911bef04a471ad045452cb"
-    },
-    "desktop/xm5lib/ui/console_workflow_actions.py": {
-      "size": 32232,
-      "sha256": "bc502f36c9fb3305d221997ec61f4de770031adc45264e5cead31aa842de3000"
-    },
-    "desktop/xm5lib/ui/export_page.py": {
-      "size": 41115,
-      "sha256": "606508c2ebefb1a27219137d12c060a831a1aa90a183d79bb3f61f65ab528291"
-    },
-    "desktop/xm5lib/ui/hardware.py": {
-      "size": 45582,
-      "sha256": "b247f617741f7eebe585417a95dd573965f07e5899f13509ea41b5d13a4fe1b7"
-    },
-    "desktop/xm5lib/ui/i18n.py": {
-      "size": 968,
-      "sha256": "ac63c0f1193a02e18890e5431c07c85427634f6891c4ee0f8fd32c31d1d17c91"
-    },
-    "desktop/xm5lib/ui/inspector.py": {
-      "size": 20501,
-      "sha256": "123b750e563d0f45e37bc2c8d79b177e8fee7f7eab229db176ec8fd76a0610a1"
-    },
-    "desktop/xm5lib/ui/lang_en.py": {
-      "size": 57108,
-      "sha256": "7d0a6f400f0d85ec0a32c337aea9a7155dadd2383bd5d06060895d3b034a7853"
-    },
-    "desktop/xm5lib/ui/library_pages.py": {
-      "size": 26852,
-      "sha256": "217c6659cdef530416142e7a47fcba54bc9ccbdb80c68855857388b1908a639a"
-    },
-    "desktop/xm5lib/ui/libview.py": {
-      "size": 3606,
-      "sha256": "830146372ae76d328d11a1369f55bdc0ebbbbb6cbc25e57b148b051dc3922116"
-    },
-    "desktop/xm5lib/ui/lyrics_dialog.py": {
-      "size": 7611,
-      "sha256": "a31b8d625f5873ee1912e20347e9e4130c16efe2e8f118440cc32debe6f5b624"
-    },
-    "desktop/xm5lib/ui/main_window.py": {
-      "size": 72058,
-      "sha256": "7f9e4d24d048f17743e47d94a182d7cfe6a82983854eb85f88c95ffb99ccb020"
-    },
-    "desktop/xm5lib/ui/models.py": {
-      "size": 12465,
-      "sha256": "a3b89c854bf25403fc221fa9d54da6878b9b63d22f992f9bfed67192f0124508"
-    },
-    "desktop/xm5lib/ui/peq_page.py": {
-      "size": 25121,
-      "sha256": "0f448829c5abea6dc6011c9fb67a723a13b2c6da10f04805210d352f15ba8808"
-    },
-    "desktop/xm5lib/ui/player.py": {
-      "size": 34201,
-      "sha256": "c52032fab4a1ca4ff42ed18ed83910d36fdf9b3348215b4c7cc76343162755d8"
-    },
-    "desktop/xm5lib/ui/playlist_page.py": {
-      "size": 35414,
-      "sha256": "4c9e6a6002072c857c6c567f8947c5ab24baf1dbff432455486954a4733177c3"
-    },
-    "desktop/xm5lib/ui/prefs.py": {
-      "size": 3313,
-      "sha256": "bbc049dd85a81a26da4fb80eb354c13fe96fd01ac7d76d2b9695318032a07ee8"
-    },
-    "desktop/xm5lib/ui/service.py": {
-      "size": 18934,
-      "sha256": "3755275fa21e91c5db236cfd71fdcb60e63e8334e38e39aaadbe5b3c522f49aa"
-    },
-    "desktop/xm5lib/ui/settings_page.py": {
-      "size": 9232,
-      "sha256": "7d61993d6ac799bf73b0e05ae5e8ddfe07c1b0cd616c7ab3e4389870a590c785"
-    },
-    "desktop/xm5lib/ui/state.py": {
-      "size": 32553,
-      "sha256": "26d7563423d8f7a1ec33b6b9d495e6810c4f91d053372af58695a684a007362f"
-    },
-    "desktop/xm5lib/ui/style.py": {
-      "size": 9870,
-      "sha256": "98b0d981e89a923d1b614254f5da45c87deec5092e61aa014a7cca1d04ee8e90"
-    },
-    "desktop/xm5lib/ui/tagfile.py": {
-      "size": 17558,
-      "sha256": "3cd8bd1c8fba0f559e1ab4f757535cc6150162f8dbc33de25ba3a3d608c0b309"
-    },
-    "desktop/xm5lib/ui/widgets.py": {
-      "size": 33982,
-      "sha256": "8e678f5a57f79e12c9d8cc31077d8f99cc5ee50954f804c204a3d66e169879b2"
-    },
-    "desktop/xm5lib/ui/workers.py": {
-      "size": 2516,
-      "sha256": "380b1099263f7d364adb553040e2b97332097d654030c64e6c8e858790c974d7"
+      "size": 4834,
+      "sha256": "d98484cc0ef9a03a7c26bbf2aa5d30142e5d503d007614beaf3cc76c5973afed"
     },
     "desktop/xm5lib/ui/assets/NOTICE.md": {
       "size": 1118,
       "sha256": "5a41358961075f91b0de432f1984e468341e56218e1a6f1e9c226b52201dde54"
-    },
-    "desktop/xm5lib/ui/assets/sandblast.png": {
-      "size": 31080,
-      "sha256": "1c9b04c7a06ef0aebcf44f4b62b9a0bc7e191a916ccb3ed501183bf1cfc35f55"
     },
     "desktop/xm5lib/ui/assets/case/band_L_dodge.png": {
       "size": 87,
@@ -850,6 +730,10 @@
     "desktop/xm5lib/ui/assets/knob_xl/wheel_titanium_5.png": {
       "size": 128922,
       "sha256": "4b65292b6cf3e2ff5c6a3cda020878574116152d4dd74f7e0130d4e86171d2e2"
+    },
+    "desktop/xm5lib/ui/assets/sandblast.png": {
+      "size": 31080,
+      "sha256": "1c9b04c7a06ef0aebcf44f4b62b9a0bc7e191a916ccb3ed501183bf1cfc35f55"
     },
     "desktop/xm5lib/ui/assets/xm5/bar_pause.png": {
       "size": 209,
@@ -3331,70 +3215,6 @@
       "size": 3434,
       "sha256": "ef92ae4e90cf2fc93169ef96e4bf2f8a222d08af7728c97bebceb19ff9273544"
     },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/folder_page.bin": {
-      "size": 8092,
-      "sha256": "136d321db117bba57ca7be472ad727a34d3e8fc591c0a1b216f94a149d3304ac"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/home_page.bin": {
-      "size": 3213,
-      "sha256": "fb5ef449dd81ac53dc1af62aa2ba7c7b79e865d4d4e4215cc967742b22c87188"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/initlanguage_page.bin": {
-      "size": 571,
-      "sha256": "504b7b89a849272bfd3b0f754dfd213441bc56abc4a1af98c42d74cb5b66bdc1"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/kb_default_t26.bin": {
-      "size": 23957,
-      "sha256": "b7e9e88ec1355f99a12baac12118c905024054975389b35531a2b2d51888a1bd"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/localclass_page.bin": {
-      "size": 4271,
-      "sha256": "638df70e8ed35cecc5c742281529e68cf52129e7655467593c14952372a1744a"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/onlinematching_page.bin": {
-      "size": 6794,
-      "sha256": "2e96284e4ec0ab41dd98ba3bcbe12c76f1eba1a1df1f0d146e0408f51db55719"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/playerjumpinfo_page.bin": {
-      "size": 522,
-      "sha256": "f994013caf773ad3e651372300d8553dd623b7098aca048d9b8f62ff8e40dd38"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/playing_page.bin": {
-      "size": 13194,
-      "sha256": "21f60e29b2641d4871d2a1774d7d59e065c96eaf34b694c8f4157e09d000d905"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/playlist_page.bin": {
-      "size": 922,
-      "sha256": "4f8a0bc2ecb3b33c812b411f9e982d6aef11b4c821a50a62e6daea1f4a39d854"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/poweroff_page.bin": {
-      "size": 718,
-      "sha256": "2040ab3b4df79d06aabfcbe3a1f52ec1d11197c226fb5a838b8f0484e7f5c2f6"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/saverscreen_page.bin": {
-      "size": 5193,
-      "sha256": "29c4abbcdba1a9a56e8bf60bf7768adc1c5a821bc7bb194b4cdee4231c820c33"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/search_page.bin": {
-      "size": 19755,
-      "sha256": "6ecb023f43ea454c18ab05b0dbae9ed6fc606a9291d206132d6f8c3b63f86049"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/specfolder_page.bin": {
-      "size": 5683,
-      "sha256": "b20b4b751cbb83e9d051d3b26a1bff9b46d170356d279663e283a6c3497b3ca7"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/system_bar.bin": {
-      "size": 3454,
-      "sha256": "4e1dddddfd69a7eedb2fa8ea31f4acc3bc3c56d812b1798f5cd283bbc616d895"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/updatemusic_page.bin": {
-      "size": 1621,
-      "sha256": "9597a65f514363856cf1f3e82e7dcc1e6ff7744af9f4a54f061e5f3773a7a484"
-    },
-    "desktop/xm5lib/ui/assets/xm5stock/ui/usbmode_page.bin": {
-      "size": 1423,
-      "sha256": "4b7c0a999954d329eeb03c7f8678fe159b3200356b4cc82e22f12d9602bc3231"
-    },
     "desktop/xm5lib/ui/assets/xm5stock/ui/dialog/addplaylist_dialog.bin": {
       "size": 3269,
       "sha256": "380ac1e6879290e2e89d5ba0db32fda24ae4fbd3060f00792b8f8cf60292bd3a"
@@ -3511,6 +3331,42 @@
       "size": 1936,
       "sha256": "5b7bad14e0b1edd51b1ab8709cef2bdc8bfeff7dd5d2287e5ef3d208f18dcbbb"
     },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/folder_page.bin": {
+      "size": 8092,
+      "sha256": "136d321db117bba57ca7be472ad727a34d3e8fc591c0a1b216f94a149d3304ac"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/home_page.bin": {
+      "size": 3213,
+      "sha256": "fb5ef449dd81ac53dc1af62aa2ba7c7b79e865d4d4e4215cc967742b22c87188"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/initlanguage_page.bin": {
+      "size": 571,
+      "sha256": "504b7b89a849272bfd3b0f754dfd213441bc56abc4a1af98c42d74cb5b66bdc1"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/kb_default_t26.bin": {
+      "size": 23957,
+      "sha256": "b7e9e88ec1355f99a12baac12118c905024054975389b35531a2b2d51888a1bd"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/localclass_page.bin": {
+      "size": 4271,
+      "sha256": "638df70e8ed35cecc5c742281529e68cf52129e7655467593c14952372a1744a"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/onlinematching_page.bin": {
+      "size": 6794,
+      "sha256": "2e96284e4ec0ab41dd98ba3bcbe12c76f1eba1a1df1f0d146e0408f51db55719"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/playerjumpinfo_page.bin": {
+      "size": 522,
+      "sha256": "f994013caf773ad3e651372300d8553dd623b7098aca048d9b8f62ff8e40dd38"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/playing_page.bin": {
+      "size": 13194,
+      "sha256": "21f60e29b2641d4871d2a1774d7d59e065c96eaf34b694c8f4157e09d000d905"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/playlist_page.bin": {
+      "size": 922,
+      "sha256": "4f8a0bc2ecb3b33c812b411f9e982d6aef11b4c821a50a62e6daea1f4a39d854"
+    },
     "desktop/xm5lib/ui/assets/xm5stock/ui/playset/balance_page.bin": {
       "size": 4809,
       "sha256": "3da5927d69d7d96eaa0fba152cc827806244b88c816c7b6dfb24cd726f732ceb"
@@ -3530,6 +3386,26 @@
     "desktop/xm5lib/ui/assets/xm5stock/ui/playset/playsetclass_page.bin": {
       "size": 673,
       "sha256": "cfb91611fc1b25c5dd553aa65c31f8af7985706f59790aedd45fceaa58745303"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/poweroff_page.bin": {
+      "size": 718,
+      "sha256": "2040ab3b4df79d06aabfcbe3a1f52ec1d11197c226fb5a838b8f0484e7f5c2f6"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/saverscreen_page.bin": {
+      "size": 5193,
+      "sha256": "29c4abbcdba1a9a56e8bf60bf7768adc1c5a821bc7bb194b4cdee4231c820c33"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/search_page.bin": {
+      "size": 19755,
+      "sha256": "6ecb023f43ea454c18ab05b0dbae9ed6fc606a9291d206132d6f8c3b63f86049"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/specfolder_page.bin": {
+      "size": 5683,
+      "sha256": "b20b4b751cbb83e9d051d3b26a1bff9b46d170356d279663e283a6c3497b3ca7"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/system_bar.bin": {
+      "size": 3454,
+      "sha256": "4e1dddddfd69a7eedb2fa8ea31f4acc3bc3c56d812b1798f5cd283bbc616d895"
     },
     "desktop/xm5lib/ui/assets/xm5stock/ui/systemset/about_page.bin": {
       "size": 6514,
@@ -3655,6 +3531,42 @@
       "size": 1954,
       "sha256": "db043e1d3e276071f8babaac696e3a4fa4bfcaab00e625e831095e56bbcab96f"
     },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/updatemusic_page.bin": {
+      "size": 1621,
+      "sha256": "9597a65f514363856cf1f3e82e7dcc1e6ff7744af9f4a54f061e5f3773a7a484"
+    },
+    "desktop/xm5lib/ui/assets/xm5stock/ui/usbmode_page.bin": {
+      "size": 1423,
+      "sha256": "4b7c0a999954d329eeb03c7f8678fe159b3200356b4cc82e22f12d9602bc3231"
+    },
+    "desktop/xm5lib/ui/backend_player.py": {
+      "size": 17921,
+      "sha256": "778d65b0869f072dcc51e4ea2b40664b2db569115e6ae886eb7ecb8598de2b0e"
+    },
+    "desktop/xm5lib/ui/catalog.py": {
+      "size": 6559,
+      "sha256": "6a740cc383346dbe3f1d27428e08e58859e97fac432b102fea055ce71ec8fd34"
+    },
+    "desktop/xm5lib/ui/console_backend_actions.py": {
+      "size": 32128,
+      "sha256": "9770f1f7ab71412e968b8fd169b2179ef6d77aeb7c1118953f118cfa398b81b1"
+    },
+    "desktop/xm5lib/ui/console_gui_actions.py": {
+      "size": 35042,
+      "sha256": "10cc3f74507ba16734cc1aa2b6188afb02d0472d60529ff0658fce937f2bd0fc"
+    },
+    "desktop/xm5lib/ui/console_live.py": {
+      "size": 62121,
+      "sha256": "79f7e367eeff653b13667e16575275c8e581c30b66f1260c4e5bc615190d4af7"
+    },
+    "desktop/xm5lib/ui/console_panel.py": {
+      "size": 10253,
+      "sha256": "140540a0a5f15f4d4490fd0fa65fdd4a9aace937c3911bef04a471ad045452cb"
+    },
+    "desktop/xm5lib/ui/console_workflow_actions.py": {
+      "size": 32232,
+      "sha256": "bc502f36c9fb3305d221997ec61f4de770031adc45264e5cead31aa842de3000"
+    },
     "desktop/xm5lib/ui/device/__init__.py": {
       "size": 1612,
       "sha256": "38f03cb4138c1018ab2721adee703e97a17062a133f6a7794ab706d75c52fd5e"
@@ -3699,6 +3611,90 @@
       "size": 33134,
       "sha256": "4fc463b878386076e3716955e742c541e370ec601ca0df612a8c573ccaf1c79d"
     },
+    "desktop/xm5lib/ui/export_page.py": {
+      "size": 41115,
+      "sha256": "606508c2ebefb1a27219137d12c060a831a1aa90a183d79bb3f61f65ab528291"
+    },
+    "desktop/xm5lib/ui/hardware.py": {
+      "size": 45582,
+      "sha256": "b247f617741f7eebe585417a95dd573965f07e5899f13509ea41b5d13a4fe1b7"
+    },
+    "desktop/xm5lib/ui/i18n.py": {
+      "size": 968,
+      "sha256": "ac63c0f1193a02e18890e5431c07c85427634f6891c4ee0f8fd32c31d1d17c91"
+    },
+    "desktop/xm5lib/ui/inspector.py": {
+      "size": 20501,
+      "sha256": "123b750e563d0f45e37bc2c8d79b177e8fee7f7eab229db176ec8fd76a0610a1"
+    },
+    "desktop/xm5lib/ui/lang_en.py": {
+      "size": 57108,
+      "sha256": "7d0a6f400f0d85ec0a32c337aea9a7155dadd2383bd5d06060895d3b034a7853"
+    },
+    "desktop/xm5lib/ui/library_pages.py": {
+      "size": 26852,
+      "sha256": "217c6659cdef530416142e7a47fcba54bc9ccbdb80c68855857388b1908a639a"
+    },
+    "desktop/xm5lib/ui/libview.py": {
+      "size": 3606,
+      "sha256": "830146372ae76d328d11a1369f55bdc0ebbbbb6cbc25e57b148b051dc3922116"
+    },
+    "desktop/xm5lib/ui/lyrics_dialog.py": {
+      "size": 7611,
+      "sha256": "a31b8d625f5873ee1912e20347e9e4130c16efe2e8f118440cc32debe6f5b624"
+    },
+    "desktop/xm5lib/ui/main_window.py": {
+      "size": 72058,
+      "sha256": "7f9e4d24d048f17743e47d94a182d7cfe6a82983854eb85f88c95ffb99ccb020"
+    },
+    "desktop/xm5lib/ui/models.py": {
+      "size": 12465,
+      "sha256": "a3b89c854bf25403fc221fa9d54da6878b9b63d22f992f9bfed67192f0124508"
+    },
+    "desktop/xm5lib/ui/peq_page.py": {
+      "size": 25121,
+      "sha256": "0f448829c5abea6dc6011c9fb67a723a13b2c6da10f04805210d352f15ba8808"
+    },
+    "desktop/xm5lib/ui/player.py": {
+      "size": 34201,
+      "sha256": "c52032fab4a1ca4ff42ed18ed83910d36fdf9b3348215b4c7cc76343162755d8"
+    },
+    "desktop/xm5lib/ui/playlist_page.py": {
+      "size": 35414,
+      "sha256": "4c9e6a6002072c857c6c567f8947c5ab24baf1dbff432455486954a4733177c3"
+    },
+    "desktop/xm5lib/ui/prefs.py": {
+      "size": 3313,
+      "sha256": "bbc049dd85a81a26da4fb80eb354c13fe96fd01ac7d76d2b9695318032a07ee8"
+    },
+    "desktop/xm5lib/ui/service.py": {
+      "size": 18940,
+      "sha256": "46491c63a84045c252068f3314a35591ca978fd32b2f14f9b0acae5de45a5458"
+    },
+    "desktop/xm5lib/ui/settings_page.py": {
+      "size": 9232,
+      "sha256": "7d61993d6ac799bf73b0e05ae5e8ddfe07c1b0cd616c7ab3e4389870a590c785"
+    },
+    "desktop/xm5lib/ui/state.py": {
+      "size": 32553,
+      "sha256": "26d7563423d8f7a1ec33b6b9d495e6810c4f91d053372af58695a684a007362f"
+    },
+    "desktop/xm5lib/ui/style.py": {
+      "size": 9870,
+      "sha256": "98b0d981e89a923d1b614254f5da45c87deec5092e61aa014a7cca1d04ee8e90"
+    },
+    "desktop/xm5lib/ui/tagfile.py": {
+      "size": 17558,
+      "sha256": "3cd8bd1c8fba0f559e1ab4f757535cc6150162f8dbc33de25ba3a3d608c0b309"
+    },
+    "desktop/xm5lib/ui/widgets.py": {
+      "size": 33982,
+      "sha256": "8e678f5a57f79e12c9d8cc31077d8f99cc5ee50954f804c204a3d66e169879b2"
+    },
+    "desktop/xm5lib/ui/workers.py": {
+      "size": 2516,
+      "sha256": "380b1099263f7d364adb553040e2b97332097d654030c64e6c8e858790c974d7"
+    },
     "docs/AI_EQ_CONVERSION.md": {
       "size": 10598,
       "sha256": "d4a0771e29b3248657d5125ad46076a2e3e24979e9979aa4f042f5df90c6c39f"
@@ -3708,8 +3704,8 @@
       "sha256": "b0352fc255bb04c88f315e3fce3637ff531b9070d64d69133e984c4fb571bdc2"
     },
     "docs/BUILD_STABLE.md": {
-      "size": 4416,
-      "sha256": "48806e0c5409645c98c7226f310802f1bde0fa207cd310f5b216c3faa4fa0eae"
+      "size": 4651,
+      "sha256": "0fab77489ee3fd2336f9b8c790cd2dfcfc890a0c5aea976db71c0b2c706fcd88"
     },
     "docs/CHANGELOG.md": {
       "size": 1095,
@@ -3723,13 +3719,17 @@
       "size": 4905,
       "sha256": "719c688f35e62a3e0f5a90ec56a5e849dfd04e1f3a87b747086483cd21e02dd3"
     },
+    "docs/DEVELOPMENT.md": {
+      "size": 3322,
+      "sha256": "583e0c8d8abbe65e34c664dc8857d4e85d01460f3238e96838ccdd100b9f094a"
+    },
     "docs/PROJECT_CHOICE.md": {
       "size": 2504,
       "sha256": "d5131d1b58db7216348dbaed6344970cdc5991a22eaf009791f6ec6d6be5a52f"
     },
     "docs/RELEASE_PROCESS.md": {
-      "size": 1911,
-      "sha256": "66af840b56f9aef6e5baa31729e7811a8902f4c6e6c03071428ddd4a2fffca32"
+      "size": 2516,
+      "sha256": "069b2e592446536cf4fd0d6d00f45a36add6a039e79b43f084ba364d13c6960e"
     },
     "docs/RUNTIME_DISTRIBUTION.md": {
       "size": 2633,
@@ -3747,9 +3747,17 @@
       "size": 4520,
       "sha256": "cd8eb660a06158d5e6312bff4314f577aae4b78eb554ad8a5724a3e6d1219706"
     },
+    "docs/VALIDATION_0.2.1.md": {
+      "size": 3498,
+      "sha256": "b98c931b824ad94f3b900cdf2d812c24231fd800550648ba99e14ddc8541f7f3"
+    },
+    "release.json": {
+      "size": 2782,
+      "sha256": "6483109e2bc03a6f10732b10e11362bb24a2b191a5ec8013a9e455bfb0f55467"
+    },
     "src/AI_CONTEXT.md": {
-      "size": 3080,
-      "sha256": "43fc7cf39515e935b2b017d917a34fff499cf87173b43c4f2ff5af28a5c370dc"
+      "size": 3281,
+      "sha256": "30b0e3518a6afb7cd6f9f79254cd37bddb2ae9c01b44eef453d94eb15f45ef66"
     },
     "src/audio/layers.h": {
       "size": 779,
@@ -3766,18 +3774,6 @@
     "src/audio/stock_calls.S": {
       "size": 361,
       "sha256": "9bf3b4abb6c6ed1e627e74cbf5d7795ea5b2d7304456d9cb6bc27339f2c91b09"
-    },
-    "src/audio/xm5_af_abi.h": {
-      "size": 3621,
-      "sha256": "10f76a6cce8009047ffc13e132e5446dac23aff0c2556c51bddd0263faa9e7dc"
-    },
-    "src/audio/xm5_peq_player.c": {
-      "size": 16102,
-      "sha256": "22615b3b52b804cff4757b058c75dca8fbfd1d45b15a8a01758f7ebc3442d9f1"
-    },
-    "src/audio/xm5_platform.h": {
-      "size": 2157,
-      "sha256": "6f6675478fdfe50814e5c5d7782ea042b127e7b62d7d240066c17d18445bfab3"
     },
     "src/audio/vendor/LICENSE": {
       "size": 1069,
@@ -3799,9 +3795,17 @@
       "size": 866,
       "sha256": "efd5e1b5a30869796098a3fface983898d006775cc9c2e031d5b63e651524034"
     },
-    "src/audio_storage/inline_flac.h": {
-      "size": 1322,
-      "sha256": "476507a4a325930130ad2266e231857d8d74c24ecded073af2840dbacd8c2a2a"
+    "src/audio/xm5_af_abi.h": {
+      "size": 3621,
+      "sha256": "10f76a6cce8009047ffc13e132e5446dac23aff0c2556c51bddd0263faa9e7dc"
+    },
+    "src/audio/xm5_peq_player.c": {
+      "size": 16102,
+      "sha256": "22615b3b52b804cff4757b058c75dca8fbfd1d45b15a8a01758f7ebc3442d9f1"
+    },
+    "src/audio/xm5_platform.h": {
+      "size": 2157,
+      "sha256": "6f6675478fdfe50814e5c5d7782ea042b127e7b62d7d240066c17d18445bfab3"
     },
     "src/audio_storage/audio-info1/scripts/build_candidate.py": {
       "size": 11685,
@@ -3839,18 +3843,6 @@
       "size": 455,
       "sha256": "bfbfb6233f965f85ed0aea7ffd03e9a8936f28dad56b008848c12ffbd50533cd"
     },
-    "src/audio_storage/audio-info1/src/xm5_af_abi.h": {
-      "size": 3621,
-      "sha256": "10f76a6cce8009047ffc13e132e5446dac23aff0c2556c51bddd0263faa9e7dc"
-    },
-    "src/audio_storage/audio-info1/src/xm5_peq_player.c": {
-      "size": 19326,
-      "sha256": "dc423bb5c8d5552b49a70ff5c713478cf7d7ac208be5ab73de392e329a695e6e"
-    },
-    "src/audio_storage/audio-info1/src/xm5_platform.h": {
-      "size": 2157,
-      "sha256": "35f90e7ffb5d761a9c692ec1520a12437f32d971e0bb7e9516be82153424af42"
-    },
     "src/audio_storage/audio-info1/src/vendor/LICENSE": {
       "size": 1069,
       "sha256": "4e19996ba6b11d5e4b8c43541c2ff86e1dcb082adc49e020be32a7fb7cab4190"
@@ -3871,6 +3863,18 @@
       "size": 866,
       "sha256": "efd5e1b5a30869796098a3fface983898d006775cc9c2e031d5b63e651524034"
     },
+    "src/audio_storage/audio-info1/src/xm5_af_abi.h": {
+      "size": 3621,
+      "sha256": "10f76a6cce8009047ffc13e132e5446dac23aff0c2556c51bddd0263faa9e7dc"
+    },
+    "src/audio_storage/audio-info1/src/xm5_peq_player.c": {
+      "size": 19326,
+      "sha256": "dc423bb5c8d5552b49a70ff5c713478cf7d7ac208be5ab73de392e329a695e6e"
+    },
+    "src/audio_storage/audio-info1/src/xm5_platform.h": {
+      "size": 2157,
+      "sha256": "35f90e7ffb5d761a9c692ec1520a12437f32d971e0bb7e9516be82153424af42"
+    },
     "src/audio_storage/formats/other_container.c": {
       "size": 9942,
       "sha256": "bc6544d00387b27b26c6ec9392b19298cbdc3e6a6bd352486f018412d50f0389"
@@ -3878,6 +3882,10 @@
     "src/audio_storage/formats/other_container.h": {
       "size": 304,
       "sha256": "1a69dc454f0934bdcda7ce8c72596d1134ca01ca55ce1898bb8c48f50746dc78"
+    },
+    "src/audio_storage/inline_flac.h": {
+      "size": 1322,
+      "sha256": "476507a4a325930130ad2266e231857d8d74c24ecded073af2840dbacd8c2a2a"
     },
     "src/audio_storage/player-info1/art_index.h": {
       "size": 762,
@@ -4003,6 +4011,14 @@
       "size": 13554,
       "sha256": "a47cc52bd4686c2a8521d9093db1b968c7bedb9b1682900468fd0f035e92b8c1"
     },
+    "src/native_storage/inline-formats/other_container.c": {
+      "size": 9942,
+      "sha256": "bc6544d00387b27b26c6ec9392b19298cbdc3e6a6bd352486f018412d50f0389"
+    },
+    "src/native_storage/inline-formats/other_container.h": {
+      "size": 304,
+      "sha256": "1a69dc454f0934bdcda7ce8c72596d1134ca01ca55ce1898bb8c48f50746dc78"
+    },
     "src/native_storage/inline_favorite_io.inc": {
       "size": 2895,
       "sha256": "44a87794a58d1886794977d6a5f77516d7f3da6eb2d1d96436f6244f5b89297d"
@@ -4111,11 +4127,11 @@
       "size": 2814,
       "sha256": "8bd9adaa8c38f389db226edf46bd16de21832bf2bde36572007a14f6cea84a6d"
     },
-    "src/native_storage/inline-formats/other_container.c": {
+    "src/organizer/formats/other_container.c": {
       "size": 9942,
       "sha256": "bc6544d00387b27b26c6ec9392b19298cbdc3e6a6bd352486f018412d50f0389"
     },
-    "src/native_storage/inline-formats/other_container.h": {
+    "src/organizer/formats/other_container.h": {
       "size": 304,
       "sha256": "1a69dc454f0934bdcda7ce8c72596d1134ca01ca55ce1898bb8c48f50746dc78"
     },
@@ -4143,13 +4159,17 @@
       "size": 3998,
       "sha256": "1faeea9b832bcb21ca3755d6075b37c86cf2c32eacd2ceb2ddd3d69bc915fadc"
     },
-    "src/organizer/formats/other_container.c": {
-      "size": 9942,
-      "sha256": "bc6544d00387b27b26c6ec9392b19298cbdc3e6a6bd352486f018412d50f0389"
+    "src/startup/library/library-insert-01.sh": {
+      "size": 18960,
+      "sha256": "b60ea969151cb8f6c615541a8819d0e13ce101fac5cfab60fbc4f43e94358f67"
     },
-    "src/organizer/formats/other_container.h": {
-      "size": 304,
-      "sha256": "1a69dc454f0934bdcda7ce8c72596d1134ca01ca55ce1898bb8c48f50746dc78"
+    "src/startup/library/library-insert-02.sh": {
+      "size": 47,
+      "sha256": "d0ad2af4ce797c1544a95bb77fbebdc178446a155c9a8ebeaa764452e619d331"
+    },
+    "src/startup/library/library-patch.json": {
+      "size": 625,
+      "sha256": "44cbd97ac623bdfa1bae013a7303593749b80ecae4cb5ddcdcacc00677c47e84"
     },
     "src/startup/patch.json": {
       "size": 352,
@@ -4163,21 +4183,13 @@
       "size": 18960,
       "sha256": "b60ea969151cb8f6c615541a8819d0e13ce101fac5cfab60fbc4f43e94358f67"
     },
-    "src/startup/library/library-insert-01.sh": {
-      "size": 18960,
-      "sha256": "b60ea969151cb8f6c615541a8819d0e13ce101fac5cfab60fbc4f43e94358f67"
-    },
-    "src/startup/library/library-insert-02.sh": {
-      "size": 47,
-      "sha256": "d0ad2af4ce797c1544a95bb77fbebdc178446a155c9a8ebeaa764452e619d331"
-    },
-    "src/startup/library/library-patch.json": {
-      "size": 625,
-      "sha256": "44cbd97ac623bdfa1bae013a7303593749b80ecae4cb5ddcdcacc00677c47e84"
-    },
     "src/ui/binder.c": {
       "size": 5151,
       "sha256": "579c03ff2241e0935c31645e4423c8c6f73e78764f77f93fbdeb2a0e573b2b09"
+    },
+    "src/ui/compat/gnu/stubs-o32_hard_2008.h": {
+      "size": 161,
+      "sha256": "7accbab6d6ea81eaa7156216c062784f102de88759d26bb232f3980325f7fd0e"
     },
     "src/ui/idlepool.c": {
       "size": 2174,
@@ -4230,14 +4242,6 @@
     "src/ui/trampoline.S": {
       "size": 1949,
       "sha256": "b6b227207c4432ef2fc405df3a1cf3fae9a7668128d5d0b6fcc5e44f3f4e0643"
-    },
-    "src/ui/xm5_peq_platform.h": {
-      "size": 858,
-      "sha256": "6ac77a33de9a61d93d7a1afac9ceaac640617787c88d1d9b2d8d9785333f0980"
-    },
-    "src/ui/compat/gnu/stubs-o32_hard_2008.h": {
-      "size": 161,
-      "sha256": "7accbab6d6ea81eaa7156216c062784f102de88759d26bb232f3980325f7fd0e"
     },
     "src/ui/vendor/LICENSE": {
       "size": 1069,
@@ -4299,29 +4303,25 @@
       "size": 1063,
       "sha256": "94a814d91aad4b76d48fd10051af338ef8a6f5628a8023327871dbadec188657"
     },
-    "tools/awtk_resource.py": {
-      "size": 4310,
-      "sha256": "e50b2913b46bde6a0416210021fac12f5ad778259057dd336da5396bcdd19180"
+    "src/ui/xm5_peq_platform.h": {
+      "size": 858,
+      "sha256": "6ac77a33de9a61d93d7a1afac9ceaac640617787c88d1d9b2d8d9785333f0980"
     },
-    "tools/build.py": {
-      "size": 5822,
-      "sha256": "fd34058a61c9bdc8e722e86c1b19b9d92110294637ee1a58e3373a975f1ffcdc"
+    "tests/gui_desktop_smoke.py": {
+      "size": 15282,
+      "sha256": "45d5d5fb185a6d9b7177c1a4f77d7116d75b982bdd93f978fe0339a356014f55"
     },
-    "tools/build_portable.py": {
-      "size": 6185,
-      "sha256": "9a72c93ca8a463e81878ef554b6dd45add3153e3439325e77e042a60633d9b8d"
+    "tests/test_build_portable.py": {
+      "size": 10874,
+      "sha256": "f9637b9f81259b9166561672e1bf7ad08108ef569b329f651b16505fe424075d"
     },
-    "tools/build_stable.py": {
-      "size": 6337,
-      "sha256": "fda6c9e99e710cda781687626420eda189cab3250665d5c16fafdc25f3cc5730"
+    "tests/test_desktop_workflows.py": {
+      "size": 11987,
+      "sha256": "4340c691a318f0167635a2a844a829309fc68bf311c5e836348392511f7b7a09"
     },
-    "tools/build_storage_components.py": {
-      "size": 6804,
-      "sha256": "44c4d8a750109cf432154fbcb277db4093f194225124a21e1612565bdc0d0904"
-    },
-    "tools/elf_compact.py": {
-      "size": 7465,
-      "sha256": "a0126f8871032fe42068c92409ce22f084c0e39677b0935355822ca958dd58e5"
+    "tests/test_setup_desktop.py": {
+      "size": 12063,
+      "sha256": "1f939012c54f4839e6d75dd95eb42733a0c8cfeeabf2066003b0ab8377fc4c27"
     },
     "tools/audio/build_candidate.py": {
       "size": 11513,
@@ -4342,6 +4342,30 @@
     "tools/audio/rate_patch.py": {
       "size": 1537,
       "sha256": "38eff0c27b9fb5893b26efa8207a3c174955712bf71d995673cf317f204ad393"
+    },
+    "tools/awtk_resource.py": {
+      "size": 4310,
+      "sha256": "e50b2913b46bde6a0416210021fac12f5ad778259057dd336da5396bcdd19180"
+    },
+    "tools/build.py": {
+      "size": 5822,
+      "sha256": "fd34058a61c9bdc8e722e86c1b19b9d92110294637ee1a58e3373a975f1ffcdc"
+    },
+    "tools/build_portable.py": {
+      "size": 8199,
+      "sha256": "46e3a73ac604637c8e0b14ea995d6c975e2b4a6f1f647917888c95a1fd43ee76"
+    },
+    "tools/build_stable.py": {
+      "size": 6337,
+      "sha256": "fda6c9e99e710cda781687626420eda189cab3250665d5c16fafdc25f3cc5730"
+    },
+    "tools/build_storage_components.py": {
+      "size": 6804,
+      "sha256": "44c4d8a750109cf432154fbcb277db4093f194225124a21e1612565bdc0d0904"
+    },
+    "tools/elf_compact.py": {
+      "size": 7465,
+      "sha256": "a0126f8871032fe42068c92409ce22f084c0e39677b0935355822ca958dd58e5"
     },
     "tools/package/build_candidate.py": {
       "size": 26853,
@@ -4383,41 +4407,9 @@
       "size": 7634,
       "sha256": "234dedd5dce04234f29c8a1dae40f277b21d74f4753b7271a651a5d85af3ef2e"
     },
-    "tools/portable/portable-lock.json": {
-      "size": 23019,
-      "sha256": "ccd15039e6e59302be80e2cfd9750f915932b4b99a91df67980665ca2b72e153"
-    },
     "tools/portable/notices/Microsoft-redistributing-visual-cpp-files.html": {
       "size": 60515,
       "sha256": "6971ee77851684a4900e3fdd03f34bc088479dd89c93c2d408f7f67b0c6d88ee"
-    },
-    "tools/portable/notices/Qt-for-Python-licenses.html": {
-      "size": 436694,
-      "sha256": "be84bd3364cd42ee2e600ddcffdd50e6d55ae7adbc1c48086ee21e7a01b5a845"
-    },
-    "tools/portable/notices/THIRD-PARTY-NOTICES.md": {
-      "size": 4300,
-      "sha256": "784bc1badae588805c78d22d35a148be59b37a21ac28c90f073ae10ff9edee90"
-    },
-    "tools/portable/notices/Vulkan-Headers-LICENSE.md": {
-      "size": 495,
-      "sha256": "95ad366d23fadf701d355bc45fb8b82ae2d700239471d35d41286ac3b08ff903"
-    },
-    "tools/portable/notices/Vulkan-Loader-LICENSE.txt": {
-      "size": 11661,
-      "sha256": "43c0a37e6a0fa7ff3c843b3ec5a4fac84b712558ddac103fbd4c1649662a9ece"
-    },
-    "tools/portable/notices/mpv-Copyright.txt": {
-      "size": 4096,
-      "sha256": "bfe9ee4cceabcb8ecbfadf208d04156f73d801e6a57369a5606bb8341e204a23"
-    },
-    "tools/portable/notices/mpv-LICENSE.GPL.txt": {
-      "size": 17984,
-      "sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6"
-    },
-    "tools/portable/notices/mpv-ci-build-win32.ps1.txt": {
-      "size": 12804,
-      "sha256": "607abafee065d7a99e2cb039eec8f1f06727b069224aa8a764ae36b8e897b0ae"
     },
     "tools/portable/notices/Qt-LICENSES/Apache-2.0.txt": {
       "size": 10398,
@@ -4447,6 +4439,42 @@
       "size": 965,
       "sha256": "40678d338ce53cd93f8b22b281a2ecbcaa3ee65ce60b25ffb0c462b0530846b2"
     },
+    "tools/portable/notices/Qt-for-Python-licenses.html": {
+      "size": 436694,
+      "sha256": "be84bd3364cd42ee2e600ddcffdd50e6d55ae7adbc1c48086ee21e7a01b5a845"
+    },
+    "tools/portable/notices/THIRD-PARTY-NOTICES.md": {
+      "size": 4300,
+      "sha256": "784bc1badae588805c78d22d35a148be59b37a21ac28c90f073ae10ff9edee90"
+    },
+    "tools/portable/notices/Vulkan-Headers-LICENSE.md": {
+      "size": 495,
+      "sha256": "95ad366d23fadf701d355bc45fb8b82ae2d700239471d35d41286ac3b08ff903"
+    },
+    "tools/portable/notices/Vulkan-Loader-LICENSE.txt": {
+      "size": 11661,
+      "sha256": "43c0a37e6a0fa7ff3c843b3ec5a4fac84b712558ddac103fbd4c1649662a9ece"
+    },
+    "tools/portable/notices/mpv-Copyright.txt": {
+      "size": 4096,
+      "sha256": "bfe9ee4cceabcb8ecbfadf208d04156f73d801e6a57369a5606bb8341e204a23"
+    },
+    "tools/portable/notices/mpv-LICENSE.GPL.txt": {
+      "size": 17984,
+      "sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6"
+    },
+    "tools/portable/notices/mpv-ci-build-win32.ps1.txt": {
+      "size": 12804,
+      "sha256": "607abafee065d7a99e2cb039eec8f1f06727b069224aa8a764ae36b8e897b0ae"
+    },
+    "tools/portable/portable-lock.json": {
+      "size": 23019,
+      "sha256": "ccd15039e6e59302be80e2cfd9750f915932b4b99a91df67980665ca2b72e153"
+    },
+    "tools/run_desktop_tests.py": {
+      "size": 978,
+      "sha256": "4acf1d4ff82bca8049374c1e4d9ec8c321502c901304b34d8523422c03a241d4"
+    },
     "tools/runtime-source/README.md": {
       "size": 3620,
       "sha256": "bb1e447d6343a015b8c978110707d2abd8df4db407718c30cec0a02e92a6fecc"
@@ -4475,13 +4503,9 @@
       "size": 10584,
       "sha256": "ac756453ccaaca3c84853c87e33219078193bb8899be940c5b9690841ca74636"
     },
-    "tools/runtime-source/validate_windows.py": {
-      "size": 6578,
-      "sha256": "9544cefea55b26b8f8e695b6b8448ebbfc5b08c9e25bcfe60ac3c7c7398bc4cc"
-    },
-    "tools/runtime-source/verify_source_release.py": {
-      "size": 1232,
-      "sha256": "b532f59ba0a8ffab6c5223c4bdbd8a4bd2c8cded031588961d76a87cc921f1b1"
+    "tools/runtime-source/test-inputs/Album Space \u4e13\u8f91/\u6d4b\u8bd5.flac": {
+      "size": 38568,
+      "sha256": "6fc0974e4cc0c4dccae0b2ecb6c858f706d85e06690afc4a9ef37a599ace11cb"
     },
     "tools/runtime-source/test-inputs/cover-160.jpg": {
       "size": 505,
@@ -4523,9 +4547,17 @@
       "size": 32852,
       "sha256": "bddb5051f6db428a61d0fca71312b14a55f58f15c1cfac98037db9887d54ef09"
     },
-    "tools/runtime-source/test-inputs/Album Space \u4e13\u8f91/\u6d4b\u8bd5.flac": {
-      "size": 38568,
-      "sha256": "6fc0974e4cc0c4dccae0b2ecb6c858f706d85e06690afc4a9ef37a599ace11cb"
+    "tools/runtime-source/validate_windows.py": {
+      "size": 6578,
+      "sha256": "9544cefea55b26b8f8e695b6b8448ebbfc5b08c9e25bcfe60ac3c7c7398bc4cc"
+    },
+    "tools/runtime-source/verify_source_release.py": {
+      "size": 1232,
+      "sha256": "b532f59ba0a8ffab6c5223c4bdbd8a4bd2c8cded031588961d76a87cc921f1b1"
+    },
+    "tools/setup_desktop.py": {
+      "size": 16828,
+      "sha256": "1f63c1365438dfb00da13dc4f59fff9cd5c88b93b60bac81ecf619d3f9646218"
     },
     "tools/ui/build.sh": {
       "size": 3217,

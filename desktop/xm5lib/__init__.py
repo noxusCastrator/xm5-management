@@ -6,5 +6,5 @@ The package is split into
 ``xm5lib.ui`` (PySide6 widgets).
 """
 
-__version__ = "0.5.0-dev1"
+__version__ = "0.2.1"
 APP_NAME = "XM5 Library"

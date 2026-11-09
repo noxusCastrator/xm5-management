@@ -10,6 +10,7 @@ APP = Path(__file__).resolve().parent
 
 
 def _activate() -> None:
+    sys.dont_write_bytecode = True
     expected = APP / "vendor" / "python"
     if Path(sys.executable).resolve().parent != expected.resolve():
         raise SystemExit("Start XM5Library.cmd; the bundled Python runtime is required.")

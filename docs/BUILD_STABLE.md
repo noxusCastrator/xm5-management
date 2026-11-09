@@ -35,13 +35,15 @@ The builder reconstructs the pinned historical PEQ08 input first, builds the new
 
 Final packaging preserves Linux ownership, permissions, symlinks and the original kernel. It permits exactly four overlay paths and runs ELF, rootfs-size and independent package checks. Output is `package/out/final/update.bin` inside the requested build directory, with `release-reconstruction.json` recording its hashes. Do not substitute historical PEQ08 hashes for a later package. Source build and package verification do not establish physical-device stability or recoverability.
 
-For a complete Windows portable app, build the source-pinned media processes using [the runtime recipe](../tools/runtime-source/README.md), then combine them with the unchanged Python/Qt dependency runtime using its `prepare_runtime.py`. The exact archive URLs, versions and hashes are recorded in the resulting lock and runtime manifest. Assemble the final source and reviewed runtime:
+To edit and run the Windows desktop source, start with [the development guide](DEVELOPMENT.md). Firmware inputs, Linux and a MIPS toolchain are not needed for desktop development. Setup can reuse the approved public dependency runtime without compiling Qt or the media tools.
+
+To rebuild those media dependencies, use [the runtime recipe](../tools/runtime-source/README.md), then combine them with the unchanged Python/Qt dependency runtime using its `prepare_runtime.py`. The exact archive URLs, versions and hashes are recorded in the resulting lock and runtime manifest. Assemble the final source and reviewed runtime:
 
 ```powershell
 python tools/build_portable.py --source desktop `
   --runtime-dir C:\path\to\reviewed\runtime `
   --output C:\path\to\new\XM5Library `
-  --zip C:\path\to\new\XM5Library-0.2.0-win-x64.zip `
+  --zip C:\path\to\new\XM5Library-0.2.1-win-x64.zip `
   --public --source-review C:\path\to\RUNTIME-SOURCE-REVIEW.json
 ```
 

@@ -1,6 +1,6 @@
 # XM5 Management source context
 
-Read the project README and AGENTS.md before changes. This repository contains the desktop manager and paired V2.43-LIB01 storage firmware, version 0.2.0. The standalone stock-media PEQ project is https://github.com/noxusCastrator/xm5-peq .
+Read the project README and AGENTS.md before changes. This repository contains desktop manager version 0.2.1 and paired V2.43-LIB01 storage firmware version 0.2.0. For desktop edits, use [DEVELOPMENT.md](../docs/DEVELOPMENT.md) to prepare dependencies, run the live source and run the public tests. Firmware build inputs are needed only for firmware work. The standalone stock-media PEQ project is https://github.com/noxusCastrator/xm5-peq .
 
 ## Source map
 

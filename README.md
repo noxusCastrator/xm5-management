@@ -17,7 +17,7 @@ For PEQ with the factory music and artwork handling, use [xm5-peq](https://githu
 
 ## Usage
 
-Download the paired firmware and portable application from [version 0.2.0](https://github.com/noxusCastrator/xm5-management/releases/tag/v0.2.0).
+Download the [Windows application, version 0.2.1](https://github.com/noxusCastrator/xm5-management/releases/tag/v0.2.1) and the [paired firmware, version 0.2.0](https://github.com/noxusCastrator/xm5-management/releases/tag/v0.2.0). The desktop maintenance release does not change the firmware.
 
 1. Install `update.bin` using the official XM5 update procedure.
 2. Extract the complete application into a writable folder and run `XM5Library.cmd`.
@@ -28,6 +28,10 @@ Download the paired firmware and portable application from [version 0.2.0](https
 Export manages one `xm5` folder containing `music`, `EQ` and `Struct`. It refuses an unrelated existing `xm5` folder; the rest of the card need not be cleared. Export leaves PC originals unchanged. Explicit source-tag and rename actions are separate and can change selected originals.
 
 Read the [desktop guide](docs/DESKTOP.md), [card format](docs/STORAGE_FORMAT.md), [scripting guide](docs/SCRIPTING.md), [build instructions](docs/BUILD_STABLE.md) and [PEQ format](docs/CONFIG_FORMAT.md).
+
+## Develop the desktop app
+
+On Windows x64 with Python 3.12 or newer, run `python tools/setup_desktop.py` from this checkout, then run `.\desktop\XM5Library.cmd`. Setup installs verified dependencies; the app runs the editable Python source in `desktop/xm5lib/`. See [development and tests](docs/DEVELOPMENT.md) for the source map, regression suite and packaging steps.
 
 ## Warning
 

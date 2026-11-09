@@ -196,7 +196,7 @@ class Backend(QObject):
         self._log = open(self.log_path, "a", encoding="utf-8", errors="replace")
         self._log.write(f"\n--- {time.strftime('%Y-%m-%d %H:%M:%S')} starting backend\n")
         self._log.flush()
-        cmd = [backend_python(), "-s", "-m", "xm5lib.automation.server", "--home", str(self.home)] + config.args()
+        cmd = [backend_python(), "-B", "-s", "-m", "xm5lib.automation.server", "--home", str(self.home)] + config.args()
         spawned = time.time()
         flags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
         self.proc = subprocess.Popen(cmd, env=backend_env(), stdin=subprocess.DEVNULL, stdout=self._log,

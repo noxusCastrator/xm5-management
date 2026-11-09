@@ -1,6 +1,6 @@
 {
-  "version": "0.2.0",
-  "tag": "v0.2.0",
+  "version": "0.2.1",
+  "tag": "v0.2.1",
   "stage": "stable",
   "firmware_tag": "V2.43-LIB01",
   "base_version": "ONIX XM5 V2.43",
@@ -14,24 +14,28 @@
   },
   "desktop_platform": "Windows x64 portable",
   "assets": {
-    "update.bin": {
-      "size": 56371200,
-      "sha256": "124fa80d5ea48d267254f838e175202393e872951d4a44323127ec3d0eae2b1f"
-    },
-    "XM5-0.2.0-firmware.zip": {
-      "size": 51111236,
-      "sha256": "c2207bf4a39994230c1f303d241486b2f320cb9a49cd29916b3b7285e4117ca3"
-    },
-    "XM5Library-Windows-x64-0.2.0.zip": {
-      "size": 121859733,
-      "sha256": "e3303599d251199373297feb631a9930f246dfe902bf2151daaa2440d0143a29"
-    },
     "XM5Library-runtime-source-0.2.0.zip": {
       "size": 82187373,
       "sha256": "7f792e9c34b68e719f95f94d9f56f0f6ebaa3c083dc83d8439477697fa8b3357"
+    },
+    "XM5Library-Windows-x64-0.2.1.zip": {
+      "size": 121859575,
+      "sha256": "7045e46615bd0196f41873184658efb1a551d919e75f85358826df14890d2607"
     }
   },
-  "validation": {
+  "hardware_scope": "PEQ08 has one-device owner feedback. New storage firmware is software/VM validated; physical installation, long-duration behavior and recovery remain unvalidated.",
+  "documentation": "docs/VALIDATION_0.2.1.md",
+  "paired_firmware_release": "v0.2.0",
+  "change_scope": "Desktop source/developer readiness maintenance; storage firmware unchanged.",
+  "development_runtime": {
+    "asset_filename": "XM5Library-Windows-x64-0.2.0.zip",
+    "size": 121859733,
+    "sha256": "e3303599d251199373297feb631a9930f246dfe902bf2151daaa2440d0143a29",
+    "tag": "v0.2.0",
+    "url": "https://github.com/noxusCastrator/xm5-management/releases/download/v0.2.0/XM5Library-Windows-x64-0.2.0.zip"
+  },
+  "baseline_validation": {
+    "release": "v0.2.0",
     "desktop_distinct_cases": 146,
     "target_audio_assertions": 3027,
     "vm_prepared_art_crops": 11,
@@ -42,6 +46,17 @@
     "portable_relocation_manifest_and_privacy": "PASS",
     "physical_new_firmware_tested": false
   },
-  "hardware_scope": "PEQ08 has one-device owner feedback. New storage firmware is software/VM validated; physical installation, long-duration behavior and recovery remain unvalidated.",
-  "documentation": "docs/VALIDATION_0.2.0.md"
+  "validation": {
+    "public_non_gui_tests": 29,
+    "native_windows_integration_tests": 1,
+    "public_tests_passed": 30,
+    "public_dependency_download_and_source_runtime": "PASS",
+    "native_gui_http_export_source_preservation": "PASS",
+    "mpv_null_playback": "PASS",
+    "relocated_portable_manifest_files_verified": 4237,
+    "runtime_source_archive_inventory_files_verified": 64,
+    "physical_operations": false,
+    "audible_output_tested": false,
+    "firmware_changed": false
+  }
 }

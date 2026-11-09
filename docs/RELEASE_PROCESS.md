@@ -16,4 +16,8 @@ Release assets are:
 
 Before uploading, verify hashes after ZIP creation and extraction. The portable app must launch using its relative bundled paths from a fresh directory, with no development environment or user database included. Keep the firmware's warnings, supported presets and known limitations visible. Preserve Shanling's publication correspondence locally; its permission to put this project on GitHub is not a claim of product validation.
 
-Source changes and release files are published only from `XM5_PEQ`. A packaging script must not commit, push, change repository visibility, send mail or operate the player by itself.
+Publish this project's reviewed source and release files from the `xm5-management` repository. Standalone PEQ belongs to the separate public `xm5-peq` repository; reverse-engineering evidence belongs to private `xm5-decomposition`. Local inputs and profiles stay in ignored `.local/` directories.
+
+Desktop-only maintenance releases can retain the previously published paired firmware and dependency binaries. Record that baseline separately in `release.json`, rerun the public desktop tests and relocated-package checks, and retain the exact corresponding-source archive alongside the new desktop ZIP. Do not present inherited firmware or hardware evidence as a new test.
+
+A packaging script must not commit, push, change repository visibility, send mail or operate the player by itself.
