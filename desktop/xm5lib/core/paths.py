@@ -13,21 +13,9 @@ FOOBAR_PROFILE = Path(os.environ.get("APPDATA", "")) / "foobar2000-v2"
 
 
 def app_home() -> Path:
-    """Per-user state folder.
-
-    ``XM5LIB_HOME`` overrides it (tests, portable use). Otherwise LocalAppData\\XM5Library.
-    A Low-integrity process cannot write LocalAppData; it gets LocalAppDataLow instead so the UI
-    can still open and explain the problem, and ``is_fallback_home`` reports that.
-    """
-    override = os.environ.get("XM5LIB_HOME")
-    if override:
-        return Path(override)
-    il = winenv.integrity_level()
-    if il is not None and il < winenv.MEDIUM:
-        base = winenv.known_folder("LocalAppDataLow") or str(Path.home() / "AppData" / "LocalLow")
-        return Path(base) / "XM5Library"
-    base = winenv.known_folder("LocalAppData") or os.environ.get("LOCALAPPDATA") or str(Path.home() / "AppData" / "Local")
-    return Path(base) / "XM5Library"
+    """Compatibility entry using the same profile resolver as GUI and clients."""
+    from .portable import PortablePaths
+    return PortablePaths.discover().data
 
 
 def is_fallback_home(home: Path) -> bool:

@@ -30,12 +30,39 @@ class ConfigError(RuntimeError):
 @dataclass(frozen=True)
 class PortablePaths:
     root: Path
+    mode: str = "portable"
+    initial_language: str | None = None
 
     @classmethod
     def discover(cls, app_root: Path | None = None):
         anchor = Path(app_root or Path(__file__).resolve().parents[2]).resolve()
-        root = Path(os.environ.get("XM5LIB_HOME") or anchor).expanduser()
-        return cls((root if root.is_absolute() else anchor / root).resolve())
+        descriptor = anchor / "distribution.json"
+        distribution = {}
+        if descriptor.exists():
+            try:
+                distribution = json.loads(descriptor.read_text(encoding="utf-8"))
+                if (not isinstance(distribution, dict) or distribution.get("schema") != "xm5.distribution.v1"
+                        or distribution.get("mode") not in {"portable", "installed"}
+                        or distribution.get("initial_language") not in {None, "en", "zh"}):
+                    raise ValueError("unsupported distribution descriptor")
+            except (OSError, ValueError) as exc:
+                raise ConfigError(f"Cannot read distribution mode {descriptor}: {exc}") from exc
+        mode = distribution.get("mode", "portable")
+        override = os.environ.get("XM5LIB_HOME")
+        if override:
+            root = Path(override).expanduser()
+        elif mode == "installed":
+            base = os.environ.get("LOCALAPPDATA")
+            if not base and os.name == "nt":
+                from . import winenv
+                base = winenv.known_folder("LocalAppData") or str(Path.home() / "AppData" / "Local")
+            if not base or not Path(base).is_absolute():
+                raise ConfigError("Installed mode requires an absolute Windows LOCALAPPDATA location")
+            root = Path(base) / "XM5Studio"
+        else:
+            root = anchor
+        return cls((root if root.is_absolute() else anchor / root).resolve(), mode,
+                   distribution.get("initial_language"))
 
     @property
     def config(self): return self.root / "config.json"

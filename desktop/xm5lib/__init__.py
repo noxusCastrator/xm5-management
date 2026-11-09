@@ -1,4 +1,4 @@
-"""XM5 Library: a local music, playlist, PEQ and TF-card manager for the ONIX XM5.
+"""XM5 Studio: a local music, playlist, PEQ and TF-card manager for the ONIX XM5.
 
 The integration backend provides explicit mpv playback and local command automation.
 The package is split into
@@ -6,5 +6,5 @@ The package is split into
 ``xm5lib.ui`` (PySide6 widgets).
 """
 
-__version__ = "0.2.1"
-APP_NAME = "XM5 Library"
+__version__ = "0.2.2"
+APP_NAME = "XM5 Studio"

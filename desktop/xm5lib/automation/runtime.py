@@ -89,6 +89,8 @@ def check_private(path):
 
 class ProfileLock:
     def __init__(self, runtime):
+        from ..core.installation import acquire_program_activity
+        acquire_program_activity()
         self.runtime = Path(runtime)
         secure_directory(self.runtime)
         target = self.runtime / 'owner.lock'

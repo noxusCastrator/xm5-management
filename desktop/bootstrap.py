@@ -13,7 +13,7 @@ def _activate() -> None:
     sys.dont_write_bytecode = True
     expected = APP / "vendor" / "python"
     if Path(sys.executable).resolve().parent != expected.resolve():
-        raise SystemExit("Start XM5Library.cmd; the bundled Python runtime is required.")
+        raise SystemExit("Start XM5Studio.exe or XM5Library.cmd; the bundled Python runtime is required.")
     if not sys.flags.isolated or not (sys.flags.no_site or sys.flags.no_user_site):
         raise SystemExit("The bundled runtime must use its isolated python314._pth configuration.")
     # The relative _pth also applies to backend children launched with -m.
@@ -56,6 +56,8 @@ def main() -> int:
     _activate()
     if len(sys.argv) > 1 and sys.argv[1] == "--check":
         return check()
+    from xm5lib.core.installation import acquire_program_activity
+    acquire_program_activity()
     if len(sys.argv) > 1 and sys.argv[1] == "cli":
         from xm5lib.cli import main as cli
         return cli(sys.argv[2:])
