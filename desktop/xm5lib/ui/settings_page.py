@@ -11,6 +11,7 @@ from . import player as player_mod
 from . import style
 from .library_pages import header
 from .i18n import tr
+from .firmware_card_dialog import FirmwareCardDialog, blocked_reason, text as firmware_text
 
 
 class SettingsPage(QWidget):
@@ -106,6 +107,20 @@ class SettingsPage(QWidget):
         self.ignore_artist.toggled.connect(ctl.set_albums_ignore_artist)
         lb.addWidget(self.ignore_artist)
         body.addWidget(lib)
+
+        firmware = QGroupBox(firmware_text("section"))
+        fl = QVBoxLayout(firmware)
+        note = QLabel(firmware_text("intro"))
+        note.setWordWrap(True)
+        fl.addWidget(note)
+        row = QHBoxLayout()
+        self.firmware_card = QPushButton(firmware_text("title"))
+        self.firmware_card.setObjectName("createFirmwareCard")
+        self.firmware_card.clicked.connect(self._firmware_card)
+        row.addWidget(self.firmware_card)
+        row.addStretch(1)
+        fl.addLayout(row)
+        body.addWidget(firmware)
         body.addStretch(1)
 
         engine = ctl.player.backend
@@ -114,6 +129,19 @@ class SettingsPage(QWidget):
         ctl.state.busyChanged.connect(lambda _k: self.refresh_library())
         ctl.state.jobProgress.connect(self._progress)
         ctl.state.tracksChanged.connect(self.refresh_library)
+
+    def _firmware_card(self) -> None:
+        reason = blocked_reason(self.ctl)
+        if reason:
+            self.ctl.error(reason)
+            return
+        dialog = FirmwareCardDialog(self.ctl)
+        dialog.finished.connect(dialog.deleteLater)
+        if self.ctl.quiet:
+            self.ctl.last_dialog = dialog
+            dialog.show()
+        else:
+            dialog.exec()
 
     # ---- language
     def _language(self, code: str) -> None:
@@ -128,6 +156,9 @@ class SettingsPage(QWidget):
     # ---- library
     def refresh_library(self) -> None:
         st = self.ctl.state
+        reason = blocked_reason(self.ctl)
+        self.firmware_card.setEnabled(not reason)
+        self.firmware_card.setToolTip(reason)
         roots = self.ctl.music_roots()
         self.rescan.setText(tr("取消扫描") if st.busy == "scan" else tr("更新曲库"))
         self.rescan.setEnabled(bool(roots) and st.busy in ("", "scan"))
