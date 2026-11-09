@@ -1,0 +1,18 @@
+{
+  "version": "0.1.0 a",
+  "tag": "v0.1.0-a",
+  "stage": "alpha",
+  "firmware_tag": "V2.43-PEQ08",
+  "base_version": "ONIX XM5 V2.43",
+  "update_sha256": "824b1bd4185157e19e84284c57d3abc2b7e8a27ea1fc751085804856fa5dcd61",
+  "hardware_feedback": "Device owner confirmed PEQ08 usable on 2026-10-10.",
+  "hardware_scope": "One device, user observation; no instrumental or long-term acceptance.",
+  "additional_functional_tests_for_peq08": false,
+  "independent_package_verifier_for_peq08": false,
+  "expected_overlays": {
+    "release/bin/demo": "e3596659301a04e61882506c0ff2c48013866ca800ceff5e67c531486feb7df3",
+    "usr/bin/hciplayer": "291d0da154becafe3da4502edb8b836e5074202adc58e66834ecb5545afc58e1",
+    "etc/init.d/S90play": "10cfd219856757d97fe1ec9de97828f1cc387d274f2df74aec3443540323f305",
+    "release/assets/default/raw/ui/playset/equalizer_page.bin": "b29f7f15ec68e9305cea8281d2984c31bdac953f281c5660eab8056de192f464"
+  }
+}

@@ -6,4 +6,6 @@ The project contains custom player adaptation, text compatibility handling, and 
 
 Builders obtain stock V2.43 executables, artwork, fonts, and system files from their own official input. The source tree includes only the added startup hook and insertion metadata, not the complete stock S90play script. The local modified image in `dist/` contains stock material; its presence does not establish redistribution permission.
 
-There is no repository-wide LICENSE yet. Permission to publish source, distribute modified firmware, and reuse stock material remains to be confirmed with Shanling. Any vendor response must also be considered alongside the licenses of other upstream components.
+There is no repository-wide LICENSE yet. Shanling agreed that this project could be published on GitHub on 2026-10-13. That permission is not product validation or a license for unrelated third-party components. Stock software and artwork retain their owners' rights. Desktop runtime components retain their own licenses and corresponding-source requirements; see [runtime distribution](docs/RUNTIME_DISTRIBUTION.md).
+
+The companion desktop source includes the exact UI asset files listed in `tools/portable/ASSET-BASELINE.json`. These include vendor-owned images and compiled layouts plus project-created case art. Their original asset notice is retained; Shanling's project publication permission does not grant rights to unrelated third-party fonts or components. Firmware fonts are not included in the desktop asset set.

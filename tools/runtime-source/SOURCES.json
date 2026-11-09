@@ -1,0 +1,79 @@
+{
+  "ffmpeg": {
+    "version": "8.0.3",
+    "url": "https://ffmpeg.org/releases/ffmpeg-8.0.3.tar.xz",
+    "file": "ffmpeg-8.0.3.tar.xz",
+    "size": 11407656,
+    "sha256": "6136812ea6d4e68bdba27e33c2a94382711cdf4f8602ffef056ff792bd6f9818"
+  },
+  "mpv": {
+    "version": "902818753849d9ad8f0096fad6ca5aeaa37113b9",
+    "url": "https://codeload.github.com/mpv-player/mpv/tar.gz/902818753849d9ad8f0096fad6ca5aeaa37113b9",
+    "file": "mpv-902818753849d9ad8f0096fad6ca5aeaa37113b9.tar.gz",
+    "size": 7517092,
+    "sha256": "2c87e1ea0825a0eee9cf3f66c79518789c1366fd4331a3cf159d089b9cb1456e"
+  },
+  "libplacebo": {
+    "version": "7.387.0",
+    "url": "https://codeload.github.com/haasn/libplacebo/tar.gz/refs/tags/v7.387.0",
+    "file": "libplacebo-7.387.0.tar.gz",
+    "size": 972798,
+    "sha256": "f9e62d3774a9c4cfd198ec3abaa88294aaade2e31c04d5ab02bcf4abc98b1df5"
+  },
+  "freetype": {
+    "version": "2.13.3",
+    "url": "https://download.savannah.gnu.org/releases/freetype/freetype-2.13.3.tar.xz",
+    "file": "freetype-2.13.3.tar.xz",
+    "size": 2617564,
+    "sha256": "0550350666d427c74daeb85d5ac7bb353acba5f76956395995311a9c6f063289"
+  },
+  "harfbuzz": {
+    "version": "10.4.0",
+    "url": "https://codeload.github.com/harfbuzz/harfbuzz/tar.gz/refs/tags/10.4.0",
+    "file": "harfbuzz-10.4.0.tar.gz",
+    "size": 36671212,
+    "sha256": "0d25a3f74af4e8744700ac19050af5a80ae330378a5802a5cd71e523bb6fda1f"
+  },
+  "fribidi": {
+    "version": "1.0.16",
+    "url": "https://github.com/fribidi/fribidi/releases/download/v1.0.16/fribidi-1.0.16.tar.xz",
+    "file": "fribidi-1.0.16.tar.xz",
+    "size": 1098260,
+    "sha256": "1b1cde5b235d40479e91be2f0e88a309e3214c8ab470ec8a2744d82a5a9ea05c"
+  },
+  "libass": {
+    "version": "0.17.4",
+    "url": "https://github.com/libass/libass/releases/download/0.17.4/libass-0.17.4.tar.xz",
+    "file": "libass-0.17.4.tar.xz",
+    "size": 452648,
+    "sha256": "78f1179b838d025e9c26e8fef33f8092f65611444ffa1bfc0cfac6a33511a05a"
+  },
+  "zlib": {
+    "version": "1.3.1",
+    "url": "https://zlib.net/fossils/zlib-1.3.1.tar.gz",
+    "file": "zlib-1.3.1.tar.gz",
+    "size": 1512791,
+    "sha256": "9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23"
+  },
+  "mingw-w64": {
+    "version": "11.0.1",
+    "url": "https://codeload.github.com/mingw-w64/mingw-w64/tar.gz/refs/tags/v11.0.1",
+    "file": "mingw-w64-11.0.1.tar.gz",
+    "size": 13916903,
+    "sha256": "9c82a58713786c95b0594443a1c6190cd986401ed2b03677a90acc470140af28"
+  },
+  "fast_float": {
+    "version": "97b54ca9e75f5303507699d27c6b4f4efe4641a1",
+    "url": "https://codeload.github.com/fastfloat/fast_float/tar.gz/97b54ca9e75f5303507699d27c6b4f4efe4641a1",
+    "file": "fast_float-97b54ca9e75f5303507699d27c6b4f4efe4641a1.tar.gz",
+    "size": 120200,
+    "sha256": "2b132274539286e41f37857cac22aa8441d21bd86d55de825a3342b149f66801"
+  },
+  "Vulkan-Headers": {
+    "version": "74d8a6cb930c68ef617b202c3ff3c59d919e086b",
+    "url": "https://codeload.github.com/KhronosGroup/Vulkan-Headers/tar.gz/74d8a6cb930c68ef617b202c3ff3c59d919e086b",
+    "file": "Vulkan-Headers-74d8a6cb930c68ef617b202c3ff3c59d919e086b.tar.gz",
+    "size": 3029927,
+    "sha256": "75967a8288ff16044a86d1af462b96d2e75c435937efb75f2bb4102ab0382f29"
+  }
+}

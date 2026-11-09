@@ -6,6 +6,10 @@ Users can save EQ presets to a TF card, then select and apply them on the player
 
 This project is based on the official V2.43 firmware.
 
+The companion XM5 Library application manages local music, playlists, favorites and PEQ presets on a computer. It prepares an `xm5` folder for the player's TF card or USB storage. Your original computer files stay unchanged. See the [desktop guide](docs/DESKTOP.md) and [card format](docs/STORAGE_FORMAT.md).
+
+[Download version 0.2.0](https://github.com/noxusCastrator/XM5_PEQ/releases/tag/v0.2.0): paired firmware and the Windows portable companion. See the [validation record](docs/VALIDATION_0.2.0.md) for test scope and the [build guide](docs/BUILD_STABLE.md) for source builds.
+
 ## Features
 
 - Keeps the factory EQ and adds a separate PEQ page. Swipe left from the factory EQ page to open it.
@@ -23,11 +27,13 @@ For firmware installation, refer to the [XM5 TF-card update instructions provide
 3. Tap `PEQ OFF` to open the preset list, then tap `Rescan` to scan for files.
 4. Select a preset and enable PEQ.
 
+For a managed library card, select presets in the companion and export them with the library. The player reads the converted presets from `xm5/Struct/peq`; the original preset files stay in `xm5/EQ`.
+
 See the [configuration documentation](docs/CONFIG_FORMAT.md) for preset formats and limits. To convert other formats, give an AI your EQ settings together with the [AI conversion guide](docs/AI_EQ_CONVERSION.md) provided by this project.
 
 ## Warning
 
-This is an Alpha test release. It has only been confirmed usable on one XM5 owned by the author. This does not guarantee successful installation or operation on other devices. Flashing may cause data loss or boot failure, and repairs may be necessary. Recovery after a failed flash has not been verified for this project.
+This is unofficial modified firmware. The earlier PEQ08 build was confirmed usable on one XM5 owned by the author. Check this release's validation record for the scope of later storage changes. This does not guarantee successful installation or operation on other devices. Flashing may cause data loss or boot failure, and repairs may be necessary. Physical recovery after a failed flash has not been validated for version 0.2.0.
 
 Before flashing, back up your data and keep the official recovery package and instructions.
 

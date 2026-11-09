@@ -1,0 +1,469 @@
+{
+  "schema": "xm5.portable-build-lock.v1",
+  "platform": "Windows 10/11 x86-64",
+  "wheels": [
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5",
+      "filename": "annotated_doc-0.0.5-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/3e/30/e900b21425a860e195f32e37657aa1f7c7f2b1bfb26f03ca209b90933c06/annotated_doc-0.0.5-py3-none-any.whl",
+      "sha256": "117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101",
+      "metadata_url": "https://pypi.org/pypi/annotated-doc/0.0.5/json",
+      "requires_dist": null,
+      "license": "MIT",
+      "project_urls": {
+        "Changelog": "https://github.com/fastapi/annotated-doc/release-notes.md",
+        "Documentation": "https://github.com/fastapi/annotated-doc",
+        "Homepage": "https://github.com/fastapi/annotated-doc",
+        "Issues": "https://github.com/fastapi/annotated-doc/issues",
+        "Repository": "https://github.com/fastapi/annotated-doc"
+      }
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "filename": "annotated_types-0.8.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/99/91/8acff4f5e50511b911bbccb72b8628a49c68ce14148cd9f6431094859a90/annotated_types-0.8.0-py3-none-any.whl",
+      "sha256": "f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0",
+      "metadata_url": "https://pypi.org/pypi/annotated-types/0.8.0/json",
+      "requires_dist": null,
+      "license": "MIT",
+      "project_urls": {
+        "Changelog": "https://github.com/annotated-types/annotated-types/releases",
+        "Homepage": "https://github.com/annotated-types/annotated-types",
+        "Source": "https://github.com/annotated-types/annotated-types"
+      }
+    },
+    {
+      "name": "anyio",
+      "version": "4.16.0",
+      "filename": "anyio-4.16.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a9/16/7757fb84c819accc7d7e9af5291b261e4abb8627ee040f99e7d35ef2457a/anyio-4.16.0-py3-none-any.whl",
+      "sha256": "c66ae634e0b8228396b801741beb3294326d4b6102f7bba4041c0dfb58c29026",
+      "metadata_url": "https://pypi.org/pypi/anyio/4.16.0/json",
+      "requires_dist": [
+        "exceptiongroup>=1.0.2; python_version < \"3.11\"",
+        "idna>=2.8",
+        "typing_extensions>=4.16.0; python_version < \"3.15\"",
+        "trio>=0.32.0; extra == \"trio\""
+      ],
+      "license": "MIT",
+      "project_urls": {
+        "Changelog": "https://anyio.readthedocs.io/en/stable/versionhistory.html",
+        "Documentation": "https://anyio.readthedocs.io/en/latest/",
+        "Issue tracker": "https://github.com/agronholm/anyio/issues",
+        "Source code": "https://github.com/agronholm/anyio"
+      }
+    },
+    {
+      "name": "click",
+      "version": "8.5.0",
+      "filename": "click-8.5.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl",
+      "sha256": "255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360",
+      "metadata_url": "https://pypi.org/pypi/click/8.5.0/json",
+      "requires_dist": null,
+      "license": "BSD-3-Clause",
+      "project_urls": {
+        "Changes": "https://click.palletsprojects.com/page/changes/",
+        "Chat": "https://discord.gg/pallets",
+        "Documentation": "https://click.palletsprojects.com/",
+        "Donate": "https://palletsprojects.com/donate",
+        "Source": "https://github.com/pallets/click/"
+      }
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6",
+      "filename": "colorama-0.4.6-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl",
+      "sha256": "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6",
+      "metadata_url": "https://pypi.org/pypi/colorama/0.4.6/json",
+      "requires_dist": null,
+      "license": "",
+      "project_urls": {
+        "Homepage": "https://github.com/tartley/colorama"
+      }
+    },
+    {
+      "name": "fastapi",
+      "version": "0.162.0",
+      "filename": "fastapi-0.162.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/b4/4f/3f2c25c9b43970b5e9a08beb5e04776247edea684ddc0930f4f02f0bb6cb/fastapi-0.162.0-py3-none-any.whl",
+      "sha256": "3785963de305dd09912426cb81f2d230fce98ab3521cdfe97265c8d14983128c",
+      "metadata_url": "https://pypi.org/pypi/fastapi/0.162.0/json",
+      "requires_dist": [
+        "starlette>=0.46.0",
+        "pydantic>=2.9.0",
+        "typing-extensions>=4.8.0",
+        "typing-inspection>=0.4.2",
+        "annotated-doc>=0.0.2",
+        "opentelemetry-api>=1.44.0",
+        "opentelemetry-sdk>=1.44.0; extra == \"opentelemetry\"",
+        "opentelemetry-exporter-otlp-proto-http>=1.44.0; extra == \"opentelemetry\"",
+        "opentelemetry-sdk>=1.44.0; extra == \"standard\"",
+        "opentelemetry-exporter-otlp-proto-http>=1.44.0; extra == \"standard\"",
+        "fastapi-cli[standard]>=0.0.32; extra == \"standard\"",
+        "fastar>=0.9.0; extra == \"standard\"",
+        "httpx<1.0.0,>=0.23.0; extra == \"standard\"",
+        "httpx2>=2.0.0; extra == \"standard\"",
+        "jinja2>=3.1.5; extra == \"standard\"",
+        "python-multipart>=0.0.18; extra == \"standard\"",
+        "email-validator>=2.0.0; extra == \"standard\"",
+        "uvicorn[standard]>=0.12.0; extra == \"standard\"",
+        "pydantic-settings>=2.0.0; extra == \"standard\"",
+        "pydantic-extra-types>=2.0.0; extra == \"standard\"",
+        "opentelemetry-sdk>=1.44.0; extra == \"standard-no-fastapi-cloud-cli\"",
+        "opentelemetry-exporter-otlp-proto-http>=1.44.0; extra == \"standard-no-fastapi-cloud-cli\"",
+        "fastapi-cli[standard-no-fastapi-cloud-cli]>=0.0.32; extra == \"standard-no-fastapi-cloud-cli\"",
+        "httpx<1.0.0,>=0.23.0; extra == \"standard-no-fastapi-cloud-cli\"",
+        "httpx2>=2.0.0; extra == \"standard-no-fastapi-cloud-cli\"",
+        "jinja2>=3.1.5; extra == \"standard-no-fastapi-cloud-cli\"",
+        "python-multipart>=0.0.18; extra == \"standard-no-fastapi-cloud-cli\"",
+        "email-validator>=2.0.0; extra == \"standard-no-fastapi-cloud-cli\"",
+        "uvicorn[standard]>=0.12.0; extra == \"standard-no-fastapi-cloud-cli\"",
+        "pydantic-settings>=2.0.0; extra == \"standard-no-fastapi-cloud-cli\"",
+        "pydantic-extra-types>=2.0.0; extra == \"standard-no-fastapi-cloud-cli\"",
+        "opentelemetry-sdk>=1.44.0; extra == \"all\"",
+        "opentelemetry-exporter-otlp-proto-http>=1.44.0; extra == \"all\"",
+        "fastapi-cli[standard]>=0.0.32; extra == \"all\"",
+        "httpx<1.0.0,>=0.23.0; extra == \"all\"",
+        "httpx2>=2.0.0; extra == \"all\"",
+        "jinja2>=3.1.5; extra == \"all\"",
+        "python-multipart>=0.0.18; extra == \"all\"",
+        "itsdangerous>=1.1.0; extra == \"all\"",
+        "pyyaml>=5.3.1; extra == \"all\"",
+        "email-validator>=2.0.0; extra == \"all\"",
+        "uvicorn[standard]>=0.12.0; extra == \"all\"",
+        "pydantic-settings>=2.0.0; extra == \"all\"",
+        "pydantic-extra-types>=2.0.0; extra == \"all\""
+      ],
+      "license": "MIT",
+      "project_urls": {
+        "Changelog": "https://fastapi.tiangolo.com/release-notes/",
+        "Documentation": "https://fastapi.tiangolo.com/",
+        "Homepage": "https://github.com/fastapi/fastapi",
+        "Issues": "https://github.com/fastapi/fastapi/issues",
+        "Repository": "https://github.com/fastapi/fastapi"
+      }
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "filename": "h11-0.16.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/04/4b/29cac41a4d98d144bf5f6d33995617b185d14b22401f75ca86f384e87ff1/h11-0.16.0-py3-none-any.whl",
+      "sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86",
+      "metadata_url": "https://pypi.org/pypi/h11/0.16.0/json",
+      "requires_dist": null,
+      "license": "MIT",
+      "project_urls": {
+        "Homepage": "https://github.com/python-hyper/h11"
+      }
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "filename": "idna-3.20-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/58/a2/bb081bab032533a855d44de1d56f8e8426114ff1ba5d1f07a438a0a654f8/idna-3.20-py3-none-any.whl",
+      "sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c",
+      "metadata_url": "https://pypi.org/pypi/idna/3.20/json",
+      "requires_dist": [
+        "ruff>=0.16.0; extra == \"all\"",
+        "mypy>=1.11.2; extra == \"all\"",
+        "ty>=0.0.37; extra == \"all\"",
+        "pytest>=8.3.2; extra == \"all\"",
+        "hypothesis>=6.141.1; extra == \"all\"",
+        "coverage>=7.10.0; extra == \"all\""
+      ],
+      "license": "BSD-3-Clause",
+      "project_urls": {
+        "Changelog": "https://github.com/kjd/idna/blob/master/HISTORY.md",
+        "Issue tracker": "https://github.com/kjd/idna/issues",
+        "Source": "https://github.com/kjd/idna"
+      }
+    },
+    {
+      "name": "mutagen",
+      "version": "1.47.0",
+      "filename": "mutagen-1.47.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/b0/7a/620f945b96be1f6ee357d211d5bf74ab1b7fe72a9f1525aafbfe3aee6875/mutagen-1.47.0-py3-none-any.whl",
+      "sha256": "edd96f50c5907a9539d8e5bba7245f62c9f520aef333d13392a79a4f70aca719",
+      "metadata_url": "https://pypi.org/pypi/mutagen/1.47.0/json",
+      "requires_dist": null,
+      "license": "GPL-2.0-or-later",
+      "project_urls": {
+        "Homepage": "https://github.com/quodlibet/mutagen"
+      }
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.45.2",
+      "filename": "opentelemetry_api-1.45.2-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a9/2d/610db864d7513158cebb8f36cc88e67e73bd6c7aa1905ef18d89e1281c81/opentelemetry_api-1.45.2-py3-none-any.whl",
+      "sha256": "2cbd737377e710ee740d261c94e93fa0f08e6d037c18f17513cc0a2d94479a34",
+      "metadata_url": "https://pypi.org/pypi/opentelemetry-api/1.45.2/json",
+      "requires_dist": [
+        "typing-extensions>=4.5.0"
+      ],
+      "license": "Apache-2.0",
+      "project_urls": {
+        "Homepage": "https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-api",
+        "Repository": "https://github.com/open-telemetry/opentelemetry-python"
+      }
+    },
+    {
+      "name": "Pillow",
+      "version": "12.0.0",
+      "filename": "pillow-12.0.0-cp314-cp314-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/2b/24/b350c31543fb0107ab2599464d7e28e6f856027aadda995022e695313d94/pillow-12.0.0-cp314-cp314-win_amd64.whl",
+      "sha256": "8dc232e39d409036af549c86f24aed8273a40ffa459981146829a324e0848b4b",
+      "metadata_url": "https://pypi.org/pypi/Pillow/12.0.0/json",
+      "requires_dist": [
+        "furo; extra == \"docs\"",
+        "olefile; extra == \"docs\"",
+        "sphinx>=8.2; extra == \"docs\"",
+        "sphinx-autobuild; extra == \"docs\"",
+        "sphinx-copybutton; extra == \"docs\"",
+        "sphinx-inline-tabs; extra == \"docs\"",
+        "sphinxext-opengraph; extra == \"docs\"",
+        "olefile; extra == \"fpx\"",
+        "olefile; extra == \"mic\"",
+        "arro3-compute; extra == \"test-arrow\"",
+        "arro3-core; extra == \"test-arrow\"",
+        "nanoarrow; extra == \"test-arrow\"",
+        "pyarrow; extra == \"test-arrow\"",
+        "check-manifest; extra == \"tests\"",
+        "coverage>=7.4.2; extra == \"tests\"",
+        "defusedxml; extra == \"tests\"",
+        "markdown2; extra == \"tests\"",
+        "olefile; extra == \"tests\"",
+        "packaging; extra == \"tests\"",
+        "pyroma>=5; extra == \"tests\"",
+        "pytest; extra == \"tests\"",
+        "pytest-cov; extra == \"tests\"",
+        "pytest-timeout; extra == \"tests\"",
+        "pytest-xdist; extra == \"tests\"",
+        "trove-classifiers>=2024.10.12; extra == \"tests\"",
+        "defusedxml; extra == \"xmp\""
+      ],
+      "license": "MIT-CMU",
+      "project_urls": {
+        "Changelog": "https://github.com/python-pillow/Pillow/releases",
+        "Documentation": "https://pillow.readthedocs.io",
+        "Funding": "https://tidelift.com/subscription/pkg/pypi-pillow?utm_source=pypi-pillow&utm_medium=pypi",
+        "Homepage": "https://python-pillow.github.io",
+        "Mastodon": "https://fosstodon.org/@pillow",
+        "Release notes": "https://pillow.readthedocs.io/en/stable/releasenotes/index.html",
+        "Source": "https://github.com/python-pillow/Pillow"
+      }
+    },
+    {
+      "name": "platformdirs",
+      "version": "4.14.3",
+      "filename": "platformdirs-4.14.3-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/93/41/f0aa003909ee77a9e7e55f8659abb635ca23ab0d022a449bbb18da87a1ef/platformdirs-4.14.3-py3-none-any.whl",
+      "sha256": "cba2d05fe5e18b26b1fa6f376b8e6234c012abe1f8696c486fface7d0054e931",
+      "metadata_url": "https://pypi.org/pypi/platformdirs/4.14.3/json",
+      "requires_dist": null,
+      "license": "MIT",
+      "project_urls": {
+        "Changelog": "https://platformdirs.readthedocs.io/en/latest/changelog.html",
+        "Documentation": "https://platformdirs.readthedocs.io",
+        "Homepage": "https://github.com/tox-dev/platformdirs",
+        "Source": "https://github.com/tox-dev/platformdirs",
+        "Tracker": "https://github.com/tox-dev/platformdirs/issues"
+      }
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.2",
+      "filename": "pydantic-2.14.2-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/97/01/c71a71258b58659c72504e5fd65b451f6e36e34dc931d0b237ded213c814/pydantic-2.14.2-py3-none-any.whl",
+      "sha256": "7efbf7507b937931cd32a5755acb00ea1cf5ccb1d4e8067a5850d5069e382118",
+      "metadata_url": "https://pypi.org/pypi/pydantic/2.14.2/json",
+      "requires_dist": [
+        "annotated-types>=0.6.0",
+        "pydantic-core==2.50.2",
+        "typing-extensions>=4.16.0",
+        "typing-inspection>=0.4.4",
+        "email-validator>=2.0.0; extra == \"email\"",
+        "tzdata; platform_system == \"Windows\" and extra == \"timezone\""
+      ],
+      "license": "MIT",
+      "project_urls": {
+        "Changelog": "https://pydantic.dev/docs/validation/latest/get-started/changelog/",
+        "Documentation": "https://pydantic.dev/docs/validation/latest/get-started/",
+        "Funding": "https://github.com/sponsors/samuelcolvin",
+        "Homepage": "https://github.com/pydantic/pydantic",
+        "Source": "https://github.com/pydantic/pydantic"
+      }
+    },
+    {
+      "name": "pydantic-core",
+      "version": "2.50.2",
+      "filename": "pydantic_core-2.50.2-cp314-cp314-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/a3/5f/dcd3df20ab2a7279d42a8415fc184e8e77bcf9aa3c9ac3e938c1300a242c/pydantic_core-2.50.2-cp314-cp314-win_amd64.whl",
+      "sha256": "b62c89545d21d930c333208fd548e7b4f262228ba3a322fd75c987a75ab11f31",
+      "metadata_url": "https://pypi.org/pypi/pydantic-core/2.50.2/json",
+      "requires_dist": [
+        "typing-extensions>=4.16.0"
+      ],
+      "license": "MIT",
+      "project_urls": {
+        "Funding": "https://github.com/sponsors/samuelcolvin",
+        "Homepage": "https://github.com/pydantic",
+        "Source": "https://github.com/pydantic/pydantic/tree/main/pydantic-core"
+      }
+    },
+    {
+      "name": "PySide6-Essentials",
+      "version": "6.12.0",
+      "filename": "pyside6_essentials-6.12.0-cp310-abi3-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/03/61/9a7e32a37b224f68506785bfb0f288d516098ec71681782d72b695a6c95d/pyside6_essentials-6.12.0-cp310-abi3-win_amd64.whl",
+      "sha256": "c9a95102aa23c1f86516a30d5a9be37552d324eee7e567eb7508973f1218cb42",
+      "metadata_url": "https://pypi.org/pypi/PySide6-Essentials/6.12.0/json",
+      "requires_dist": [
+        "shiboken6==6.12.0"
+      ],
+      "license": "LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only",
+      "project_urls": {
+        "Changelog": "https://code.qt.io/cgit/pyside/pyside-setup.git/tree/doc/changelogs",
+        "Documentation": "https://doc.qt.io/qtforpython",
+        "Homepage": "https://pyside.org",
+        "Repository": "https://code.qt.io/cgit/pyside/pyside-setup.git/",
+        "Tracker": "https://qt-project.atlassian.net/browse/PYSIDE"
+      }
+    },
+    {
+      "name": "shiboken6",
+      "version": "6.12.0",
+      "filename": "shiboken6-6.12.0-cp310-abi3-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/2a/b6/bee97e7a2edeab72aafabb46ee5adc939790a638d107860b4cad7a20e407/shiboken6-6.12.0-cp310-abi3-win_amd64.whl",
+      "sha256": "a1906cb8116869178c64b6bab52623bbc8b4ceed7b30bfc3c9aa0f6e67f6438e",
+      "metadata_url": "https://pypi.org/pypi/shiboken6/6.12.0/json",
+      "requires_dist": null,
+      "license": "LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only",
+      "project_urls": {
+        "Changelog": "https://code.qt.io/cgit/pyside/pyside-setup.git/tree/doc/changelogs",
+        "Documentation": "https://doc.qt.io/qtforpython",
+        "Homepage": "https://pyside.org",
+        "Repository": "https://code.qt.io/cgit/pyside/pyside-setup.git/",
+        "Tracker": "https://qt-project.atlassian.net/browse/PYSIDE"
+      }
+    },
+    {
+      "name": "starlette",
+      "version": "1.10.0",
+      "filename": "starlette-1.10.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/88/2e/947cfe02def9371c07cd5bf5b6b61c829e9aecb9904db02a66cfafbc1eec/starlette-1.10.0-py3-none-any.whl",
+      "sha256": "478c0ab3b4ced6e82719849c118fa406f0278a3499c1a898cd15cd31bdc38ce4",
+      "metadata_url": "https://pypi.org/pypi/starlette/1.10.0/json",
+      "requires_dist": [
+        "anyio<5,>=4.0.0",
+        "typing-extensions>=4.10.0; python_version < \"3.13\"",
+        "httpx2>=2.0.0; extra == \"full\"",
+        "httpx<0.29.0,>=0.27.0; extra == \"full\"",
+        "itsdangerous; extra == \"full\"",
+        "jinja2; extra == \"full\"",
+        "opentelemetry-api; extra == \"full\"",
+        "python-multipart>=0.0.18; extra == \"full\"",
+        "pyyaml; extra == \"full\""
+      ],
+      "license": "BSD-3-Clause",
+      "project_urls": {
+        "Changelog": "https://starlette.dev/release-notes/",
+        "Documentation": "https://starlette.dev/",
+        "Funding": "https://github.com/sponsors/Kludex",
+        "Homepage": "https://github.com/Kludex/starlette",
+        "Source": "https://github.com/Kludex/starlette"
+      }
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4",
+      "filename": "typing_inspection-0.4.4-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/67/81/4add07e5172b7ac40d8ed5ff580409a7801a4fe26d529bdd915401dabfbe/typing_inspection-0.4.4-py3-none-any.whl",
+      "sha256": "65b8397ba37ccbce054456aaccddfc91e6e3083c92824df348d96ca832f3f147",
+      "metadata_url": "https://pypi.org/pypi/typing-inspection/0.4.4/json",
+      "requires_dist": [
+        "typing-extensions>=4.15.0"
+      ],
+      "license": "MIT",
+      "project_urls": {
+        "Changelog": "https://github.com/pydantic/typing-inspection/blob/main/HISTORY.md",
+        "Documentation": "https://pydantic.github.io/typing-inspection/dev/",
+        "Homepage": "https://github.com/pydantic/typing-inspection",
+        "Source": "https://github.com/pydantic/typing-inspection"
+      }
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "filename": "typing_extensions-4.16.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "metadata_url": "https://pypi.org/pypi/typing_extensions/4.16.0/json",
+      "requires_dist": null,
+      "license": "PSF-2.0",
+      "project_urls": {
+        "Bug Tracker": "https://github.com/python/typing_extensions/issues",
+        "Changes": "https://github.com/python/typing_extensions/blob/main/CHANGELOG.md",
+        "Documentation": "https://typing-extensions.readthedocs.io/",
+        "Home": "https://github.com/python/typing_extensions",
+        "Q & A": "https://github.com/python/typing/discussions",
+        "Repository": "https://github.com/python/typing_extensions"
+      }
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0",
+      "filename": "uvicorn-0.54.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/38/0c/b54a4fdd7f90a3af8b02ebc9ce6712c2c208b7926a2f7bad95c33ebbe943/uvicorn-0.54.0-py3-none-any.whl",
+      "sha256": "505bdb0f318731d45f1f712071fc781a8981f6847a31c902c9f5e652d4f67faf",
+      "metadata_url": "https://pypi.org/pypi/uvicorn/0.54.0/json",
+      "requires_dist": [
+        "click>=7.0",
+        "h11>=0.8",
+        "typing-extensions>=4.0; python_version < \"3.11\"",
+        "httptools>=0.8.0; extra == \"standard\"",
+        "python-dotenv>=0.13; extra == \"standard\"",
+        "pyyaml>=5.1; extra == \"standard\"",
+        "uvloop>=0.15.1; (sys_platform != \"win32\" and (sys_platform != \"cygwin\" and platform_python_implementation != \"PyPy\")) and extra == \"standard\"",
+        "watchfiles>=0.20; extra == \"standard\"",
+        "websockets>=13.0; extra == \"standard\""
+      ],
+      "license": "BSD-3-Clause",
+      "project_urls": {
+        "Changelog": "https://uvicorn.dev/release-notes",
+        "Funding": "https://github.com/sponsors/Kludex",
+        "Homepage": "https://uvicorn.dev/",
+        "Source": "https://github.com/Kludex/uvicorn"
+      }
+    }
+  ],
+  "python": {
+    "version": "3.14.10",
+    "url": "https://www.python.org/ftp/python/3.14.10/python-3.14.10-embeddable-amd64.zip",
+    "filename": "python-3.14.10-embeddable-amd64.zip",
+    "sha256": "b553e7dac884469b40e0740bb527271c3378f700b427e0485835f1bb6424361c",
+    "metadata_url": "https://www.python.org/ftp/python/3.14.10/windows-3.14.10.json"
+  },
+  "mpv": {
+    "version": "v0.42.0-dev-g902818753",
+    "filename": "mpv.zip",
+    "url": "https://github.com/mpv-player/mpv/releases/download/git-release/mpv-v0.42.0-dev-g902818753-42055904469-x86_64-pc-windows-msvc.zip",
+    "sha256": "e538f75d6c7346c29babb5e2b25d0491f2d48bccadb37feac5ecbf0516b94903",
+    "metadata_url": "https://api.github.com/repos/mpv-player/mpv/releases/tags/git-release",
+    "source_url": "https://github.com/mpv-player/mpv/tree/902818753",
+    "license": "GPL-3.0-or-later build; mpv source GPL-2.0-or-later"
+  },
+  "ffmpeg": {
+    "version": "9.0.2-essentials_build",
+    "filename": "ffmpeg.zip",
+    "url": "https://github.com/GyanD/codexffmpeg/releases/download/9.0.2/ffmpeg-9.0.2-essentials_build.zip",
+    "sha256": "60f467265b1e312373dbcd92200c2618a74850f98d3d078e94296bb3fa2047ba",
+    "metadata_url": "https://api.github.com/repos/GyanD/codexffmpeg/releases/tags/9.0.2",
+    "source_url": "https://github.com/FFmpeg/FFmpeg/tree/946fcce07b",
+    "license": "GPL-3.0-or-later; see bundled LICENSE"
+  }
+}

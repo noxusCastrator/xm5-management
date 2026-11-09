@@ -1,0 +1,31 @@
+--- a/options/options.h
++++ b/options/options.h
+@@ -188,6 +188,7 @@
+     int operation_mode;
+ 
+     char **reset_options;
++    int xm5_disabled_script_option;
+     char **script_files;
+     char **script_opts;
+     bool js_memory_report;
+--- a/options/options.c
++++ b/options/options.c
+@@ -555,6 +555,13 @@
+     {"config-dir", OPT_STRING(force_configdir),
+         .flags = M_OPT_NOCFG | M_OPT_PRE_PARSE | M_OPT_FILE},
+     {"reset-on-next-file", OPT_STRINGLIST(reset_options)},
++#if !(HAVE_LUA || HAVE_JAVASCRIPT || HAVE_CPLUGINS)
++    {"load-scripts", OPT_CHOICE(xm5_disabled_script_option, {"no", 0})},
++#endif
++#if !HAVE_LUA
++    {"osc", OPT_CHOICE(xm5_disabled_script_option, {"no", 0})},
++    {"ytdl", OPT_CHOICE(xm5_disabled_script_option, {"no", 0})},
++#endif
+ 
+ #if HAVE_LUA || HAVE_JAVASCRIPT || HAVE_CPLUGINS
+     {"scripts", OPT_PATHLIST(script_files), .flags = M_OPT_FILE},
+--- a/MPV_VERSION
++++ b/MPV_VERSION
+@@ -1 +1 @@
+-0.42.0-UNKNOWN
++0.42.0-xm5-min-g902818753

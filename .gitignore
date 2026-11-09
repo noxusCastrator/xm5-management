@@ -21,3 +21,12 @@ __pycache__/
 *.key
 *.pem
 *.peace
+
+# Required stock UI layouts and images; no executable runtime files.
+!desktop/xm5lib/ui/assets/**/*.bin
+/desktop/vendor/
+/desktop/data/
+/desktop/cache/
+/desktop/config.json
+/tools/portable/downloads/
+/tools/portable/output/

@@ -1,0 +1,31 @@
+#!/bin/sh
+# Fixed entry points only. All work is inside the managed card namespace.
+case "$1" in
+ start)
+  [ ! -e /var/run/xm5-organize.pid ] || exit 0
+  XM5_ORGANIZE_MODE=run LD_PRELOAD=/tmp/libxm5inline.so /bin/busybox true
+  ;;
+ rebuild)
+  XM5_ORGANIZE_MODE=rebuild LD_PRELOAD=/tmp/libxm5inline.so /bin/busybox true
+  ;;
+ stop)
+  [ -f /var/run/xm5-organize.pid ] || exit 0
+  [ ! -L /var/run/xm5-organize.pid ] || exit 1
+  read -r pid </var/run/xm5-organize.pid
+  case "$pid" in ''|*[!0-9]*) exit 1;; esac
+  if [ ! -d "/proc/$pid" ]; then rm -f /var/run/xm5-organize.pid; exit 0; fi
+  tr '\000' '\n' <"/proc/$pid/environ" | grep -qx 'XM5_ORGANIZE_MODE=run' || exit 1
+  kill -TERM "-$pid" 2>/dev/null || kill -TERM "$pid" 2>/dev/null || exit 1
+  i=0
+  while kill -0 "$pid" 2>/dev/null; do
+   i=$((i + 1)); [ "$i" -lt 10 ] || break; sleep 1
+  done
+  if kill -0 "$pid" 2>/dev/null; then
+   kill -KILL "-$pid" 2>/dev/null || exit 1
+   sleep 1
+  fi
+  kill -0 "$pid" 2>/dev/null && exit 1
+  rm -f /var/run/xm5-organize.pid
+  ;;
+ *) echo 'Usage: xm5-organize start|rebuild|stop' >&2; exit 2;;
+esac

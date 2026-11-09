@@ -1,0 +1,2040 @@
+{
+  "schema": "xm5.gui-control.support.v1",
+  "commands": [
+    {
+      "command": "help",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 475,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "commands",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 497,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "status",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 610,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_cli_file_stdin_and_powershell_use_only_existing_session",
+        "test_gui_control.GuiControlTests.test_external_complex_source_playlist_and_actual_gui_mirror",
+        "test_gui_control.GuiControlTests.test_unknown_outcome_blocks_following_mutations_but_allows_inspection"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "selected",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 582,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_actions_import_supported_and_block_unsupported_without_writes",
+        "test_console_data.ConsoleDataTests.test_completion_waits_for_mirror_acknowledgement_before_next_step",
+        "test_console_data.ConsoleDataTests.test_empty_selection_and_nested_async_query_preflight",
+        "test_console_data.ConsoleDataTests.test_filename_to_tag_and_unsupported_formatter_do_not_fake_success",
+        "test_console_data.ConsoleDataTests.test_formatter_converters_use_actual_source_and_backend_lanes",
+        "test_console_data.ConsoleDataTests.test_plan_apply_refreshes_actual_window_and_preserves_other_sources",
+        "test_console_data.ConsoleDataTests.test_stale_digest_and_source_drift_are_precise_failures",
+        "test_gui_control.GuiControlTests.test_bundled_cli_powershell_5_and_7_unicode_stdin_file_and_argv",
+        "test_gui_control.GuiControlTests.test_cli_definite_rejection_has_no_admission_and_lost_ack_is_unknown",
+        "test_gui_control.GuiControlTests.test_external_cancellation_waits_actual_step_and_skips_mutation",
+        "test_gui_control.GuiControlTests.test_idempotency_replay_conflict_preflight_and_browser_rejection",
+        "test_gui_control.GuiControlTests.test_native_multivalue_number_and_relocation_use_actual_services",
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state",
+        "test_gui_control.GuiControlTests.test_rename_preview_exposes_every_exact_move_before_apply"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "last_result",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 503,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "read_results",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 641,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_plan_apply_refreshes_actual_window_and_preserves_other_sources",
+        "test_gui_control.GuiControlTests.test_capture_read_results_pages_exact_records_and_plan_folder_identity",
+        "test_gui_control.GuiControlTests.test_rename_preview_exposes_every_exact_move_before_apply"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "tracks",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 510,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_completion_waits_for_mirror_acknowledgement_before_next_step",
+        "test_gui_control.GuiControlTests.test_actual_columns_distinct_rows_source_template_and_occurrence_context",
+        "test_gui_control.GuiControlTests.test_capture_read_results_pages_exact_records_and_plan_folder_identity",
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue",
+        "test_gui_control.GuiControlTests.test_external_complex_source_playlist_and_actual_gui_mirror",
+        "test_gui_control.GuiControlTests.test_native_multivalue_number_and_relocation_use_actual_services",
+        "test_gui_control.GuiControlTests.test_ordinary_2002_track_plan_keeps_body_budget_without_unused_columns"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "track",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 507,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_actual_columns_distinct_rows_source_template_and_occurrence_context",
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue",
+        "test_gui_control.GuiControlTests.test_external_complex_source_playlist_and_actual_gui_mirror",
+        "test_gui_control.GuiControlTests.test_native_state_inspect_exact_plan_apply_refreshes_actual_window",
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "albums",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 552,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "artists",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 558,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "genres",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 563,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "resolutions",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 45,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "playlists",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 568,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "playlist_entries",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 573,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_occurrence_selection_and_real_recipe_preserve_repeated_entries",
+        "test_gui_control.GuiControlTests.test_actual_columns_distinct_rows_source_template_and_occurrence_context",
+        "test_gui_control.GuiControlTests.test_external_complex_source_playlist_and_actual_gui_mirror"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "show_page",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 774,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_actual_columns_distinct_rows_source_template_and_occurrence_context"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "open_album",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 783,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "open_artist",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 805,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "open_genre",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 808,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "open_resolution",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 811,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "open_folder",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 819,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "open_playlist",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 814,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "go_back",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 852,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "search",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 840,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "clear_search",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 847,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "select",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 856,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "select_all",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 894,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "clear_selection",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 905,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "view_state",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 625,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_minimize_stays_live_close_invalidates_and_new_session_rejects_old_id",
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "sort_view",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 228,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_columns",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 242,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_actual_columns_distinct_rows_source_template_and_occurrence_context"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_column_width",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 253,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "reset_columns",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 263,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_album_grouping",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 912,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "music_folders",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 617,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "eq_folders",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 70,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "add_music_folder",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 83,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_modal_dialog_cli_resolves_waiting_controller"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "add_eq_folder",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 97,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "relink_folder",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 106,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "enable_folder",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 120,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "remove_folder",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 128,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "scan",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 1030,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "refresh_tracks",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 444,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "play",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 737,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "play_view",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 748,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "pause",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 702,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "stop",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 706,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "next_track",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 710,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "previous_track",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 714,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_volume",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 691,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_cli_file_stdin_and_powershell_use_only_existing_session",
+        "test_gui_control.GuiControlTests.test_included_files_preflight_nested_calls_before_any_effect",
+        "test_gui_control.GuiControlTests.test_minimize_stays_live_close_invalidates_and_new_session_rejects_old_id",
+        "test_gui_control.GuiControlTests.test_unknown_outcome_blocks_following_mutations_but_allows_inspection"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "seek",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 718,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_play_mode",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 730,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "now_playing",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 585,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "queue",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 594,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "add_to_queue",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 757,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "remove_from_queue",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 383,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "move_queue_items",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 387,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "clear_queue",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 397,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "outputs",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 622,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "refresh_outputs",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 295,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_output",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 303,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_exclusive",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 763,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_settings_commands_update_actual_radio_and_checkbox"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "test_output",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 317,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_actual_service_player_null_transport_and_local_queue"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "create_playlist",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 944,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_actual_columns_distinct_rows_source_template_and_occurrence_context",
+        "test_gui_control.GuiControlTests.test_bundled_cli_powershell_5_and_7_unicode_stdin_file_and_argv",
+        "test_gui_control.GuiControlTests.test_cli_definite_rejection_has_no_admission_and_lost_ack_is_unknown",
+        "test_gui_control.GuiControlTests.test_external_complex_source_playlist_and_actual_gui_mirror",
+        "test_gui_control.GuiControlTests.test_idempotency_replay_conflict_preflight_and_browser_rejection",
+        "test_gui_control.GuiControlTests.test_native_state_inspect_exact_plan_apply_refreshes_actual_window"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "rename_playlist",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 1008,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "delete_playlist",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 1015,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "add_to_playlist",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 962,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_complex_source_playlist_and_actual_gui_mirror"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "remove_from_playlist",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 991,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "move_playlist_items",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 998,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_complex_source_playlist_and_actual_gui_mirror"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "replace_playlist",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 400,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_playlist_cover",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 410,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "clear_playlist_cover",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 415,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "import_playlist",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 131,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "export_playlist",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 155,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_favorite",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 939,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_complex_source_playlist_and_actual_gui_mirror"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "favorites",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 578,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "read_tags",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 662,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "edit_tags",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 455,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "clear_tag_field",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 471,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "keep_tag_field",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 474,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "save_tag_edits",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 487,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "discard_tag_edits",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 483,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_tags",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 1024,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_library_tags",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 431,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "clear_library_tags",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 436,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_note",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 439,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_external_complex_source_playlist_and_actual_gui_mirror"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_track_cover",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 507,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "remove_track_cover",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 519,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "export_track_cover",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 177,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "preview_cover",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 191,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "format_tags",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 346,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_empty_selection_and_nested_async_query_preflight",
+        "test_console_data.ConsoleDataTests.test_filename_to_tag_and_unsupported_formatter_do_not_fake_success",
+        "test_console_data.ConsoleDataTests.test_plan_apply_refreshes_actual_window_and_preserves_other_sources",
+        "test_gui_control.GuiControlTests.test_actual_columns_distinct_rows_source_template_and_occurrence_context"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "tags_from_names",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 351,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_filename_to_tag_and_unsupported_formatter_do_not_fake_success"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "rename_files",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 358,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_filename_to_tag_and_unsupported_formatter_do_not_fake_success",
+        "test_gui_control.GuiControlTests.test_native_multivalue_number_and_relocation_use_actual_services",
+        "test_gui_control.GuiControlTests.test_rename_preview_exposes_every_exact_move_before_apply"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "number_tracks",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 361,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_native_multivalue_number_and_relocation_use_actual_services"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "action_groups",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 463,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "import_actions",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 448,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_actions_import_supported_and_block_unsupported_without_writes"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "run_actions",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 467,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_actions_import_supported_and_block_unsupported_without_writes",
+        "test_console_data.ConsoleDataTests.test_malformed_explicit_references_fail_without_hanging_qt"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "export_metadata",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 479,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_malformed_explicit_references_fail_without_hanging_qt",
+        "test_console_data.ConsoleDataTests.test_template_real_files_and_scope_errors"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "presets",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 538,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "inspect_peace",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 202,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "open_peace",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 205,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "import_eq",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 625,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "open_eq",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 541,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "new_eq",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 550,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "edit_eq",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 559,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "add_eq_band",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 574,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "edit_eq_band",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 579,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "remove_eq_band",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 587,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "validate_eq",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 593,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "save_eq",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 598,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_peq_editor_album_selection_and_tag_inspector_are_real_state"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "discard_eq_edits",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 613,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "delete_eq",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 618,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "export_eq",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 632,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "use_eq",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 652,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "enable_eq",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 656,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "open_lyrics",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 255,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "inspect_lyrics",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 262,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "find_lyrics",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 265,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "import_lyrics",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 268,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "use_lyrics",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 271,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "remove_lyrics",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 275,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "read_lyrics",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 278,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "fill_missing_lyrics",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 284,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "open_export",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 290,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_export",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 298,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_export_real_plan_execution_files_and_page_completion"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "export_settings",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 334,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "preview_export",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 341,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_export_real_plan_execution_files_and_page_completion"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "export_card",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 375,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_export_real_plan_execution_files_and_page_completion"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "verify_card",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 418,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "card_playlists",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 424,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "inspect_return",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 429,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "import_return",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 435,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "restore_library",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 456,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "recover_export",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 463,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "settings",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 674,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_peak_options_atomic_config_persistence_and_bounds",
+        "test_gui_control.GuiControlTests.test_settings_commands_update_actual_radio_and_checkbox"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_setting",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 474,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_language",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 925,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_settings_commands_update_actual_radio_and_checkbox"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_theme",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 917,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "open_in_folder",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 28,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "copy_info",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 489,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "show_dialog",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 530,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "answer_dialog",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 515,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "close_dialog",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 508,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "screenshot",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 497,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "quit_app",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 39,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "jobs",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 689,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "job_status",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 686,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "wait",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 546,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "cancel",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 694,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "undo",
+      "status": "connected",
+      "file": "xm5lib/ui/console_live.py",
+      "line": 1054,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "history",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 676,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "apply_plan",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 396,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_completion_waits_for_mirror_acknowledgement_before_next_step",
+        "test_console_data.ConsoleDataTests.test_filename_to_tag_and_unsupported_formatter_do_not_fake_success",
+        "test_console_data.ConsoleDataTests.test_interrupted_storage_receipt_then_explicit_resume",
+        "test_console_data.ConsoleDataTests.test_malformed_explicit_references_fail_without_hanging_qt",
+        "test_console_data.ConsoleDataTests.test_occurrence_selection_and_real_recipe_preserve_repeated_entries",
+        "test_console_data.ConsoleDataTests.test_plan_apply_refreshes_actual_window_and_preserves_other_sources",
+        "test_console_data.ConsoleDataTests.test_real_local_information_repair_and_transaction_receipts",
+        "test_console_data.ConsoleDataTests.test_stale_digest_and_source_drift_are_precise_failures",
+        "test_console_data.ConsoleDataTests.test_storage_health_noop_sync_and_persisted_plan_id",
+        "test_console_data.ConsoleDataTests.test_template_real_files_and_scope_errors",
+        "test_gui_control.GuiControlTests.test_actual_columns_distinct_rows_source_template_and_occurrence_context",
+        "test_gui_control.GuiControlTests.test_capture_read_results_pages_exact_records_and_plan_folder_identity",
+        "test_gui_control.GuiControlTests.test_external_complex_source_playlist_and_actual_gui_mirror",
+        "test_gui_control.GuiControlTests.test_native_multivalue_number_and_relocation_use_actual_services",
+        "test_gui_control.GuiControlTests.test_native_state_inspect_exact_plan_apply_refreshes_actual_window"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "run_script",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 21,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "save_script",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 24,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_search_visible",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 268,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_output_choice",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 314,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "edit_playlist_details",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 420,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_playlist_finder",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 272,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_eq_preview_rate",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 669,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_peace_sources",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 209,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "select_peace_profiles",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 217,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "import_peace",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 224,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "preview_lyrics",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 281,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_return_root",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 467,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "card_inbox",
+      "status": "connected",
+      "file": "xm5lib/ui/console_workflow_actions.py",
+      "line": 421,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "clear_error",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 283,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_window_state",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 287,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_minimize_stays_live_close_invalidates_and_new_session_rejects_old_id"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "capture_tracks",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 335,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_formatter_converters_use_actual_source_and_backend_lanes",
+        "test_console_data.ConsoleDataTests.test_malformed_explicit_references_fail_without_hanging_qt",
+        "test_console_data.ConsoleDataTests.test_occurrence_selection_and_real_recipe_preserve_repeated_entries",
+        "test_gui_control.GuiControlTests.test_capture_read_results_pages_exact_records_and_plan_folder_identity",
+        "test_gui_control.GuiControlTests.test_external_cancellation_waits_actual_step_and_skips_mutation"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "format_text",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 338,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_formatter_converters_use_actual_source_and_backend_lanes",
+        "test_console_data.ConsoleDataTests.test_malformed_explicit_references_fail_without_hanging_qt",
+        "test_console_data.ConsoleDataTests.test_stop_waits_for_current_query_and_skips_next_step",
+        "test_gui_control.GuiControlTests.test_actual_columns_distinct_rows_source_template_and_occurrence_context",
+        "test_gui_control.GuiControlTests.test_ordinary_2002_track_plan_keeps_body_budget_without_unused_columns"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "preview_tags",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 342,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_completion_waits_for_mirror_acknowledgement_before_next_step",
+        "test_console_data.ConsoleDataTests.test_stale_digest_and_source_drift_are_precise_failures",
+        "test_gui_control.GuiControlTests.test_external_complex_source_playlist_and_actual_gui_mirror",
+        "test_gui_control.GuiControlTests.test_native_multivalue_number_and_relocation_use_actual_services",
+        "test_gui_control.GuiControlTests.test_ordinary_2002_track_plan_keeps_body_budget_without_unused_columns"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "preview_names",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 354,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_empty_selection_and_nested_async_query_preflight",
+        "test_console_data.ConsoleDataTests.test_formatter_converters_use_actual_source_and_backend_lanes"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "preview_template",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 475,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_template_real_files_and_scope_errors",
+        "test_gui_control.GuiControlTests.test_actual_columns_distinct_rows_source_template_and_occurrence_context"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "plan_playlists",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 529,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_occurrence_selection_and_real_recipe_preserve_repeated_entries",
+        "test_gui_control.GuiControlTests.test_capture_read_results_pages_exact_records_and_plan_folder_identity"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "library_health",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 532,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_storage_health_noop_sync_and_persisted_plan_id"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "storage_transactions",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 536,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_real_local_information_repair_and_transaction_receipts",
+        "test_console_data.ConsoleDataTests.test_storage_health_noop_sync_and_persisted_plan_id"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "storage_plan",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 539,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_storage_health_noop_sync_and_persisted_plan_id"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "plan_sync",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 544,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_storage_health_noop_sync_and_persisted_plan_id"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "plan_repair",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 550,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_interrupted_storage_receipt_then_explicit_resume",
+        "test_console_data.ConsoleDataTests.test_real_local_information_repair_and_transaction_receipts"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "recover_storage",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 556,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_interrupted_storage_receipt_then_explicit_resume"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_peak_options",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 560,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_console_data.ConsoleDataTests.test_peak_options_atomic_config_persistence_and_bounds"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_player_mode",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 50,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_actual_player_mode_controls_and_stale_handle_guard"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "device_state",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 61,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "device_controls",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 82,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_actual_player_mode_controls_and_stale_handle_guard"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "device_activate",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 130,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_actual_player_mode_controls_and_stale_handle_guard"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "device_key",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 166,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_actual_player_mode_controls_and_stale_handle_guard"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "device_panel",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 180,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_actual_player_mode_controls_and_stale_handle_guard"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "device_type",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 185,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "device_knob",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 198,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_device_scale",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 204,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "tag_to_tag",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 365,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "text_to_tags",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 368,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "plan_covers",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 374,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "plan_cover_export",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 377,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "inspect_device_library",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 383,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_native_state_inspect_exact_plan_apply_refreshes_actual_window"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "plan_device_library",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "line": 386,
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "test_gui_control.GuiControlTests.test_native_state_inspect_exact_plan_apply_refreshes_actual_window"
+      ],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "set_inspector_tab",
+      "status": "connected",
+      "file": "xm5lib/ui/console_gui_actions.py",
+      "line": 680,
+      "fixture_invoked": false,
+      "fixture_tests": [],
+      "evidence": "Real Qt/HTTP/CLI fixture logs and COVERAGE.json; invocation is not proof of every optional branch"
+    },
+    {
+      "command": "export_inline_card",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "InlineEntryTest.test_existing_console_export_organize_rebuild_refresh_and_receipt"
+      ],
+      "evidence": "app-next/out/NORMAL-ENTRY-RESULT.json and NORMAL-ENTRY-TESTS.log"
+    },
+    {
+      "command": "organize_card",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "InlineEntryTest.test_existing_console_export_organize_rebuild_refresh_and_receipt"
+      ],
+      "evidence": "app-next/out/NORMAL-ENTRY-RESULT.json and NORMAL-ENTRY-TESTS.log"
+    },
+    {
+      "command": "rebuild_card_index",
+      "status": "connected",
+      "file": "xm5lib/ui/console_backend_actions.py",
+      "fixture_invoked": true,
+      "fixture_tests": [
+        "InlineEntryTest.test_existing_console_export_organize_rebuild_refresh_and_receipt"
+      ],
+      "evidence": "app-next/out/NORMAL-ENTRY-RESULT.json and NORMAL-ENTRY-TESTS.log"
+    }
+  ],
+  "transport": {
+    "owner": "existing MainWindow / one Qt thread",
+    "bind": "literal 127.0.0.1 ephemeral port",
+    "queries": [
+      "/v1/session",
+      "/v1/catalog",
+      "/v1/runs/{id}",
+      "/v1/dialog"
+    ],
+    "mutations": [
+      "POST /v1/runs",
+      "POST /v1/runs/{id}/cancel",
+      "POST /v1/dialog"
+    ],
+    "cli_input": "strict UTF-8 binary stdin; strict UTF-8 or BOM-marked UTF-16 files; Unicode Windows argv; no replacement decoding",
+    "cli_admission": "not_accepted/none for local rejection; rejected/none for explicit pre-admission HTTP rejection; unknown/unknown after a lost submission acknowledgement",
+    "modal_actions": "exact inspected dialog/button IDs and bounded explicit text values; separate idempotency receipts, same Qt modal loop"
+  },
+  "captured_columns": {
+    "columns": "actual common visible labels in visual header order",
+    "columns_by_track": "only unambiguous actual displayed row values",
+    "columns_by_occurrence": "exact repeated playlist occurrence row values",
+    "missing_values": "explicit CONTEXT_REQUIRED; never another row's values",
+    "capture_policy": "only expressions using columnNames/columnValues capture context; names capture labels only; oversized values fail CONTEXT_LIMIT before HTTP without truncation"
+  }
+}

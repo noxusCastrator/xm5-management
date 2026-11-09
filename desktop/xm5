@@ -1,0 +1,7 @@
+#!/bin/sh
+app_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+if [ ! -f "$app_dir/vendor/python/python.exe" ]; then
+  printf '%s\n' 'XM5 bundled Windows Python is missing. Use the complete portable package.' >&2
+  exit 2
+fi
+exec "$app_dir/vendor/python/python.exe" -s -m xm5lib.control.client "$@"
