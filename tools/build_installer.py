@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path, PurePosixPath
+import re
 import shutil
 import subprocess
 
@@ -19,11 +20,28 @@ REQUIRED = {"bootstrap.py", "XM5Studio.exe", "vendor/python/pythonw.exe", "vendo
             "vendor/ffmpeg/ffmpeg.exe", "xm5lib/ui/assets/studio/app.ico"}
 PRIVATE = {"data", "cache", "runtime", ".local", "__pycache__"}
 RESERVED = {"CON", "PRN", "AUX", "NUL", *(f"COM{n}" for n in range(1, 10)), *(f"LPT{n}" for n in range(1, 10))}
+MIN_COMPILER = (7, 1, 1)
 
 
 def sha(path):
     with Path(path).open("rb") as stream:
         return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def compiler_version(compiler):
+    """Fail before staging if the compiler cannot handle the full runtime tree.
+
+    Inno 6 rejects valid source paths at MAX_PATH and does not support a manually
+    supplied extended-length prefix. Inno 7 also fixes setup/uninstall paths, so
+    shortening staging alone would leave custom installation locations broken.
+    """
+    result = subprocess.run([str(compiler), "--version"], capture_output=True, text=True,
+                            encoding="utf-8", errors="replace", timeout=15)
+    version = result.stdout.strip()
+    match = re.fullmatch(r"(\d+)\.(\d+)\.(\d+)", version)
+    if result.returncode != 0 or not match or tuple(map(int, match.groups())) < MIN_COMPILER:
+        raise ValueError("Inno Setup 7.1.1 or newer is required for long source, installation and uninstall paths")
+    return version
 
 
 def relative(name):
@@ -133,6 +151,7 @@ def main():
         parser.error("Choose a new .exe output")
     ordinary(compiler)
     ordinary(language)
+    version = compiler_version(compiler)
     app, include, manifest = prepare(args.payload, args.stage_dir, allow_unreviewed=args.local_allow_unreviewed)
     output.parent.mkdir(parents=True, exist_ok=True)
     script = ROOT / "tools/installer/XM5Studio.iss"
@@ -141,7 +160,7 @@ def main():
                "/DOutputName=" + output.stem, str(script)]
     subprocess.run(command, check=True)
     receipt = {"schema": "xm5.installer-build.v1", "version": "0.2.2", "app_id": IDENTITY,
-               "compiler_sha256": sha(compiler), "language_sha256": sha(language),
+               "compiler_version": version, "compiler_sha256": sha(compiler), "language_sha256": sha(language),
                "script_sha256": sha(script), "portable_manifest_sha256": manifest["portable_manifest_sha256"],
                "installed_manifest_sha256": sha(app / "BUILD-MANIFEST.json"),
                "owned_manifest_sha256": sha(app / "OWNED-FILES.sha256"), "setup_sha256": sha(output),

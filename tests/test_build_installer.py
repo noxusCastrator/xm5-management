@@ -4,7 +4,9 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
@@ -81,6 +83,30 @@ class InstallerBuildTests(unittest.TestCase):
         self.manifest()
         _, files = builder.verified_payload(self.payload)
         self.assertIn(path.relative_to(self.payload).as_posix(), files)
+
+    def test_long_reviewed_dependency_is_retained_with_exact_path(self):
+        name = "vendor/" + "/".join("segment-" + letter * 64 for letter in "abc") + "/payload.txt"
+        path = self.payload / name
+        path.parent.mkdir(parents=True)
+        path.write_bytes(b"long dependency fixture")
+        self.assertGreater(len(str(path)), 260)
+        self.manifest()
+        app, include, _ = builder.prepare(self.payload, self.root / "stage")
+        self.assertEqual((app / name).read_bytes(), path.read_bytes())
+        self.assertIn(str(app / name), include.read_text(encoding="utf-8"))
+        self.assertIn("\t" + name + "\n", (app / "OWNED-FILES.sha256").read_text(encoding="utf-8"))
+
+    def test_compiler_version_requires_long_path_capable_release(self):
+        for version in ("7.1.1", "7.1.2", "8.0.0"):
+            with self.subTest(version=version), patch.object(builder.subprocess, "run", return_value=SimpleNamespace(
+                    returncode=0, stdout=version + "\n")):
+                self.assertEqual(builder.compiler_version(Path("ISCC.exe")), version)
+        for version in ("6.7.4", "7.0.0", "7.1.0", "7.1.1-beta", "unexpected output"):
+            with self.subTest(version=version), patch.object(builder.subprocess, "run", return_value=SimpleNamespace(
+                    returncode=0, stdout=version + "\n")), self.assertRaisesRegex(ValueError, "7.1.1"):
+                builder.compiler_version(Path("ISCC.exe"))
+        with patch.object(builder.subprocess, "run", return_value=SimpleNamespace(returncode=1, stdout="")), self.assertRaises(ValueError):
+            builder.compiler_version(Path("ISCC.exe"))
 
     def test_manifest_paths_are_windows_safe(self):
         for name in ("../escape", "C:/escape", "/absolute", "vendor//file", "file.", "NUL.txt", "one\\two", "two:stream"):

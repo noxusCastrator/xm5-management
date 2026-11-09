@@ -32,17 +32,19 @@ python tools/build_launcher.py --wsl --output .local/launcher/XM5Studio.exe
 
 Omit `--wsl` for native MinGW tools. `--cc`, `--windres` and `--icon` select explicit inputs. The source is in `src/desktop_launcher/`; the PE has a GUI subsystem, an `asInvoker` manifest, version information and the project icon. The launcher calls bundled Python directly with Windows argument quoting, waits for it and returns its exit code. `XM5Library.cmd --check` remains the console diagnostic entry. The launcher receipt records compiler, source, icon and output hashes. MinGW's PE timestamp is disabled for repeatable launcher builds.
 
-The tested compiler is [Inno Setup 6.7.4](https://github.com/jrsoftware/issrc/releases/tag/is-6_7_4). Download `innosetup-6.7.4.exe` from that immutable release and verify SHA-256 `a549929319f9120716677c685535ca4671e4b937b5fdc87e2585f32d8eb30e8c` plus a valid Windows Authenticode signature from Pyrsys B.V., following [the official verification instructions](https://jrsoftware.org/isdl-verify.php). Its upstream `/PORTABLE=1 /CURRENTUSER /NOICONS /TASKS=""` options put the compiler in a chosen local directory without associations or an uninstall registration. Pass an explicit `/DIR` below `.local/`; do not launch its IDE during packaging. Retain the compiler's `License.txt`. Its license permits use and redistribution subject to the included attribution conditions; commercial users are asked to support its maintainers.
+The tested compiler is [Inno Setup 7.1.1 x64](https://github.com/jrsoftware/issrc/releases/tag/is-7_1_1). Download `innosetup-7.1.1-x64.exe` from that immutable release and verify SHA-256 `8a5a6711c3766a6e5fb74f280ba0e3551e719ce94538d901fdbd1f8f9920b3f0` plus a valid Windows Authenticode signature from Pyrsys B.V., following [the official verification instructions](https://jrsoftware.org/isdl-verify.php). Its upstream `/PORTABLE=1 /CURRENTUSER /NOICONS /TASKS=""` options put the compiler in a chosen local directory without associations or an uninstall registration. Pass an explicit `/DIR` below `.local/`; do not launch its IDE during packaging. Retain the compiler's `License.txt`. Its license permits use and redistribution subject to the included attribution conditions; commercial users are asked to support its maintainers.
 
-Inno Setup 6.7.4's installer does not bundle Simplified Chinese messages. Obtain the [translation linked by Inno Setup](https://jrsoftware.org/files/istrans/) from [Zhenghan Yang's translation repository](https://github.com/kira-96/Inno-Setup-Chinese-Simplified-Translation), retain its attribution, and pass it as a local build input. The tested UTF-8 file has SHA-256 `bf0751fa176569c6faa2f6e17ed2734617bef325d5cc06eae030fdd0258ee778`. The build receipt pins the exact translation used.
+Version 7.1.1 bundles Simplified Chinese messages in `Languages/ChineseSimplified.isl`; the tested file has SHA-256 `e0b0b350e2245f3c5e65586dfe43d574f6e7f06f2261149aba284954b3fc9a8d`. Keep its attribution and pass that file as the language build input. The build receipt pins the exact translation used.
+
+The builder requires Inno Setup 7.1.1 or newer and checks its version before copying the payload. The complete Qt runtime contains deep paths that Inno Setup 6 cannot read, even with an explicit `\\?\` prefix. [Inno Setup 7 supports extended-length paths during compilation, installation and uninstall](https://jrsoftware.org/files/is7-whatsnew.htm). Staging and installation can therefore retain the exact reviewed dependency tree without changing the Windows long-path registry policy or removing files.
 
 ```powershell
 python tools/build_installer.py `
   --payload C:\build\XM5Studio `
   --stage-dir .local/installer-stage `
   --output .local/releases/XM5Studio-0.2.2-Windows-x64-Setup.exe `
-  --iscc C:\build\inno-6.7.4\ISCC.exe `
-  --chinese-messages C:\build\ChineseSimplified.isl
+  --iscc C:\build\inno-7.1.1\ISCC.exe `
+  --chinese-messages C:\build\inno-7.1.1\Languages\ChineseSimplified.isl
 ```
 
 Both output and staging locations must be new. The builder verifies every input hash and rejects extra files, profiles, generated caches and links. It copies into separate staging, changes the distribution descriptor to installed mode, generates the exact owned-file inventory and compiles `tools/installer/XM5Studio.iss`. It does not download tools, install drivers, communicate with a player or write to a card. `--local-allow-unreviewed` exists for synthetic packaging tests; those outputs are not public distributions.
