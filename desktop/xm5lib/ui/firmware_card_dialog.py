@@ -36,7 +36,7 @@ _TEXT = {
     "unknown": ("未知", "Unknown"),
     "planning": ("正在检查选中的盘和 update.bin…", "Inspecting the selected drive and update.bin…"),
     "warning": ("所选盘 {0} 已有 update.bin。是否替换？其他文件将保留。", "Drive {0} already contains update.bin. Replace it? Other files will be preserved."),
-    "plan_details": ("卷标：{0}\n容量：{1}\n原 update.bin：{2}\n配套固件：{3}", "Label: {0}\nCapacity: {1}\nExisting update.bin: {2}\nPaired firmware: {3}"),
+    "plan_details": ("卷标：{0}\n容量：{1}\n原 update.bin：{2}\n配套固件：{3}\n当前需要可用：{4}\n升级解包预留：{5}", "Label: {0}\nCapacity: {1}\nExisting update.bin: {2}\nPaired firmware: {3}\nFree space needed now: {4}\nReserved for player extraction: {5}"),
     "backup": ("如需整理音乐，可<a href=\"export\">打开 TF 卡导出页面</a>。", "To prepare music, <a href=\"export\">open TF Card Export</a>."),
     "cancelled": ("已取消。目标盘未作更改。", "Cancelled. No changes were made to the drive."),
     "working": ("正在制作更新盘。请勿断开目标盘；完成前不能关闭此窗口。", "Creating the update card. Keep the drive connected; this window must stay open until completion."),
@@ -116,7 +116,8 @@ class _FirmwareConfirmation(QDialog):
         layout.addWidget(self.warning)
         details = QLabel(text("plan_details", plan.get("label") or text("unnamed"),
                              _size(plan.get("capacity")), _size(plan.get("existing_size")),
-                             plan["firmware_version"]))
+                             plan["firmware_version"], _size(plan.get("required_free")),
+                             _size(plan.get("upgrade_reserve"))))
         details.setTextFormat(Qt.PlainText)
         details.setWordWrap(True)
         layout.addWidget(details)

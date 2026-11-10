@@ -13,7 +13,13 @@ It copies only `update.bin` to the root and preserves other files. The [official
 5. If `update.bin` already exists, choose **Confirm** to replace that file or **Cancel** to keep it. Cancel is the default choice. A directory or link with that name is refused.
 6. Keep the drive connected while the operation runs. The dialog and application cannot close until the worker finishes. On success, check the displayed SHA-256 for the copied file, safely eject the drive, and follow the official XM5 update instructions.
 
-If bundled firmware is missing or fails verification, the dialog disables creation. It does not download a replacement. A unique temporary copy is flushed and checked against the complete SHA-256 before publication as `update.bin`. Enough free space for the full temporary copy is required even when an old `update.bin` exists. Copy or verification failure preserves the old file.
+If bundled firmware is missing or fails verification, the dialog disables creation. It does not download a replacement. A unique temporary copy is flushed and checked against the complete SHA-256 before publication as `update.bin`. Copy or verification failure preserves the old file.
+
+The app reserves space for both copying and the player's later extraction. It reads the actual uncompressed archive member sizes and the volume's allocation unit. The post-copy reserve is the larger of the allocated extracted files/directory or 100 MiB, plus an 8 MiB margin. V2.43's original menu has a separate free-space check against a rounded 0.10 GiB value; the 100 MiB floor conservatively covers it even when the archive is small.
+
+Let `B` be the new `update.bin` allocation, `E` the existing file's allocation (zero if absent), and `R` the post-copy reserve. The drive needs at least `max(B, B - E + R)` bytes free before copying. This keeps the old file intact during copying, then accounts for its space being released on replacement. Just before publication, the app checks again that current free space plus `E` can cover `R`. Other programs can still consume free space after completion, so avoid changing the card before upgrading.
+
+An existing root `firmware_v20.info` or `recovery-update`, whether a file, directory or link, stops preparation. These paths belong to the player's extraction process. The app identifies the conflict and leaves it unchanged; move it elsewhere yourself before retrying. Conflicts and space are checked at planning, execution and immediately before publication.
 
 Changes to `update.bin` after inspection require a new inspection and replacement choice. Keep other programs from editing it during copying: identity/hash checks cannot coordinate arbitrary external writers. Unrelated files may change without invalidating the operation.
 

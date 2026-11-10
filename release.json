@@ -2,12 +2,12 @@
   "version": "0.2.2",
   "tag": "v0.2.2",
   "stage": "local-candidate",
-  "firmware_tag": "V2.43-LIB02",
+  "firmware_tag": "V2.43-LIB03",
   "base_version": "ONIX XM5 V2.43",
-  "update_sha256": "03a9fe7e665a32136e0c06fc13adf98990f20def41bb61989a34b27163e22fec",
+  "update_sha256": "be16c472ba1bdcf46dc6a5b93e218ea74c8baf967aa6cc5e43505efd7ee8fdd9",
   "base_update_sha256": "8b3f05155840c7b821f3bcbcd4690eaf64a00e867c7c3cef68f7be1959368be4",
   "expected_overlays": {
-    "release/bin/demo": "f5318ca38bb865969fe9dee84f3d0db2d205821455266cf628690b23839327bb",
+    "release/bin/demo": "c04b6f5914502f05960fb923bf3271d12cc7711e7855bb4fbbce6c7bb9d9ded9",
     "usr/bin/hciplayer": "3e1590f537def6e229c889a7bd14777c8b3ba3aafdf01d088fdb519fcdddb545",
     "etc/init.d/S90play": "6ab78da7bf899319ab9fa8a1c58f9a3582a58cae014e36561465afb4150adb96",
     "release/assets/default/raw/ui/playset/equalizer_page.bin": "b29f7f15ec68e9305cea8281d2984c31bdac953f281c5660eab8056de192f464"
@@ -15,16 +15,16 @@
   "desktop_platform": "Windows x64 portable and current-user installer",
   "assets": {
     "XM5Studio-0.2.2-Windows-x64-Portable.zip": {
-      "size": 173195364,
-      "sha256": "19689181629d6be60f7aaca90137c665e1fa9e1dcc4b0264b27dfc14c1a23bf7"
+      "size": 173197428,
+      "sha256": "7f4f5cbdb5171983fe9968ac67d114e6c84c90f2a455c3b66b5749bcb3d48749"
     },
     "XM5Studio-0.2.2-Windows-x64-Setup.exe": {
-      "size": 127354946,
-      "sha256": "fc7fe6fce4c76805a8e4813aae4893176744aa3e9f70d79c48ca8afd5b4ed5be"
+      "size": 127368525,
+      "sha256": "398d1ee7335c3033615fa301c1e11682920ceed11fe54d361fe2916f403abd51"
     },
     "update.bin": {
       "size": 56371200,
-      "sha256": "03a9fe7e665a32136e0c06fc13adf98990f20def41bb61989a34b27163e22fec"
+      "sha256": "be16c472ba1bdcf46dc6a5b93e218ea74c8baf967aa6cc5e43505efd7ee8fdd9"
     },
     "XM5Studio-runtime-source-0.2.2.zip": {
       "size": 82187373,
@@ -34,7 +34,7 @@
   "hardware_scope": "PEQ08 has one-device owner feedback. New storage firmware is software/VM validated; physical installation, long-duration behavior and recovery remain unvalidated.",
   "documentation": "docs/VALIDATION_0.2.2.md",
   "paired_firmware_release": "v0.2.2",
-  "change_scope": "Non-clearing firmware card copy; playlist conflict and rollback preservation; batched Unicode search; bounded directory artwork lookup and reviewable native source.",
+  "change_scope": "Upgrade-space and recovery-name preflight; shared directory-probe allowance and 120-second result cache; local-only rebuilt 0.2.2.",
   "development_runtime": {
     "asset_filename": "XM5Library-Windows-x64-0.2.0.zip",
     "size": 121859733,
@@ -72,15 +72,15 @@
   },
   "validation": {
     "status": "PASS within documented software/VM scope",
-    "public_tests_passed": 122,
+    "public_tests_passed": 131,
     "process_interruption_scenarios": 88,
     "native_mips_boundary_tests": "4 PASS",
-    "host_directory_reader": "PASS",
-    "formatting_target_components_identical": true,
+    "host_directory_shared_budget": "PASS",
+    "directory_cache_120_second_expiry": "PASS",
+    "stock_free_space_floor_and_conflict_cases": "VM observed; preflight refuses",
     "stock_menu_original_recovery_spl_cold_boot": "PASS",
     "nand_payload_readback": "PASS",
-    "prepared_playback_cover_pixels": "exact matches for two synthetic tracks",
-    "directory_thumbnail_vm_paint": "Not claimed; stock folder-cover option off",
+    "directory_80_and_playback_330_pixels": "exact matches",
     "windows_installer_lifecycle": "PASS",
     "packaged_copy_preserves_unrelated_files": "PASS",
     "physical_operations": false,

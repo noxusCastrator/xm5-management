@@ -371,14 +371,22 @@ done:
 }
 #define INLINE_DIRECTORY_JOBS 32
 #define INLINE_DIRECTORY_BUDGET 64
-#define INLINE_DIRECTORY_RETRY_SECONDS 5
+#define INLINE_DIRECTORY_RETRY_SECONDS 120
 typedef struct {
     char subject[1024], representative[1024];
-    unsigned cursor, side, stamp, used, mount, reuses;
+    unsigned cursor, side, stamp, used, mount;
     int root, index, complete;
 } inline_directory_job;
 static inline_directory_job inline_directories[INLINE_DIRECTORY_JOBS];
 static unsigned inline_directory_serial;
+static unsigned inline_directory_scope, inline_directory_remaining;
+void pa_directory_begin(void) {
+    inline_directory_scope = 1;
+    inline_directory_remaining = INLINE_DIRECTORY_BUDGET;
+}
+void pa_directory_end(void) {
+    inline_directory_scope = 0;
+}
 static void inline_directory_reset(void) {
     memset(inline_directories, 0, sizeof(inline_directories));
     inline_directory_serial = 0;
@@ -437,15 +445,19 @@ static int inline_directory_lookup(pa_card *c, const char *subject, unsigned sid
         job->cursor = inline_lower(c, prefix);
     }
     job->used = ++inline_directory_serial;
-    if (job->complete &&
-        ((unsigned)(now - job->stamp) >= INLINE_DIRECTORY_RETRY_SECONDS || ++job->reuses >= 64)) {
+    if (job->complete && (unsigned)(now - job->stamp) >= INLINE_DIRECTORY_RETRY_SECONDS) {
         job->complete = 0;
-        job->reuses = 0;
         job->representative[0] = 0;
         job->cursor = inline_lower(c, prefix);
     }
     if (job->complete && job->representative[0]) {
+        if (inline_directory_scope && !inline_directory_remaining) {
+            memset(out, 0, sizeof(*out));
+            return XM5_ART_BUSY;
+        }
         budget--;
+        if (inline_directory_scope)
+            inline_directory_remaining--;
         if (inline_record(c, job->representative, side, out) == XM5_ART_OK)
             return XM5_ART_OK;
         job->complete = 0;
@@ -460,6 +472,10 @@ static int inline_directory_lookup(pa_card *c, const char *subject, unsigned sid
         lines.total = c->index_bytes;
         lines.pos = job->cursor;
         while (budget--) {
+            if (inline_directory_scope && !inline_directory_remaining) {
+                memset(out, 0, sizeof(*out));
+                return XM5_ART_BUSY;
+            }
             r = inline_line(&lines, line, sizeof(line));
             if (r < 0 || (r && !inline_hint_line(line)))
                 return XM5_ART_INVALID;
@@ -468,6 +484,8 @@ static int inline_directory_lookup(pa_card *c, const char *subject, unsigned sid
                 break;
             }
             job->cursor = inline_cursor(&lines);
+            if (inline_directory_scope)
+                inline_directory_remaining--;
             if (inline_record(c, line + 2, side, out) == XM5_ART_OK) {
                 if (!pa_card_current(c))
                     return PA_CHANGED;

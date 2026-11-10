@@ -4,6 +4,8 @@ import json
 import os
 from pathlib import Path
 import tempfile
+import io
+import tarfile
 import unittest
 from unittest.mock import patch
 
@@ -13,7 +15,7 @@ from xm5lib.core.firmware_card import FirmwareCardError, FirmwareCardService
 class Volumes:
     def __init__(self, root):
         self.row = {'id': 'owned-test-volume', 'root': str(root), 'identity': 'original',
-                    'label': 'Synthetic card', 'filesystem': 'exFAT', 'capacity': 64*1024*1024, 'free': 64*1024*1024}
+                    'label': 'Synthetic card', 'filesystem': 'exFAT', 'capacity': 512*1024*1024, 'free': 512*1024*1024}
     def list_targets(self):
         return [dict(self.row)]
     def inspect(self, target_id):
@@ -31,7 +33,14 @@ class FirmwareCardTests(unittest.TestCase):
         self.card = self.root/'card'
         self.card.mkdir()
         (self.app/'firmware').mkdir(parents=True)
-        self.firmware = b'synthetic firmware, never for a real device'
+        archive = io.BytesIO()
+        with tarfile.open(fileobj=archive, mode='w:') as package:
+            for name, data in [('firmware_v20.info', b'synthetic metadata'),
+                               ('recovery-update/xImage', b'K' * 4096),
+                               ('recovery-update/rootfs.squashfs', b'R' * 8192)]:
+                member = tarfile.TarInfo(name); member.size = len(data)
+                package.addfile(member, io.BytesIO(data))
+        self.firmware = archive.getvalue()
         (self.app/'firmware/update.bin').write_bytes(self.firmware)
         manifest = {'schema': 'xm5.firmware-bundle.v1', 'file': 'update.bin', 'version': 'TEST',
                     'size': len(self.firmware), 'sha256': hashlib.sha256(self.firmware).hexdigest()}
@@ -203,6 +212,87 @@ class FirmwareCardTests(unittest.TestCase):
     def test_directory_named_update_bin_is_refused(self):
         (self.card/'update.bin').mkdir()
         with self.assertRaisesRegex(FirmwareCardError, 'regular file'):
+            self.plan()
+
+    def test_copy_space_alone_is_not_enough_for_player_extraction(self):
+        self.volumes.row['free'] = len(self.firmware) + 1024 * 1024
+        with self.assertRaisesRegex(FirmwareCardError, 'free space'):
+            self.plan()
+        self.assertFalse((self.card/'update.bin').exists())
+
+    def test_recovery_names_are_preserved_and_refused(self):
+        for name in ('firmware_v20.info', 'recovery-update'):
+            for directory in (False, True):
+                with self.subTest(name=name, directory=directory):
+                    path = self.card/name
+                    path.mkdir() if directory else path.write_bytes(b'preserve me')
+                    with self.assertRaisesRegex(FirmwareCardError, name):
+                        self.plan()
+                    self.assertTrue(path.exists())
+                    path.rmdir() if directory else path.unlink()
+
+    def test_conflict_appearing_after_plan_blocks_copy(self):
+        plan = self.plan()
+        (self.card/'recovery-update').mkdir()
+        (self.card/'recovery-update/original').write_bytes(b'unrelated')
+        with self.assertRaisesRegex(FirmwareCardError, 'recovery-update'):
+            self.service.execute(plan['token'])
+        self.assertFalse((self.card/'update.bin').exists())
+        self.assertEqual((self.card/'recovery-update/original').read_bytes(), b'unrelated')
+
+    def test_existing_update_space_is_released_only_after_publication(self):
+        target = self.card/'update.bin'
+        with target.open('wb') as old:
+            old.truncate(112 * 1024 * 1024)
+        self.volumes.row['free'] = len(self.firmware) + 1024 * 1024
+        plan = self.plan()  # Old update will free enough space for unpacking.
+        self.assertLessEqual(plan['required_free'], self.volumes.row['free'])
+        self.service.execute(plan['token'], confirmed=True)
+        self.assertEqual(target.read_bytes(), self.firmware)
+
+    def test_last_minute_space_loss_preserves_old_update(self):
+        target = self.card/'update.bin'; target.write_bytes(b'old')
+        def fill(event):
+            if event['phase'] == 'verify':
+                self.volumes.row['free'] = 0
+        with self.assertRaisesRegex(FirmwareCardError, 'free space'):
+            self.service.execute(self.plan()['token'], confirmed=True, progress=fill)
+        self.assertEqual(target.read_bytes(), b'old')
+
+    def test_last_minute_conflict_preserves_old_update(self):
+        target = self.card/'update.bin'; target.write_bytes(b'old')
+        def conflict(event):
+            if event['phase'] == 'verify':
+                (self.card/'firmware_v20.info').write_bytes(b'user file')
+        with self.assertRaisesRegex(FirmwareCardError, 'firmware_v20.info'):
+            self.service.execute(self.plan()['token'], confirmed=True, progress=conflict)
+        self.assertEqual(target.read_bytes(), b'old')
+
+    def test_space_calculation_rounds_files_and_counts_previous_allocation(self):
+        self.volumes.row['allocation_unit'] = 4096
+        info = self.service.firmware_info()
+        unit = 4096
+        rounded = lambda n: ((n + unit - 1) // unit) * unit
+        reserve = max(sum(rounded(n) for n in info['payload_sizes']) + unit,
+                      100 * 1024 * 1024) + 8 * 1024 * 1024
+        required = rounded(len(self.firmware)) + reserve
+        self.volumes.row['free'] = required - 1
+        with self.assertRaisesRegex(FirmwareCardError, 'free space'):
+            self.plan()
+        self.volumes.row['free'] = required
+        plan = self.plan()
+        self.assertEqual((plan['required_free'], plan['upgrade_reserve']), (required, reserve))
+
+    def test_low_space_after_plan_refuses_before_copy(self):
+        plan = self.plan()
+        self.volumes.row['free'] = len(self.firmware) + 1024 * 1024
+        with self.assertRaisesRegex(FirmwareCardError, 'free space'):
+            self.service.execute(plan['token'])
+        self.assertEqual({p.name for p in self.card.iterdir()}, {'keep-until-confirmed.txt'})
+
+    def test_original_menu_free_space_floor_applies_to_small_payloads(self):
+        self.volumes.row['free'] = len(self.firmware) + 80 * 1024 * 1024
+        with self.assertRaisesRegex(FirmwareCardError, 'free space'):
             self.plan()
 
 

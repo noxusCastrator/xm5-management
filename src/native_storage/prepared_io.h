@@ -28,6 +28,10 @@ void pa_card_close(pa_card *);
 int pa_card_current(const pa_card *);
 int pa_lookup(pa_card *, const char *, const char *, xm5_art_record *);
 int pa_lookup_size(pa_card *, const char *, const char *, unsigned, xm5_art_record *);
+/* One caller-owned I/O-lock scope shares 64 directory candidate probes across
+ * sizes/lookups. No nesting; close/invalidation does not reset an active scope. */
+void pa_directory_begin(void);
+void pa_directory_end(void);
 /* Legacy fixed BMPs use immutable RAM files. Inline JPEGs use verified bounded
  * slices of their original song container, without staging separate images. */
 int pa_materialize(pa_card *, const xm5_art_record *, const char *, char *, size_t);

@@ -54,6 +54,14 @@ extern int pa_playlist_save(const char *, const char *, unsigned);
 extern int pa_playlist_mkdir(const char *);
 extern int pa_nf_init(void *, void *, const char *, const char *, void *);
 static unsigned record[22], info_enabled, info_fail, asset_drops;
+static unsigned budget_scope, budget_remaining, stress_probes;
+void pa_directory_begin(void) {
+    budget_scope = 1;
+    budget_remaining = 64;
+}
+void pa_directory_end(void) {
+    budget_scope = 0;
+}
 static unsigned playlist_cover_subject, last_playlist_id;
 extern int pa_custom_playlist_cover(void *, unsigned);
 static unsigned asset_words[16];
@@ -389,6 +397,12 @@ int pa_lookup_size(pa_card *c, const char *role, const char *subject, unsigned s
     (void)c;
     memset(r, 0, sizeof(*r));
     r->side = side;
+    if (!strcmp(subject, "xm5/music/Stress") && !strcmp(role, "directory")) {
+        unsigned count = budget_scope ? budget_remaining : 64;
+        stress_probes += count;
+        budget_remaining = 0;
+        return XM5_ART_BUSY;
+    }
     if (info_enabled && !strcmp(role, "directory") && strchr(subject, '.')) {
         r->no_art = 1;
         return XM5_ART_NONE;
@@ -540,6 +554,9 @@ void start_c(unsigned *sp) {
     *(unsigned char *)0x807271 = 1;
     record[13] = 4;
     record[3] = (unsigned)"/mnt/mmc/Music/A";
+    pa_worker_folder("/mnt/mmc/xm5/music/Stress");
+    require(stress_probes <= 64, "whole directory prepare exceeded shared candidate budget\n");
+    require(!budget_scope, "directory budget escaped its I/O-lock scope\n");
     require(pa_worker_folder("/mnt/mmc/Music/A") == 0, "directory worker not bypassed\n");
     pa_folder_row(widget, 0);
     require(!strcmp(shown, "file:///tmp/xa/aaaa.bmp"), "directory did not show prepared URI\n");

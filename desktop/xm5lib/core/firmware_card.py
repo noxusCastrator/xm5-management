@@ -16,6 +16,7 @@ import re
 import shutil
 import stat
 import subprocess
+import tarfile
 import threading
 import time
 import uuid
@@ -23,6 +24,34 @@ import uuid
 
 class FirmwareCardError(RuntimeError):
     pass
+
+
+UPGRADE_MARGIN = 8 * 1024 * 1024
+# V2.43 check_updatefw_exist compares getDiskMemoryInfo's rounded GiB free
+# value with 0.10. Retain a conservative 100 MiB floor plus our margin.
+STOCK_MIN_FREE = 100 * 1024 * 1024
+RECOVERY_NAMES = ('firmware_v20.info', 'recovery-update')
+
+
+def _payload_sizes(binary):
+    """Inspect the verified uncompressed OTA without extracting any member."""
+    expected = {'firmware_v20.info', 'recovery-update/xImage', 'recovery-update/rootfs.squashfs'}
+    sizes = {}
+    try:
+        with tarfile.open(binary, 'r:') as archive:
+            for member in archive:
+                name = member.name.rstrip('/')
+                if member.isdir() and name == 'recovery-update' and name not in sizes:
+                    sizes[name] = 0
+                elif member.isfile() and name in expected and name not in sizes and member.size > 0:
+                    sizes[name] = member.size
+                else:
+                    raise FirmwareCardError('Unexpected bundled firmware archive member: ' + member.name)
+        if not expected <= sizes.keys():
+            raise FirmwareCardError('Bundled firmware is missing upgrade payloads.')
+    except tarfile.TarError as error:
+        raise FirmwareCardError('Bundled firmware is not a valid uncompressed upgrade archive.') from error
+    return [sizes[name] for name in sorted(expected)]
 
 
 def _hash(path):
@@ -103,10 +132,15 @@ class WindowsVolumes:
         if not kernel.GetVolumeNameForVolumeMountPointW(ctypes.c_wchar_p(root), guid, len(guid)):
             raise FirmwareCardError('Cannot establish the volume identity.')
         usage = shutil.disk_usage(root)
+        sectors, sector_bytes, available, total = (w.DWORD() for _ in range(4))
+        if not kernel.GetDiskFreeSpaceW(ctypes.c_wchar_p(root), ctypes.byref(sectors), ctypes.byref(sector_bytes),
+                                        ctypes.byref(available), ctypes.byref(total)):
+            raise FirmwareCardError('Cannot establish the filesystem allocation unit.')
         identity = f'{guid.value}|{serial.value:08x}'
         return {'id': hashlib.sha256((root.upper()+identity).encode()).hexdigest(), 'identity': identity,
                 'root': root, 'label': label.value or root, 'capacity': usage.total, 'free': usage.free,
-                'filesystem': filesystem.value, 'kind': kind, 'read_only': bool(flags.value & 0x80000)}
+                'filesystem': filesystem.value, 'kind': kind, 'read_only': bool(flags.value & 0x80000),
+                'allocation_unit': sectors.value * sector_bytes.value}
 
     def list_targets(self):
         if os.name != 'nt':
@@ -159,7 +193,7 @@ class FirmwareCardService:
                 or not isinstance(data.get('version'), str) or data.get('size') != binary.stat().st_size
                 or not re.fullmatch('[0-9a-f]{64}', data.get('sha256', '')) or _hash(binary) != data['sha256']):
             raise FirmwareCardError('Bundled firmware integrity check failed.')
-        return data, binary
+        return {**data, 'payload_sizes': _payload_sizes(binary)}, binary
 
     def firmware_info(self):
         try:
@@ -216,19 +250,53 @@ class FirmwareCardService:
             raise FirmwareCardError('update.bin changed while checking it. Preview again.')
         return {'identity': signature(after), 'sha256': digest, 'size': after.st_size}
 
+    @staticmethod
+    def _no_recovery_conflict(root):
+        for name in RECOVERY_NAMES:
+            path = root / name
+            try:
+                path.lstat()  # Includes broken links; nothing at this path is ours to remove.
+            except FileNotFoundError:
+                continue
+            raise FirmwareCardError(f'Upgrade path already exists: {path}. Move it elsewhere yourself, then retry.')
+
+    @staticmethod
+    def _space(row, firmware, destination):
+        unit = row.get('allocation_unit', 128 * 1024)
+        if type(unit) is not int or unit <= 0:
+            raise FirmwareCardError('Invalid filesystem allocation unit.')
+        allocated = lambda n: ((n + unit - 1) // unit) * unit
+        copy = allocated(firmware['size'])
+        previous = allocated(destination['size']) if destination else 0
+        # Three extracted files, a recovery directory, and an explicit margin.
+        reserve = max(sum(allocated(n) for n in firmware['payload_sizes']) + unit,
+                      STOCK_MIN_FREE) + UPGRADE_MARGIN
+        required = max(copy, copy - previous + reserve)
+        return required, reserve, previous
+
+    @classmethod
+    def _check_space(cls, row, firmware, destination, *, copied=False):
+        required, reserve, previous = cls._space(row, firmware, destination)
+        needed = max(0, reserve - previous) if copied else required
+        if row['free'] < needed:
+            raise FirmwareCardError(f'Not enough free space for copying and player extraction: '
+                                    f'need {needed} bytes free, have {row["free"]}.')
+        return required, reserve
+
     def plan(self, target_id: str):
         firmware, _ = self._firmware()
         row, root = self._target(target_id)
-        if row['free'] < firmware['size'] + 1024 * 1024:
-            raise FirmwareCardError('Not enough free space for a verified temporary firmware copy.')
         with _directory(root):
+            self._no_recovery_conflict(root)
             destination = self._destination(root / 'update.bin')
+            required, reserve = self._check_space(row, firmware, destination)
         token = uuid.uuid4().hex
         self._plans = {key: value for key, value in self._plans.items() if time.monotonic()-value['created'] < 600}
         self._plans[token] = {'target': row, 'destination': destination, 'firmware': firmware, 'created': time.monotonic()}
         return {'token': token, 'target_id': target_id, 'root': str(root), 'label': row['label'],
                 'capacity': row['capacity'], 'existing_update': destination is not None,
                 'existing_size': destination['size'] if destination else 0,
+                'required_free': required, 'upgrade_reserve': reserve,
                 'firmware_version': firmware['version'], 'firmware_sha256': firmware['sha256']}
 
     def execute(self, token: str, *, confirmed: bool = False, progress=None):
@@ -250,8 +318,7 @@ class FirmwareCardService:
             row, root = self._target(plan['target']['id'])
             if row['identity'] != plan['target']['identity'] or str(root) != str(Path(plan['target']['root']).absolute()):
                 raise FirmwareCardError('The volume changed. Preview again.')
-            if row['free'] < firmware['size'] + 1024 * 1024:
-                raise FirmwareCardError('Not enough free space for a verified temporary firmware copy.')
+            self._check_space(row, firmware, plan['destination'])
             def check():
                 current, _ = self._target(row['id'])
                 if current['identity'] != row['identity']:
@@ -261,6 +328,7 @@ class FirmwareCardService:
                     progress({'phase': phase, 'completed': 0, 'total': 0})
             with source.open('rb') as original, _directory(root):
                 check()
+                self._no_recovery_conflict(root)
                 destination = root / 'update.bin'
                 if self._destination(destination) != plan['destination']:
                     raise FirmwareCardError('update.bin changed after preview. Preview and confirm again.')
@@ -280,6 +348,11 @@ class FirmwareCardService:
                 check()
                 if self._destination(destination) != plan['destination']:
                     raise FirmwareCardError('update.bin changed during copying. Preview and confirm again.')
+                self._no_recovery_conflict(root)
+                current, _ = self._target(row['id'])
+                if current['identity'] != row['identity']:
+                    raise FirmwareCardError('The drive was removed or replaced.')
+                self._check_space(current, firmware, plan['destination'], copied=True)
                 if plan['destination'] is not None:
                     os.replace(temporary, destination)
                 elif os.name == 'nt':

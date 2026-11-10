@@ -184,6 +184,7 @@ static int prepare(const char *path, const char *requested) {
     memset(&next, 0, sizeof(next));
     text(next.path, sizeof(next.path), path);
     next.generation = g;
+    pa_directory_begin();
     code = pa_lookup_size(&io_card, role, path + 9, !strcmp(role, "directory") ? 80 : 330, &rec);
     if (code == XM5_ART_MISS && !strcmp(role, "directory")) {
         role = "playback";
@@ -218,6 +219,7 @@ static int prepare(const char *path, const char *requested) {
             next.code[i] = pa_native_uri(&rec, RAM, next.uri[i], 64);
         }
     }
+    pa_directory_end();
     if (!pa_card_current(&io_card)) {
         for (i = 0; i < PA_SIZES; i++)
             next.code[i] = PA_CHANGED;
@@ -275,7 +277,9 @@ static int cached_unlocked(const char *path, unsigned side, char uri[64], unsign
 }
 static int cached(const char *path, unsigned side, char uri[64], unsigned *g) {
     stock_mutex_lock(io_lock);
+    pa_directory_begin();
     int r = usb_owned ? PA_CHANGED : cached_unlocked(path, side, uri, g);
+    pa_directory_end();
     stock_mutex_unlock(io_lock);
     return r;
 }

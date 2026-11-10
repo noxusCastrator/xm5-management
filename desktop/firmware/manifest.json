@@ -1,10 +1,10 @@
 {
   "schema": "xm5.firmware-bundle.v1",
   "app_version": "0.2.2",
-  "version": "V2.43-LIB02",
+  "version": "V2.43-LIB03",
   "firmware_release": "0.2.2",
   "file": "update.bin",
   "size": 56371200,
-  "sha256": "03a9fe7e665a32136e0c06fc13adf98990f20def41bb61989a34b27163e22fec",
+  "sha256": "be16c472ba1bdcf46dc6a5b93e218ea74c8baf967aa6cc5e43505efd7ee8fdd9",
   "physical_validation": "No new physical-device acceptance; see release validation notes."
 }
