@@ -21,6 +21,8 @@ Music and EQ files remain ordinary files. Audio frames, original tags and origin
 
 Each prepared song contains its own `XM5I` information record. The player verifies the actual record before using it. `Struct/tracks.tsv` is a fast hint, not a second copy of the pictures or an authority that can override the song. It has sorted, unique UTF-8 lines `1<TAB>card-relative-path<LF>` for present records or `0<TAB>path<LF>` for unprepared files. Rebuilding the index does not require a permanent song ID. A missing index disables prepared browsing until rebuilt; it must not reactivate the original large-cover conversion path.
 
+Directory artwork uses the first descendant with a valid prepared image at the requested size. The 0.2.2 reader advances this search in slices of at most 64 candidates. An unfinished scan returns pending and shows the ordinary icon; it does not report a completed miss or invoke full-size artwork conversion. Thirty-two small scan jobs retain progress. Completed results are reconsidered after five seconds or 64 reuses, and a selected image is verified before reuse. Closing/changing the card or replacing its index invalidates progress. Both hint values remain eligible for verification. This bounds candidates per call, not elapsed filesystem latency; a single OS read may still block.
+
 Within a common information record, all offsets below are zero-based bytes relative to its `XM5I` marker:
 
 | Offset | Length | Content |
@@ -57,6 +59,8 @@ Allowed midpoint is -60,000 through 0; allowed limit is 0 through 12,000. Gain i
 Preparation uses a new temporary file and publishes it only after validation. A failed or interrupted write leaves the original song intact. Index rebuilding and later playback can recover from stale hints. This does not replace a backup or protect a card from external corruption.
 
 Fresh export prepares a new isolated tree. Updates use file-level deltas: new/changed files and generated metadata are staged, unchanged audio remains in place, and only replaced preimages move to `.xm5-before-<transaction>/xm5/`. The working directory is `.xm5-library-<transaction>` at card root. Legacy fresh-export work can also use `.xm5-export-*`. The paired firmware skips these generated root directories so it does not scan retained backup audio.
+
+Backups are retained deliberately and consume card space. `storage_transactions(folder)` in the application console, or the corresponding `storage.transactions` query, lists retained transaction/backup paths. Normal synchronization does not prune them. Keep stages, backups and journals together until any interrupted transaction is resolved; deleting a referenced backup can block rollback. This release adds no automatic backup cleanup.
 
 Publication keeps `Struct/INCOMPLETE` until the generation is complete. `.xm5-activation.json` points to a transaction with a checksummed frozen plan and a compact mutable journal. Recovery rejects mutable fields that try to replace the frozen operation list. Exact preimage/staged hashes support resume or rollback after an interrupted rename, without source drives. An external edit blocks recovery rather than being overwritten. Backups and interrupted transactions are not automatically deleted. This is application-level recovery, not a guarantee against filesystem or flash corruption.
 

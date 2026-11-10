@@ -187,8 +187,14 @@ class InlineLibraryActions:
         base_name = base.get("name", current_name) if base else None
         name_changed = not favorite and current_name is not None and proposal["name"] != current_name
         name_conflict = name_changed and base_name is not None and current_name != base_name and proposal["name"] != base_name
+        # The import applies a whole playlist, not an automatic field merge.
+        # Independent name/order edits on opposite sides are a conflict too:
+        # applying the device's whole snapshot would otherwise lose PC changes.
+        pc_changed = bool(base and (now != base["tracks"] or current_name != base_name))
+        device_changed = bool(base and (returned != base["tracks"] or proposal["name"] != base_name))
+        versions_differ = now != returned or name_changed
         conflict = name_conflict or bool(current and (not base or
-            (now != base["tracks"] and returned != now and returned != base["tracks"])))
+            (pc_changed and device_changed and versions_differ)))
         proposal.update(current_snapshot={"tracks": now, "revision": current["revision"], "name": current_name} if current else None,
                         base_snapshot=base, conflict={"reason": "both_pc_and_device_changed"} if conflict else None)
         proposal["status"] = ("unresolved" if proposal["unresolved"] else "conflict" if conflict else

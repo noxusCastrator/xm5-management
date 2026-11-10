@@ -1,6 +1,6 @@
 """Playback through the backend's own mpv session, behind the engine interface ``Player`` drives.
 
-The backend owns playback (docs/FRONTEND-HANDOFF.md): the GUI never runs its own mpv while this engine
+The backend owns playback (docs/DEVELOPMENT.md): the GUI never runs its own mpv while this engine
 is in use. ``Player`` keeps the queue and the XM5 play modes; this engine loads one song at a time
 (``playback.command play_tracks`` with the song's library ID), polls ``playback.status`` for transport and
 position, and turns the end of a song into ``ended``.

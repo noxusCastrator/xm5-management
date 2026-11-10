@@ -1,4 +1,4 @@
-"""Destructive preparation is tested only inside owned temporary directories."""
+"""Firmware copying is tested only inside owned temporary directories."""
 import hashlib
 import json
 import os
@@ -13,7 +13,7 @@ from xm5lib.core.firmware_card import FirmwareCardError, FirmwareCardService
 class Volumes:
     def __init__(self, root):
         self.row = {'id': 'owned-test-volume', 'root': str(root), 'identity': 'original',
-                    'label': 'Synthetic card', 'filesystem': 'exFAT', 'capacity': 64*1024*1024, 'free': 100}
+                    'label': 'Synthetic card', 'filesystem': 'exFAT', 'capacity': 64*1024*1024, 'free': 64*1024*1024}
     def list_targets(self):
         return [dict(self.row)]
     def inspect(self, target_id):
@@ -47,21 +47,20 @@ class FirmwareCardTests(unittest.TestCase):
         self.assertTrue(self.service.firmware_info()['available'])
         self.assertEqual(len(self.service.list_targets()), 1)
         plan = self.plan()
-        self.assertEqual(plan['files_count'], 1)
-        with self.assertRaisesRegex(FirmwareCardError, 'confirmation'):
-            self.service.execute(plan['token'])
+        self.assertFalse(plan['existing_update'])
         self.assertEqual((self.card/'keep-until-confirmed.txt').read_text(), 'original')
 
-    def test_confirmed_operation_clears_nested_contents_and_only_copies_firmware(self):
+    def test_copy_preserves_nested_contents_without_extra_confirmation(self):
         nested = self.card/'music'/'album'
         nested.mkdir(parents=True)
         (nested/'track.flac').write_bytes(b'owned fixture')
         external = self.root/'external-original.flac'
         external.write_bytes(b'not on card')
         progress = []
-        result = self.service.execute(self.plan()['token'], confirmed=True, progress=progress.append)
+        result = self.service.execute(self.plan()['token'], progress=progress.append)
         self.assertEqual(result['status'], 'complete')
-        self.assertEqual([path.name for path in self.card.iterdir()], ['update.bin'])
+        self.assertEqual((nested/'track.flac').read_bytes(), b'owned fixture')
+        self.assertEqual((self.card/'keep-until-confirmed.txt').read_text(), 'original')
         self.assertEqual((self.card/'update.bin').read_bytes(), self.firmware)
         self.assertEqual(external.read_bytes(), b'not on card')
         self.assertEqual(progress[-1]['phase'], 'complete')
@@ -73,11 +72,10 @@ class FirmwareCardTests(unittest.TestCase):
             self.service.execute(plan['token'], confirmed=True)
         self.assertTrue((self.card/'keep-until-confirmed.txt').exists())
 
-    def test_changed_contents_require_new_confirmation(self):
+    def test_unrelated_changed_contents_do_not_invalidate_copy(self):
         plan = self.plan()
         (self.card/'new-file').write_bytes(b'new')
-        with self.assertRaisesRegex(FirmwareCardError, 'contents changed'):
-            self.service.execute(plan['token'], confirmed=True)
+        self.service.execute(plan['token'])
         self.assertTrue((self.card/'keep-until-confirmed.txt').exists())
         self.assertTrue((self.card/'new-file').exists())
 
@@ -130,7 +128,7 @@ class FirmwareCardTests(unittest.TestCase):
         with patch.object(Path, 'home', return_value=alias):
             self.assertEqual(self.service.list_targets(), [])
 
-    def test_links_removed_without_traversing_outside_target(self):
+    def test_unrelated_links_preserved_without_traversing(self):
         outside = self.root/'outside'
         outside.mkdir()
         original = outside/'original'
@@ -145,14 +143,67 @@ class FirmwareCardTests(unittest.TestCase):
             link.symlink_to(outside, target_is_directory=True)
         self.service.execute(self.plan()['token'], confirmed=True)
         self.assertEqual(original.read_bytes(), b'preserve')
-        self.assertEqual({path.name for path in self.card.iterdir()}, {'update.bin'})
+        self.assertTrue(link.is_dir())
+        self.assertEqual({path.name for path in self.card.iterdir()}, {'update.bin', 'linked-directory', 'keep-until-confirmed.txt'})
 
     def test_interrupted_copy_never_reports_success(self):
         def interrupt(event):
             if event['phase'] == 'copy':
                 raise OSError('synthetic interruption')
-        with self.assertRaisesRegex(FirmwareCardError, 'partially cleared'):
+        with self.assertRaisesRegex(FirmwareCardError, 'synthetic interruption'):
             self.service.execute(self.plan()['token'], confirmed=True, progress=interrupt)
+        self.assertEqual({p.name for p in self.card.iterdir()}, {'keep-until-confirmed.txt'})
+
+    def test_existing_firmware_requires_confirmation(self):
+        target = self.card/'update.bin'
+        target.write_bytes(b'old firmware')
+        plan = self.plan()
+        self.assertTrue(plan['existing_update'])
+        with self.assertRaisesRegex(FirmwareCardError, 'confirmation'):
+            self.service.execute(plan['token'])
+        self.assertEqual(target.read_bytes(), b'old firmware')
+        self.service.execute(plan['token'], confirmed=True)
+        self.assertEqual(target.read_bytes(), self.firmware)
+
+    def test_new_or_changed_firmware_after_plan_is_not_overwritten(self):
+        for existing in (False, True):
+            target = self.card/'update.bin'
+            if existing:
+                target.write_bytes(b'old firmware')
+            else:
+                target.unlink(missing_ok=True)
+            plan = self.plan()
+            target.write_bytes(b'user changed this')
+            with self.assertRaisesRegex(FirmwareCardError, 'update.bin changed'):
+                self.service.execute(plan['token'], confirmed=True)
+            self.assertEqual(target.read_bytes(), b'user changed this')
+
+    def test_copy_failure_preserves_previous_firmware_and_cleans_only_own_temp(self):
+        target = self.card/'update.bin'
+        target.write_bytes(b'old firmware')
+        unknown = self.card/'.xm5-update-unrelated.tmp'
+        unknown.write_bytes(b'not ours')
+        def corrupt(event):
+            if event['phase'] == 'verify':
+                for path in self.card.glob('.xm5-update-*.tmp'):
+                    if path != unknown:
+                        path.write_bytes(b'broken')
+        with self.assertRaisesRegex(FirmwareCardError, 'verification'):
+            self.service.execute(self.plan()['token'], confirmed=True, progress=corrupt)
+        self.assertEqual(target.read_bytes(), b'old firmware')
+        self.assertEqual(unknown.read_bytes(), b'not ours')
+        self.assertEqual(len(list(self.card.glob('.xm5-update-*.tmp'))), 1)
+
+    def test_insufficient_free_space_preserves_existing_files(self):
+        self.volumes.row['free'] = 0
+        with self.assertRaisesRegex(FirmwareCardError, 'free space'):
+            self.plan()
+        self.assertEqual((self.card/'keep-until-confirmed.txt').read_text(), 'original')
+
+    def test_directory_named_update_bin_is_refused(self):
+        (self.card/'update.bin').mkdir()
+        with self.assertRaisesRegex(FirmwareCardError, 'regular file'):
+            self.plan()
 
 
 if __name__ == '__main__':

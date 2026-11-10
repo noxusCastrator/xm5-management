@@ -501,6 +501,22 @@ def recover(root, transaction=None, *, action="rollback", cancel=None, progress=
         return _run(root, journal, cancel, progress)
     try:
         _assert_pointer(root, journal)
+        # Check every required backup before moving any active file. A blocked
+        # rollback must keep the currently readable version in place.
+        for operation in journal["operations"]:
+            path, before, after = operation["path"], operation["before"], operation["after"]
+            staged = journal["control"] + "/new/" + path
+            saved = journal["backup"] + "/" + path
+            active, backup_hash = _hash(root, path), _hash(root, saved)
+            if active == before and backup_hash is None:
+                continue
+            if before is not None and backup_hash != before:
+                raise xm5.InlineError("A missing or modified backup blocks rollback: " + path)
+            if active == after:
+                if _hash(root, staged) not in (None, after):
+                    raise xm5.InlineError("Rollback staging contains unrelated bytes")
+            elif active is not None:
+                raise xm5.InlineError("A user edit blocks rollback: " + path)
         _check_marker(root, journal, create=True)
         journal["status"] = "rolling_back"
         _save(root, journal)
@@ -510,6 +526,8 @@ def recover(root, transaction=None, *, action="rollback", cancel=None, progress=
             active, backup_hash = _hash(root, path), _hash(root, saved)
             if active == before and backup_hash is None:
                 continue
+            if before is not None and backup_hash != before:
+                raise xm5.InlineError("A missing or modified backup blocks rollback: " + path)
             if active == after:
                 if _hash(root, staged) is None:
                     _move(root, path, staged)

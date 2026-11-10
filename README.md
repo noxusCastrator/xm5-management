@@ -15,11 +15,11 @@ For PEQ with the factory music and artwork handling, use [xm5-peq](https://githu
 - Manage PEQ and use basic desktop playback to check tracks. The Windows portable package includes its tools; installed Peace, Mp3tag and foobar2000 are not required.
 - Control the running application with function scripts through its console or local client.
 - Use the Windows x64 installer or portable ZIP, with the same bundled tools and an original application icon.
-- Make an update card from the bundled, verified `update.bin`. This explicitly confirmed operation clears the selected drive.
+- Copy the bundled, verified `update.bin` to an update card. Existing music and other files stay in place. Replacing an existing `update.bin` requires confirmation.
 
 ## Usage
 
-Version 0.2.2 is a local candidate awaiting publication. Its release folder contains the installer, portable ZIP, standalone `update.bin`, project source ZIP and corresponding runtime source ZIP. The paired firmware remains 0.2.0 / V2.43-LIB01, unchanged.
+Version 0.2.2 is a local candidate awaiting publication. Its release folder contains the installer, portable ZIP, standalone `update.bin`, project source archives and corresponding runtime source ZIP. The paired firmware includes a bounded directory-cover lookup to reduce repeated scans of large folders.
 
 1. Run the installer, or extract the complete portable ZIP and open `XM5Studio.exe`.
 2. To prepare the paired player firmware, open **Settings → Player firmware → Create update card**, or copy the standalone `update.bin` yourself. Follow the official XM5 update procedure.
@@ -39,9 +39,9 @@ On Windows x64 with Python 3.12 or newer, run `python tools/setup_desktop.py` fr
 
 ## Warning
 
-This is unofficial modified firmware. Version 0.2.0 has software and VM validation; its new storage firmware has not been physically tested. Earlier one-device feedback applies to PEQ08. Read the [validation record](docs/VALIDATION_0.2.0.md).
+This is unofficial modified firmware. The paired storage firmware has software and VM validation, without new physical-device acceptance. Earlier one-device feedback applies to PEQ08. Read the [validation record](docs/VALIDATION_0.2.2.md).
 
-Creating an update card permanently removes the selected drive's contents and leaves only `update.bin`. Save anything you need before confirming. This does not format the drive or flash the player. Normal music export manages the `xm5` folder and preserves unrelated card data.
+Creating an update card copies only the root `update.bin`. If that file already exists, choose whether to replace it. Other files stay in place. This does not format the drive or flash the player.
 
 Flashing can cause data loss or boot failure. Back up your music and card, and keep the official recovery package and instructions. Recovery is not guaranteed. Update backups and journals do not replace a separate music backup. Keep the paired firmware and companion together: older stock firmware can scan retained backup music.
 

@@ -7,13 +7,14 @@ import socket
 import uuid
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from pydantic import BaseModel, ConfigDict, Field
 
 from .engine import Engine, DomainError
 from .runtime import ProfileLock, default_home, write_discovery, remove_discovery, runtime_path
+from .http_guard import LocalGuard
 
 READS = ['tracks.search','tracks.get','playlists.list','playlists.get','favorites.list','presets.list',
          'capabilities','jobs.get','plans.get','playback.status','playback.outputs','receipts.get','settings.get','peace.inspect','device_state.inspect','lyrics.get','lyrics.list','scripts.capture','scripts.format','scripts.convert','storage.health','storage.transactions','storage.plan']
@@ -44,26 +45,7 @@ def failure(code, message, status=400, details=None):
 def create_app(engine, token, authority, instance_id, shutdown=None):
     app = FastAPI(title='XM5 Local Commands', version='1.0', docs_url=None, redoc_url=None, openapi_url=None)
 
-    @app.middleware('http')
-    async def guard(request: Request, call_next):
-        if request.headers.get('host') != authority:
-            return failure('HOST_REJECTED','Unexpected local authority',403)
-        if 'origin' in request.headers:
-            return failure('ORIGIN_REJECTED','Browser clients are not enabled',403)
-        authorization = request.headers.get('authorization','')
-        if not secrets.compare_digest(authorization.encode(), ('Bearer '+token).encode()):
-            return failure('UNAUTHORIZED','A valid session token is required',401)
-        if request.method in ('POST','PUT','PATCH'):
-            if request.headers.get('content-type','').split(';')[0] != 'application/json':
-                return failure('INVALID_ARGUMENT','JSON body required',415)
-            count=0; chunks=[]
-            async for chunk in request.stream():
-                count += len(chunk)
-                if count > 1_048_576:
-                    return failure('BODY_TOO_LARGE','Request exceeds 1 MiB',413)
-                chunks.append(chunk)
-            request._body = b''.join(chunks)
-        return await call_next(request)
+    app.add_middleware(LocalGuard, token=token, authority=authority, failure=failure)
 
     @app.exception_handler(DomainError)
     async def domain_error(_, exc):

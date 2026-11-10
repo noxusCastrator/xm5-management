@@ -2,7 +2,7 @@
 
 The backend (``xm5lib.automation.server``) owns the library identities, playlists, favourites, notes,
 PEQ presets, card export/return jobs and playback. The GUI never opens the backend's database and never
-creates its own ``Application`` writer (docs/FRONTEND-HANDOFF.md). It:
+creates its own ``Application`` writer (docs/DEVELOPMENT.md). It:
 
 * starts the server as its own child (Windows: in a kill-on-close job object, so it cannot outlive the
   window), or attaches to the one already serving this profile -- never two per profile;

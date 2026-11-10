@@ -59,24 +59,21 @@ class FakeFirmwareService:
             raise RuntimeError("Test plan gate timed out")
         if self.plan_error:
             raise ValueError(self.plan_error)
-        files = list(self.card.iterdir())
         return {"token": "fixture-plan-token", "target_id": target_id, "root": str(self.card),
-                "label": "Sandbox card", "capacity": 32_000_000_000, "files_count": len(files),
-                "bytes_to_remove": sum(p.stat().st_size for p in files),
+                "label": "Sandbox card", "capacity": 32_000_000_000,
+                "existing_update": (self.card / "update.bin").exists(), "existing_size": 3,
                 "firmware_version": self.info["version"], "firmware_sha256": self.sha256}
 
     def execute(self, token, *, confirmed=False, progress=None):
         self._record("execute", token=token, confirmed=confirmed)
-        if not confirmed or token != "fixture-plan-token":
+        if ((self.card / "update.bin").exists() and not confirmed) or token != "fixture-plan-token":
             raise ValueError("Confirmation and exact plan token required")
         if self.execute_gate is not None and not self.execute_gate.wait(5):
             raise RuntimeError("Test execute gate timed out")
         if progress:
-            progress({"phase": "clear", "completed": 0, "total": 1})
+            progress({"phase": "copy", "completed": 0, "total": 1})
         if self.execute_error:
             raise OSError(self.execute_error)
-        for child in self.card.iterdir():
-            child.unlink()
         if progress:
             progress({"phase": "copy", "completed": 0, "total": len(self.payload)})
         (self.card / "update.bin").write_bytes(self.payload)
@@ -111,6 +108,7 @@ class FirmwareCardWidgets(unittest.TestCase):
         self.card.mkdir()
         self.sentinel = self.card / "keep until confirmed.txt"
         self.sentinel.write_bytes(b"back up this fixture")
+        (self.card / "update.bin").write_bytes(b"old")
         self.service = FakeFirmwareService(self.card)
         self.ctl = Controller()
         self.ctl.show()
@@ -193,9 +191,9 @@ class FirmwareCardWidgets(unittest.TestCase):
             self.assertEqual(len(box.buttons.buttons()), 2)
             self.assertTrue(box.cancel.isDefault())
             self.assertFalse(box.confirm.isDefault())
-            self.assertIn("ALL contents", box.warning.text())
+            self.assertIn("Replace it?", box.warning.text())
             self.assertIn(str(self.card), box.warning.text())
-            self.assertIn("Only update.bin will remain", box.warning.text())
+            self.assertIn("Other files will be preserved", box.warning.text())
             self.assertIn('href="export"', box.backup.text())
             QTest.mouseClick(box.cancel, Qt.LeftButton)
 
@@ -212,12 +210,21 @@ class FirmwareCardWidgets(unittest.TestCase):
         self.wait_for(lambda: self.dialog._complete)
         self.assertEqual(self.executed()[0]["token"], "fixture-plan-token")
         self.assertTrue(self.executed()[0]["confirmed"])
-        self.assertEqual([p.name for p in self.card.iterdir()], ["update.bin"])
+        self.assertEqual({p.name for p in self.card.iterdir()}, {"update.bin", self.sentinel.name})
         self.assertEqual(hashlib.sha256((self.card / "update.bin").read_bytes()).hexdigest(), self.service.sha256)
         self.assertIn(self.service.sha256, self.dialog.status.text())
         self.assertIn("official XM5 update procedure", self.dialog.status.text())
         self.assertFalse(self.dialog.create_button.isEnabled())
         self.assertTrue(all(c["thread"] != threading.get_ident() for c in self.service.calls))
+
+    def test_missing_update_copies_without_replacement_dialog(self):
+        (self.card / "update.bin").unlink()
+        self.open_dialog()
+        self.start_plan()
+        self.wait_for(lambda: self.dialog._complete)
+        self.assertIsNone(self.dialog._confirmation)
+        self.assertFalse(self.executed()[0]["confirmed"])
+        self.assertEqual(self.sentinel.read_bytes(), b"back up this fixture")
 
     def test_enter_uses_cancel_and_confirmation_rejects_second_operation(self):
         self.open_dialog()
@@ -326,12 +333,12 @@ class FirmwareCardWidgets(unittest.TestCase):
         self.assertFalse(self.executed())
         self.assertTrue(self.sentinel.exists())
 
-    def test_write_failure_reports_possible_partial_clear(self):
+    def test_write_failure_reports_error_without_claiming_drive_cleared(self):
         self.service.execute_error = "Fixture write failed"
         self.open_dialog()
         self.confirm_with(lambda box: box.accept())
         self.start_plan()
-        self.wait_for(lambda: "partially cleared" in self.dialog.status.text())
+        self.wait_for(lambda: "Other files are not cleared" in self.dialog.status.text())
         self.assertIn("Fixture write failed", self.dialog.status.text())
         self.assertFalse(self.dialog._complete)
         self.assertNotIn("rollback", self.dialog.status.text().lower())
@@ -343,8 +350,8 @@ class FirmwareCardWidgets(unittest.TestCase):
         self.assertEqual(text("section"), "播放器固件")
 
         def cancel(box):
-            self.assertIn("全部内容将被删除", box.warning.text())
-            self.assertIn("仅保留 update.bin", box.warning.text())
+            self.assertIn("是否替换", box.warning.text())
+            self.assertIn("其他文件将保留", box.warning.text())
             self.assertEqual(box.cancel.text(), "取消")
             box.reject()
 

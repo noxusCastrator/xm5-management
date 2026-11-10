@@ -23,15 +23,15 @@ struct xm5_block {
 /* A canonical lookup reads the first two metadata headers only. */
 int xm5_find(int fd, int scan, struct xm5_block *block);
 int xm5_find_media(int fd, int scan, struct xm5_block *block);
-int xm5_slot(int fd, const struct xm5_block *block, unsigned side,
-             off_t *position, unsigned *length);
+int xm5_slot(int fd, const struct xm5_block *block, unsigned side, off_t *position,
+             unsigned *length);
 int xm5_fields(int fd, const struct xm5_block *block, int32_t *peak, int32_t *crest,
                off_t *lyric_position, unsigned *lyric_length);
 int xm5_validate(int fd, const struct xm5_block *block, int complete);
 int xm5_read(int fd, void *buffer, size_t length, off_t position);
 int xm5_write(int fd, const void *buffer, size_t length);
-int xm5_organize(const char *path, const char *const art[3], const char *lyrics,
-                 int32_t peak, int32_t crest);
+int xm5_organize(const char *path, const char *const art[3], const char *lyrics, int32_t peak,
+                 int32_t crest);
 int xm5_rebuild(const char *root);
 int xm5_path(char *out, size_t capacity, const char *base, const char *leaf);
 

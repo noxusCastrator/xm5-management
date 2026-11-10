@@ -50,6 +50,8 @@ def main():
  ap.add_argument("--output",type=Path,required=True)
  ap.add_argument("--peq08-build",type=Path,help="Optional existing completed historical build/work/xm5-workspace; read-only")
  a=ap.parse_args();stock=a.stock.resolve();tr=a.toolchain.resolve();out=a.output.resolve()
+ release=json.loads((REPO/"release.json").read_text(encoding="utf-8"))
+ tag=release.get("firmware_tag","V2.43-LIB01")
  if sys.platform!="linux" or os.geteuid()!=0:ap.error("Run as root in Linux/WSL to preserve rootfs metadata.")
  if sha(stock)!=STOCK:ap.error("Official V2.43 input hash mismatch.")
  if out.exists():ap.error("Output exists; choose a fresh directory.")
@@ -93,9 +95,9 @@ def main():
   lines.append("\t".join(("file",name,sha(rootfs/name),sha(overlay/filename),f"{mode:04o}","0:0","overlay/"+filename)))
  manifest=package/"build/lib01-manifest.tsv";manifest.write_text("\n".join(lines)+"\n",newline="\n")
  final=package/"out/final"
- run([sys.executable,scripts/"build_candidate.py","--input",stock,"--overlay",manifest,"--out",final,"--tag","V2.43-LIB01"])
- run([sys.executable,scripts/"verify_candidate.py","--stock",stock,"--candidate",final/"update.bin","--overlay",manifest,"--expect-tag","V2.43-LIB01","--out",final/"INDEPENDENT-VERIFY.json"])
- metadata={"version":"0.2.0","tag":"v0.2.0","firmware_tag":"V2.43-LIB01","base_version":"ONIX XM5 V2.43","base_sha256":STOCK,"update_sha256":sha(final/"update.bin"),"expected_overlays":{name:sha(overlay/file) for name,file in names.items()},"physical_operations":False}
+ run([sys.executable,scripts/"build_candidate.py","--input",stock,"--overlay",manifest,"--out",final,"--tag",tag])
+ run([sys.executable,scripts/"verify_candidate.py","--stock",stock,"--candidate",final/"update.bin","--overlay",manifest,"--expect-tag",tag,"--out",final/"INDEPENDENT-VERIFY.json"])
+ metadata={"version":release["version"],"tag":release["tag"],"firmware_tag":tag,"base_version":"ONIX XM5 V2.43","base_sha256":STOCK,"update_sha256":sha(final/"update.bin"),"expected_overlays":{name:sha(overlay/file) for name,file in names.items()},"physical_operations":False}
  (out/"release-reconstruction.json").write_text(json.dumps(metadata,indent=2)+"\n")
  print(json.dumps(metadata,indent=2))
 

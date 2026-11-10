@@ -20,7 +20,7 @@ import mutagen
 
 from ..application import DomainError
 from ..core.restore_card import no_links
-from ..ui import tagfile
+from ..core import tagfile
 from .. import scripting
 from ..core import script_tags
 from ..scripting.context import capture_context

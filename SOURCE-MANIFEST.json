@@ -3,6 +3,10 @@
   "project": "xm5-management",
   "version": "0.2.2",
   "files": {
+    ".clang-format": {
+      "size": 205,
+      "sha256": "5b6220d033dfba6631a96d44d6439e344416a88474cd455e7f005bcb5f077b6c"
+    },
     ".gitattributes": {
       "size": 73,
       "sha256": "65d292d8fe2b9b392b4b67f7d82b750133580ee500047a99845eb08ba134b0d8"
@@ -16,12 +20,12 @@
       "sha256": "fe886707672b1f47fec667bedbd747ca95ef03c99597f5b1fc5f5f9c2c1ff8fd"
     },
     "README.md": {
-      "size": 4681,
-      "sha256": "f91b62028eb807a5333b1fbd27302c1121bc7d0637c15fcb3b50859eed0a7142"
+      "size": 4686,
+      "sha256": "99498e47b0b7b5f5a631532f732f520017f8b89d9437c1d5e1d29aec74328f31"
     },
     "THIRD_PARTY.md": {
-      "size": 1837,
-      "sha256": "b90aad59105abdd45f436b42f95ad309641c3927dc44f3285fb70963a412b807"
+      "size": 1825,
+      "sha256": "6539d2cb280ff5d249a687d923ab4cf6febc46c84720a8852f0dcf5607026f30"
     },
     "desktop/XM5Library.cmd": {
       "size": 635,
@@ -33,7 +37,7 @@
     },
     "desktop/firmware/manifest.json": {
       "size": 343,
-      "sha256": "5d4f50ab413e8d266b3a6228754ee8530e3422a3559bd03118f3a1cf558468e1"
+      "sha256": "2d49ec1ce7689bfdc45cf6a05599d4f7a971ab28d5b7151b42aa80b11bb16d6f"
     },
     "desktop/requirements.txt": {
       "size": 1954,
@@ -64,8 +68,8 @@
       "sha256": "7e9f136f1f5448798d665fad82827444d2937076fb843b1b28dac235253e9c21"
     },
     "desktop/xm5lib/application/service.py": {
-      "size": 57265,
-      "sha256": "52449df5a8b3cb2833070eabc580f7ee811332c00e09c3ecb412241778cf67cc"
+      "size": 58222,
+      "sha256": "999be0643daaff22f14e8ab17f4c8e48ab9e2703818861ae427abd2aa53c54a4"
     },
     "desktop/xm5lib/automation/__init__.py": {
       "size": 85,
@@ -87,13 +91,17 @@
       "size": 30305,
       "sha256": "0e9ae0b63475bb944fbf24ce914e1cce25ee800894351d96f253ec175099f73e"
     },
+    "desktop/xm5lib/automation/http_guard.py": {
+      "size": 2461,
+      "sha256": "951c598287047f9430f5d89165e2859a9a4a771c572a37d6a5a9506b5f7300fd"
+    },
     "desktop/xm5lib/automation/inline_device_actions.py": {
       "size": 7260,
       "sha256": "c5fddea7ea289ff9352e4004090883ca7d3248fe845eeec6e2348d0ce2928596"
     },
     "desktop/xm5lib/automation/inline_library_actions.py": {
-      "size": 16432,
-      "sha256": "f23dbb9494e989e8df4964a49ecbb7bed4b497ec8de39f491cf359b7edd322c9"
+      "size": 16892,
+      "sha256": "a8635a5910761824783ec11aa0ea5493915a80d3f64978c46eae9638b338704d"
     },
     "desktop/xm5lib/automation/inline_storage_actions.py": {
       "size": 5008,
@@ -112,16 +120,16 @@
       "sha256": "af1432386516a9f941771adb3b46f59e7e9216a35aefdeb8e9e0e0c39e432363"
     },
     "desktop/xm5lib/automation/script_actions.py": {
-      "size": 43709,
-      "sha256": "aa9aa887bc1418faca90812d6ea42c6d39a314b07399750968e3b0718382a7e3"
+      "size": 43711,
+      "sha256": "28c9d05f10ee5ade377edcf02da22f811a4e0d1758c544504048cbfc48844491"
     },
     "desktop/xm5lib/automation/script_groups.py": {
       "size": 8495,
       "sha256": "15a0ffb1534b55e7331f0b22d788fb058f1379d419971a416bceae6eb3a722c4"
     },
     "desktop/xm5lib/automation/server.py": {
-      "size": 7532,
-      "sha256": "eed345e3fefd55de582ef7826436a6ed1d0318b9f702285c209eed93ad2da934"
+      "size": 6497,
+      "sha256": "886989c2ee184b1cc6944c6d6a4f3a733c2ede63d36aa3c7ab3e96e56dbcfa62"
     },
     "desktop/xm5lib/automation/storage_actions.py": {
       "size": 13680,
@@ -232,8 +240,8 @@
       "sha256": "a43d6bec73589db591c0cadaac23c671a621e994664471ca4c6ea33193510478"
     },
     "desktop/xm5lib/core/firmware_card.py": {
-      "size": 14997,
-      "sha256": "89c9278fda37b02ad0c55b10c4413473f2a583e4e49cb6f479e7924f1e3f8c8c"
+      "size": 15653,
+      "sha256": "2f84c512900dbc200bddda8368efe214887b0dc1b725d503636a625e6305f6d7"
     },
     "desktop/xm5lib/core/foobar.py": {
       "size": 8137,
@@ -248,8 +256,8 @@
       "sha256": "6253024a48119713166ced43688d6011a39a152ceb0749e7ab4ae9afcca115da"
     },
     "desktop/xm5lib/core/inline_card/delta.py": {
-      "size": 28102,
-      "sha256": "ac6b3d49cd7595399a6b5cfbc51fd0a2c55aad779616f59063fe235bf382de84"
+      "size": 29261,
+      "sha256": "37e699a1014f9a9363447f98875d996e9d86db1328d388908cb2435c82a97724"
     },
     "desktop/xm5lib/core/inline_card/export_card.py": {
       "size": 11589,
@@ -366,6 +374,10 @@
     "desktop/xm5lib/core/script_tags.py": {
       "size": 10006,
       "sha256": "c131f9052d075b2c2648e0bef6a67afc4ced260d841322f93b1311c3459c9459"
+    },
+    "desktop/xm5lib/core/tagfile.py": {
+      "size": 17558,
+      "sha256": "3cd8bd1c8fba0f559e1ab4f757535cc6150162f8dbc33de25ba3a3d608c0b309"
     },
     "desktop/xm5lib/core/tags.py": {
       "size": 8216,
@@ -3572,8 +3584,8 @@
       "sha256": "4b7c0a999954d329eeb03c7f8678fe159b3200356b4cc82e22f12d9602bc3231"
     },
     "desktop/xm5lib/ui/backend_player.py": {
-      "size": 17921,
-      "sha256": "778d65b0869f072dcc51e4ea2b40664b2db569115e6ae886eb7ecb8598de2b0e"
+      "size": 17916,
+      "sha256": "4579c98f9d064bd357c1811a90f2c354b70033f560060a415b1c17f157d98815"
     },
     "desktop/xm5lib/ui/catalog.py": {
       "size": 6559,
@@ -3648,8 +3660,8 @@
       "sha256": "606508c2ebefb1a27219137d12c060a831a1aa90a183d79bb3f61f65ab528291"
     },
     "desktop/xm5lib/ui/firmware_card_dialog.py": {
-      "size": 19268,
-      "sha256": "183c5a19158395f50bea259c4c563d2abb75df1fa16eba0835d312f7899eaa4d"
+      "size": 19164,
+      "sha256": "fd8190e0b89b9625e4df975b90f318c1abe9fc26ab414c9f494464846c4cd021"
     },
     "desktop/xm5lib/ui/first_run.py": {
       "size": 2728,
@@ -3712,8 +3724,8 @@
       "sha256": "7534d01d4c73dbd80f3757aba6eaa514dcb52b44ab9650818e56ee86a24996ef"
     },
     "desktop/xm5lib/ui/service.py": {
-      "size": 18940,
-      "sha256": "46491c63a84045c252068f3314a35591ca978fd32b2f14f9b0acae5de45a5458"
+      "size": 18935,
+      "sha256": "abc8ba7e6e59d8374a651085d4d9d6530779d98794dc12bce2846085ca5997d5"
     },
     "desktop/xm5lib/ui/settings_page.py": {
       "size": 10391,
@@ -3728,8 +3740,8 @@
       "sha256": "98b0d981e89a923d1b614254f5da45c87deec5092e61aa014a7cca1d04ee8e90"
     },
     "desktop/xm5lib/ui/tagfile.py": {
-      "size": 17558,
-      "sha256": "3cd8bd1c8fba0f559e1ab4f757535cc6150162f8dbc33de25ba3a3d608c0b309"
+      "size": 125,
+      "sha256": "adfb55be3b1c4cd36f0c368b31a104f152963b823b7663e181b00bf77372bb73"
     },
     "desktop/xm5lib/ui/widgets.py": {
       "size": 33982,
@@ -3748,8 +3760,8 @@
       "sha256": "b0352fc255bb04c88f315e3fce3637ff531b9070d64d69133e984c4fb571bdc2"
     },
     "docs/BUILD_STABLE.md": {
-      "size": 5145,
-      "sha256": "6f1d54da8930c9f7fdb7023a09b09e1a664c9cb424d01b093b6db27429a25794"
+      "size": 5514,
+      "sha256": "5edaeb0a0e12cce5199db5380bc4e6f3b1b6ad941628688fd514bda9e7d8e454"
     },
     "docs/CHANGELOG.md": {
       "size": 1095,
@@ -3764,12 +3776,12 @@
       "sha256": "719c688f35e62a3e0f5a90ec56a5e849dfd04e1f3a87b747086483cd21e02dd3"
     },
     "docs/DEVELOPMENT.md": {
-      "size": 3819,
-      "sha256": "11c1ef4c3c33dca163c2b28f5906865d9ca896c17e6379fb79a9fa07521ec994"
+      "size": 5142,
+      "sha256": "d46336f524b2026dec3014d98d84b284aac838071c6aaa4748612c194c5ea6da"
     },
     "docs/FIRMWARE_CARD.md": {
-      "size": 3392,
-      "sha256": "42e68bed8e427b383a78cbf187a1725e5005b37567b9824bf3ee95db6cd9fc5c"
+      "size": 3717,
+      "sha256": "f7b9965ec1723e7c5abb356147a900539b91dab6e9bd103d1fac58676c8dee0d"
     },
     "docs/ICON.md": {
       "size": 2764,
@@ -3787,6 +3799,10 @@
       "size": 2516,
       "sha256": "069b2e592446536cf4fd0d6d00f45a36add6a039e79b43f084ba364d13c6960e"
     },
+    "docs/REVIEW_FIXES_0.2.2.md": {
+      "size": 5158,
+      "sha256": "4c8a2e3e4c2f1b24dbd7696e663dc2fbe850245de767dc8cd481e943c52a628b"
+    },
     "docs/RUNTIME_DISTRIBUTION.md": {
       "size": 3170,
       "sha256": "3d1c5b0448e4bb6c859f329ae464cf4386f97035dde44bed22ccaaae68d6ec7f"
@@ -3795,9 +3811,13 @@
       "size": 6283,
       "sha256": "17bfa2acf3094bd612c2b13b1970f73d4b13f4534f9c2fbcebf2e9d99f6b0391"
     },
+    "docs/SOURCE_MAP.md": {
+      "size": 2278,
+      "sha256": "708827df499e6152083de8c6cd818c63c4f64819e130edac98c9416c2a03d644"
+    },
     "docs/STORAGE_FORMAT.md": {
-      "size": 6871,
-      "sha256": "91a5219617fa13e226d1f955a3bd3d46a566a0ae67c4d9e4fabe807aca134a9d"
+      "size": 8001,
+      "sha256": "76c059423473aab2a085452817dad4e6a74fa7169a28a951a6ed8f862d8dea9b"
     },
     "docs/VALIDATION_0.2.0.md": {
       "size": 4520,
@@ -3808,12 +3828,12 @@
       "sha256": "b98c931b824ad94f3b900cdf2d812c24231fd800550648ba99e14ddc8541f7f3"
     },
     "docs/VALIDATION_0.2.2.md": {
-      "size": 3941,
-      "sha256": "dfec5ec4984603abbb354aceb4be767a04e74a7c1202fc4d7c24b254eba2b7dd"
+      "size": 6262,
+      "sha256": "3eb2b7c7268a7d0a7c28b9c7197affbbc8418c802cc48b42648ce4273d10316b"
     },
     "release.json": {
-      "size": 4146,
-      "sha256": "b3a4373346b72b9df1dc13db2d756be0624e89c673daa8a32faa0ab31ac2b07f"
+      "size": 4338,
+      "sha256": "1ac61c4c803817ada0228fa14f1ca8e34a199b619c2e271e6f18347f2e1be121"
     },
     "src/AI_CONTEXT.md": {
       "size": 3683,
@@ -4032,20 +4052,20 @@
       "sha256": "88af6cb6d7aa7195e1a0a024805fadfec14399e7f837a5bfc522385970916fb9"
     },
     "src/native_storage/art_index.h": {
-      "size": 993,
-      "sha256": "a17c3e47aec5964490c567a9a6935322cd55ae5c7a9f0d90e26161c5dc6920bb"
+      "size": 1063,
+      "sha256": "5d5c0535e6cfc8db53dd1fe3905a3b792fb7e2ea96ffe72655017218d99c5ecb"
     },
     "src/native_storage/art_profile.h": {
-      "size": 331,
-      "sha256": "27b511e2c8e8405dd654dc967c6d4ff4886f79d3978824351c81dbb1b792fb7a"
+      "size": 394,
+      "sha256": "c3e23bc382a6fd027e3fd42bbf2fb491bfe43a0ff966504dd22f9a1b6ea86ca7"
     },
     "src/native_storage/binary_reader.inc": {
-      "size": 7003,
-      "sha256": "bb5ae571bb45c8198143e4a65f671a0a63a444690e2a1c9345b0ad8fbc21b0f8"
+      "size": 9485,
+      "sha256": "c50239fa76ce693d2e1ad28c321dcbe21a21e117c973ddf01e981d981729af67"
     },
     "src/native_storage/bitmap_safe.c": {
-      "size": 5020,
-      "sha256": "69848d73244a7b69e17043262e2232443caa82949a5b0b11a8b06fbc89d4048c"
+      "size": 6323,
+      "sha256": "2441e12e7dca4605d393893642ad40a58cdec4b65355e76a1ec77f4daf654357"
     },
     "src/native_storage/bitmap_test.ld": {
       "size": 575,
@@ -4060,12 +4080,12 @@
       "sha256": "4f8642960d5475cfc8ea267c1030d2a8448eafd4d83d39ed7750ae4d160ea948"
     },
     "src/native_storage/extra_thunks.inc": {
-      "size": 1419,
-      "sha256": "5211321c66ad0c29c17f7271a9fef5b52e00cd59ebede13e8e1a6793b589a485"
+      "size": 1571,
+      "sha256": "af6df7ec175b99971d84133c4ab27e4e5588071b77b6a7ff18fdb31229d2c2a7"
     },
     "src/native_storage/favorite_io.inc": {
-      "size": 3662,
-      "sha256": "63779ce3144ea6aaedf57d08ac8ac1ac935499b672116116e1622245d96f5df7"
+      "size": 5274,
+      "sha256": "b67c4b10aa5782bfc00b2001545d4e3e3214712dcdf69e49d6017a086a2ae65e"
     },
     "src/native_storage/gp_test.ld": {
       "size": 465,
@@ -4080,8 +4100,8 @@
       "sha256": "7cf4f0a8750e7c1e58b4ed0a7946d5b69baade36f699e42d78f7adea450f80c4"
     },
     "src/native_storage/info_reader.inc": {
-      "size": 13554,
-      "sha256": "a47cc52bd4686c2a8521d9093db1b968c7bedb9b1682900468fd0f035e92b8c1"
+      "size": 19026,
+      "sha256": "62e6867cf2cf11541dab41b432da4fdae92af14d2fe934d7b1eab68ac6fcfb78"
     },
     "src/native_storage/inline-formats/other_container.c": {
       "size": 9942,
@@ -4092,48 +4112,48 @@
       "sha256": "1a69dc454f0934bdcda7ce8c72596d1134ca01ca55ce1898bb8c48f50746dc78"
     },
     "src/native_storage/inline_favorite_io.inc": {
-      "size": 2895,
-      "sha256": "44a87794a58d1886794977d6a5f77516d7f3da6eb2d1d96436f6244f5b89297d"
+      "size": 3679,
+      "sha256": "d1bb9006bbee9d0907663573852901afa05beaa9ccad71b9ea9aae2399661be7"
     },
     "src/native_storage/inline_flac.h": {
       "size": 1322,
-      "sha256": "476507a4a325930130ad2266e231857d8d74c24ecded073af2840dbacd8c2a2a"
+      "sha256": "9b6e3ba4b12c8ce3b4979c8f6dfe4f826b7bde0588e65794653c8edb13809bc5"
     },
     "src/native_storage/inline_reader.inc": {
-      "size": 16477,
-      "sha256": "e24847689611256cd9fa154174206d5083c3de95515d247cf2e707a8591603d2"
+      "size": 27019,
+      "sha256": "486de23c2d9601ad4c47d40c96cbe40dfa4b0d13e7fc87c58266d1224c0a06db"
     },
     "src/native_storage/inline_state_io.inc": {
-      "size": 25448,
-      "sha256": "24ea2ac6bc8e33f12705d446c5957cb9176065449c4e7387247fcb0fdf631499"
+      "size": 34980,
+      "sha256": "c69db55cb821a94ea7e7a45fb64898b90377509b68d74cf58f961279ec252292"
     },
     "src/native_storage/io_cli.c": {
-      "size": 3773,
-      "sha256": "5869852e5c2c900af74c7ad89e81f4a4eeb61d06056506caeca3ea3f247f9b95"
+      "size": 5486,
+      "sha256": "fcb3cf9f52dde10a3050a8d9ed1cbeedecafd35fe52ea080060bd10b02f76fa5"
     },
     "src/native_storage/lyric_reader.inc": {
-      "size": 4564,
-      "sha256": "9052145191168925fd3df198cf075687f48fd39153bda2f5e1fe2394575164c7"
+      "size": 5975,
+      "sha256": "27c0856ecc776eab9c94c5b9ff77efbb4fe7d533978c5355b373d24c551d16cc"
     },
     "src/native_storage/managed_covers.inc": {
-      "size": 7786,
-      "sha256": "25d668e35243c766b61570dd56774be5b6f1750c4fdbd9eaa477eeb0b0b1e871"
+      "size": 9560,
+      "sha256": "f985b0b33f6a989736ad9ab2e4e3f8ceea1aa5d1a8215e56a2a8337ab19b19a0"
     },
     "src/native_storage/managed_image.c": {
-      "size": 6667,
-      "sha256": "13f063cd7c16d015f0a96bd117d2cb2a912446f15b9a726878526eba66bb4d3c"
+      "size": 9175,
+      "sha256": "b65943a615664523acdaa21e0fdd153477ddfaeaa6fa9341c4c9214487db1703"
     },
     "src/native_storage/managed_image.h": {
-      "size": 512,
-      "sha256": "95dbb373ad25082bf5d6960aaa7483ce2b44d78fc80492574cd008a2f1b719f5"
+      "size": 536,
+      "sha256": "2befb795ed55c23e086e08d8b6170d6868f41ae30b8a6e6f883560213e0c762d"
     },
     "src/native_storage/managed_test.ld": {
       "size": 621,
       "sha256": "b495c27655d1d38753487d2e8d20e26cb7927459f05f68b35a0dba5ba8f215ea"
     },
     "src/native_storage/minic.c": {
-      "size": 712,
-      "sha256": "91fe4292ef59ffccab57e5741cb7f9ba78afb2380edae16002088f253fdd6abf"
+      "size": 1027,
+      "sha256": "113d3c12210e779eb4cc3bf9ff70546b13072644e866ff074a1c23b3d040ab74"
     },
     "src/native_storage/patch_demo.py": {
       "size": 6718,
@@ -4144,60 +4164,60 @@
       "sha256": "32605022270de2513e5bf4ab118229bd66b9f6c43a2f22bf4f2351c6921671c4"
     },
     "src/native_storage/player_hooks.c": {
-      "size": 14708,
-      "sha256": "52f2235985eea1839557f008c982ec59c2f79e383ce606f250834d5513545c25"
+      "size": 18825,
+      "sha256": "25a313d2b281ba939d26e200da35e2a2381c14a1a78fc82b87c88112f564edc4"
     },
     "src/native_storage/playlist_hooks.inc": {
-      "size": 2765,
-      "sha256": "a03df4bf23856e9d1ec381694d967e955609c2390fed153d0b9894c8d9f80ad0"
+      "size": 3461,
+      "sha256": "e52be36912f8043b6503f09ac6a7306090436c8e883a2d652207d542e4bdc68c"
     },
     "src/native_storage/prepared_io.c": {
-      "size": 19588,
-      "sha256": "fabb2f53e69c89bc7b5d6e5bbde1fe72628b3acac4a51e1e4368037f3069715e"
+      "size": 25869,
+      "sha256": "f918ed1e9be07afa7b4daf9c388482f10909b116d174472f7741026fb9cc1e59"
     },
     "src/native_storage/prepared_io.h": {
-      "size": 3351,
-      "sha256": "be3aef3c66981f732185ba75700615a2dd4851d52bd9fd6b0df364c51df202a5"
+      "size": 3536,
+      "sha256": "c843120359960311f022eea8fbf33f4897d2e76f85be3c461995f8eb1558f907"
     },
     "src/native_storage/start.S": {
       "size": 149,
       "sha256": "c8a6ff15a43ca8df81c806cf9bb1f1f89b3bbced8bb778933ef9ec0f3972937a"
     },
     "src/native_storage/state_hooks.inc": {
-      "size": 6543,
-      "sha256": "83c2522b0a5717039a74589cf8c107daa0b8560c45c1071799f2446bebd0a7aa"
+      "size": 8576,
+      "sha256": "649a6fb63469bda5af261e8986f1b28fc8d345d65b8266827a1eb6ef65b87a96"
     },
     "src/native_storage/state_io.inc": {
-      "size": 12561,
-      "sha256": "9a951401dd2ce4a4ecfacd3e2163701693c5cc2fad0da09055c436ea707915ca"
+      "size": 17882,
+      "sha256": "01b96c58307d7e767c786407037b7177344abed190d5f229001a164842809218"
     },
     "src/native_storage/test_bitmap.c": {
-      "size": 5858,
-      "sha256": "8b742d313258d08aad3eda153dc9ebaaab5ef32b3b2b7713fe58624c741d5594"
+      "size": 7390,
+      "sha256": "cd870773fbf2485718366f80578cdf69c072271031a2bce3b572154134fabb37"
     },
     "src/native_storage/test_globals.S": {
       "size": 349,
       "sha256": "262067bf53a6739fd406a983fe26408dc825e5cb4beec39c729bce58c43e24b7"
     },
     "src/native_storage/test_gp.c": {
-      "size": 792,
-      "sha256": "aa8772199211bc45464dfa6b0e8b7f6bb449d62305667b24a81294f1d8edf7aa"
+      "size": 944,
+      "sha256": "7a6c3b60bbf24d50ec4b0aa26149f1fc9f403a59a5b8d43afb8e6bb7841a1e1d"
     },
     "src/native_storage/test_gp_stubs.S": {
       "size": 381,
       "sha256": "e5930ae0bef4926c7b08daa7a65ab0d177fbfe359654572a724ccdfff72d6245"
     },
     "src/native_storage/test_hooks.c": {
-      "size": 22199,
-      "sha256": "4494a7e443b04c121660007b22545e6be76ce7027f4a6095f2ff0d6197d0ae43"
+      "size": 27053,
+      "sha256": "4d36843b37271897c50648bc3c5949b3b2d6a6b67285e250270a9e9d36db2288"
     },
     "src/native_storage/test_managed.c": {
-      "size": 6007,
-      "sha256": "092b1e815a86e78c518248b4100ecd465c9fa087a0ba7a871492a16120b6a063"
+      "size": 7480,
+      "sha256": "6b0801e75865051989f7fb1d519f219dc0adbdf83d9cf7f1617e5de97c674fef"
     },
     "src/native_storage/usb_hooks.inc": {
-      "size": 2814,
-      "sha256": "8bd9adaa8c38f389db226edf46bd16de21832bf2bde36572007a14f6cea84a6d"
+      "size": 3371,
+      "sha256": "4693080ce9787c7dd4fbdba354a43211fb3b1cfa390f8351b28347cefe022c65"
     },
     "src/organizer/formats/other_container.c": {
       "size": 9942,
@@ -4384,12 +4404,16 @@
       "sha256": "45d5d5fb185a6d9b7177c1a4f77d7116d75b982bdd93f978fe0339a356014f55"
     },
     "tests/gui_firmware_card.py": {
-      "size": 15280,
-      "sha256": "1cb3dab7a0c74c43f162fef55cf0cfa1b5800c62f0b334812d4ee680cccadb7c"
+      "size": 15700,
+      "sha256": "72dea4d25d197370976be5c23c184f70040aca3799a44b4632a23e998440133a"
     },
     "tests/gui_profile_import.py": {
       "size": 6466,
       "sha256": "cb306ee4fa3f55cd51589007bb2768a30c139b96103b649a46b5b0013ffb618e"
+    },
+    "tests/native/test_directory.c": {
+      "size": 3859,
+      "sha256": "d5f850d79e5b6c849075536bdf51e32d51bc3ec1ed99de529bf28b35f293d6fc"
     },
     "tests/test_build_installer.py": {
       "size": 6912,
@@ -4404,8 +4428,12 @@
       "sha256": "4340c691a318f0167635a2a844a829309fc68bf311c5e836348392511f7b7a09"
     },
     "tests/test_firmware_card.py": {
-      "size": 7527,
-      "sha256": "9c6139094aae76761fb3e6b9c2bd8d5c9776098c4ae2573d36374c2e19e9a0c8"
+      "size": 10034,
+      "sha256": "c7ad59836b6e15c3678482e02c5542420cb7efa677d174d6c253a7f9e7750135"
+    },
+    "tests/test_http_guard.py": {
+      "size": 2538,
+      "sha256": "c9885c208c2cb904f8aafbf6f3165974b8807029d65bcb35fb039845fce495dd"
     },
     "tests/test_installed_distribution.py": {
       "size": 4631,
@@ -4415,9 +4443,21 @@
       "size": 14615,
       "sha256": "1dcd79f9644f13dbe463a715b7d802503416a6217cf41f35323e9fa125186b71"
     },
+    "tests/test_search_queries.py": {
+      "size": 2178,
+      "sha256": "6e307caccf15076f3e10e94bd4423e6337360fe88f89da324a8212faff7de02c"
+    },
     "tests/test_setup_desktop.py": {
       "size": 12063,
       "sha256": "1f939012c54f4839e6d75dd95eb42733a0c8cfeeabf2066003b0ab8377fc4c27"
+    },
+    "tests/test_storage_fault_boundaries.py": {
+      "size": 3779,
+      "sha256": "715cff6f8d2cb7b25a394d02bf8dd0f17646d440022ecaf2ebb392623ecfd313"
+    },
+    "tests/test_storage_recovery.py": {
+      "size": 13069,
+      "sha256": "1f7e55205fba1940fabcfec6dd61a760d05a23b32397c8c1b172eadb50e5549a"
     },
     "tools/audio/build_candidate.py": {
       "size": 11513,
@@ -4460,8 +4500,8 @@
       "sha256": "c5b0d67f7889d52ef1568fda5827d8725ef6a4a427320ff8d583381ff0f59283"
     },
     "tools/build_stable.py": {
-      "size": 6337,
-      "sha256": "fda6c9e99e710cda781687626420eda189cab3250665d5c16fafdc25f3cc5730"
+      "size": 6442,
+      "sha256": "4f9c068e878fcd6ed5fd3a8fadab70f6acf93c250d4f7b7ed95de4a8621cd367"
     },
     "tools/build_storage_components.py": {
       "size": 6804,
@@ -4474,6 +4514,14 @@
     "tools/installer/XM5Studio.iss": {
       "size": 11541,
       "sha256": "e6f3dfa9780d21d84c0a70c48ac84ac63e7e99eb138adb47de6b9e6732ddfe3e"
+    },
+    "tools/native_tests/extract_owner.py": {
+      "size": 2189,
+      "sha256": "cea90c2155416dd4e182cb022d43a36aadea99512980bed6a6d6203815e85843"
+    },
+    "tools/native_tests/extract_paint.py": {
+      "size": 1702,
+      "sha256": "67ae767c7e11f3754ff3fcb05199c1baded39cd45f9b55f41a6c8056f5f07ccd"
     },
     "tools/package/build_candidate.py": {
       "size": 26853,
@@ -4586,6 +4634,14 @@
     "tools/run_desktop_tests.py": {
       "size": 1057,
       "sha256": "f17c6b1df43c9e662cff7cc64ab4dd60cf3c542a2008dab2e2dde0e26d584f3e"
+    },
+    "tools/run_native_boundary_tests.py": {
+      "size": 3427,
+      "sha256": "7963e6da9600991b13735c5fab3cd4e7b826ef1c4a9701f19682d8a99a993327"
+    },
+    "tools/run_native_directory_tests.py": {
+      "size": 2403,
+      "sha256": "73f2121778206972f7d9e72006798d43222395a768416284fc46882bbe1d5ed5"
     },
     "tools/runtime-source/README.md": {
       "size": 3620,

@@ -35,6 +35,8 @@ The builder reconstructs the pinned historical PEQ08 input first, builds the new
 
 Final packaging preserves Linux ownership, permissions, symlinks and the original kernel. It permits exactly four overlay paths and runs ELF, rootfs-size and independent package checks. Output is `package/out/final/update.bin` inside the requested build directory, with `release-reconstruction.json` recording its hashes. Do not substitute historical PEQ08 hashes for a later package. Source build and package verification do not establish physical-device stability or recoverability.
 
+The package tag and release version come from this checkout's `release.json`. The replacement 0.2.2 candidate uses `V2.43-LIB02`; the 0.2.0 historical image used `V2.43-LIB01`. Use [SOURCE_MAP.md](SOURCE_MAP.md) to distinguish the active storage code from the frozen PEQ08 build inputs. Public host/target native test commands are in [DEVELOPMENT.md](DEVELOPMENT.md).
+
 To edit and run the Windows desktop source, start with [the development guide](DEVELOPMENT.md). Firmware inputs, Linux and a MIPS toolchain are not needed for desktop development. Setup can reuse the approved public dependency runtime without compiling Qt or the media tools.
 
 To rebuild those media dependencies, use [the runtime recipe](../tools/runtime-source/README.md), then combine them with the unchanged Python/Qt dependency runtime using its `prepare_runtime.py`. The exact archive URLs, versions and hashes are recorded in the resulting lock and runtime manifest. Assemble the final source and reviewed runtime:

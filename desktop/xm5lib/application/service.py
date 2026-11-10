@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS resources(kind TEXT,id TEXT,revision INTEGER NOT NULL
 CREATE TABLE IF NOT EXISTS locations(path TEXT PRIMARY KEY,track_id TEXT NOT NULL,
  present INTEGER NOT NULL,root TEXT,sha256 TEXT);
 CREATE INDEX IF NOT EXISTS location_tracks ON locations(track_id);
+CREATE INDEX IF NOT EXISTS location_preferred ON locations(track_id,present DESC,path);
 CREATE TABLE IF NOT EXISTS card_references(path TEXT PRIMARY KEY,track_id TEXT UNIQUE NOT NULL);
 CREATE TABLE IF NOT EXISTS settings(key TEXT PRIMARY KEY,value TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS legacy_imports(path TEXT PRIMARY KEY,sha256 TEXT NOT NULL);
@@ -151,17 +152,34 @@ class Application:
 
     def _track(self, c, key):
         row = self._row(c, "track", key)
-        data = json.loads(row["data"])
         locations = [dict(r) for r in c.execute("SELECT path,present,root,sha256 FROM locations "
                                                "WHERE track_id=? ORDER BY present DESC,path", (key,))]
+        return self._track_view(row, locations)
+
+    @staticmethod
+    def _track_view(row, locations):
+        data = json.loads(row["data"])
         for location in locations:
             location["present"] = bool(location["present"])
         reference = data.get("card_reference")
         path = locations[0]["path"] if locations else "card://" + reference["path"] if reference else None
-        return data.get("metadata", {}) | {"id": key, "revision": row["revision"], "path": path,
+        return data.get("metadata", {}) | {"id": row["id"], "revision": row["revision"], "path": path,
                 "locations": locations, "unresolved": not any(x["present"] for x in locations),
                 "card_reference": reference,
                 "note": data.get("note", ""), "overrides": data.get("overrides", {})}
+
+    def _track_page(self, c, rows):
+        locations = {r['id']: [] for r in rows}
+        # Bound SQLite parameter use for tracks.all as well as ordinary pages.
+        keys = list(locations)
+        for start in range(0, len(keys), 900):
+            batch = keys[start:start + 900]
+            placeholders = ','.join('?' for _ in batch)
+            for location in c.execute('SELECT track_id,path,present,root,sha256 FROM locations '
+                    f'WHERE track_id IN ({placeholders}) ORDER BY track_id,present DESC,path', batch):
+                value = dict(location)
+                locations[value.pop('track_id')].append(value)
+        return [self._track_view(row, locations[row['id']]) for row in rows]
 
     def _cover_view(self, value):
         if not value:
@@ -212,30 +230,33 @@ class Application:
                 text = args.get("text", args.get("query", args.get("q", "")))
                 if not isinstance(text, str):
                     raise DomainError("INVALID_ARGUMENT", "search text must be a string")
-                if name == "tracks.search" and not text:
-                    # Frontend addition: an unfiltered page reads only its own rows (same order as below),
-                    # so paging through a large library is linear instead of quadratic.
-                    limit, offset = args.get("limit", 100), args.get("offset", 0)
-                    if type(limit) is not int or not 1 <= limit <= 1000 or type(offset) is not int or offset < 0:
-                        raise DomainError("INVALID_ARGUMENT", "limit must be1..1000 and offset>=0")
-                    total = c.execute("SELECT COUNT(*) FROM resources WHERE kind='track' AND deleted=0").fetchone()[0]
-                    rows = [self._track(c, r[0]) for r in c.execute(
-                        "SELECT id FROM resources WHERE kind='track' AND deleted=0 ORDER BY id LIMIT ? OFFSET ?",
-                        (limit, offset))]
-                    return {"tracks": rows, "total": total, "revision": state}
-                rows = [self._track(c, r[0]) for r in c.execute(
-                    "SELECT id FROM resources WHERE kind='track' AND deleted=0 ORDER BY id")]
+                where = "kind='track' AND deleted=0"
                 if text:
                     needle = text.casefold()
-                    rows = [r for r in rows if needle in " ".join(str(r.get(k) or "") for k in
-                            ("title", "artist", "album", "albumartist", "path", "note")).casefold()]
-                total = len(rows)
+                    def matches(encoded, path):
+                        data = json.loads(encoded)
+                        reference = data.get('card_reference')
+                        if path is None and reference:
+                            path = 'card://' + reference['path']
+                        view = data.get('metadata', {}) | {'path': path, 'note': data.get('note', '')}
+                        return int(needle in ' '.join(str(view.get(k) or '') for k in
+                            ('title', 'artist', 'album', 'albumartist', 'path', 'note')).casefold())
+                    # Python casefold preserves Unicode search semantics. SQLite selects
+                    # matching IDs; only the requested page materializes location lists.
+                    c.create_function('xm5_contains', 2, matches, deterministic=True)
+                    where += (' AND xm5_contains(data,(SELECT path FROM locations '
+                              'WHERE track_id=resources.id ORDER BY present DESC,path LIMIT 1))')
+                total = c.execute('SELECT COUNT(*) FROM resources WHERE ' + where).fetchone()[0]
+                sql = 'SELECT * FROM resources WHERE ' + where + ' ORDER BY id'
+                parameters = ()
                 if name == "tracks.search":
                     limit, offset = args.get("limit", 100), args.get("offset", 0)
                     if type(limit) is not int or not 1 <= limit <= 1000 or type(offset) is not int or offset < 0:
                         raise DomainError("INVALID_ARGUMENT", "limit must be1..1000 and offset>=0")
-                    rows = rows[offset:offset + limit]
-                return {"tracks": rows, "total": total, "revision": state}
+                    sql += ' LIMIT ? OFFSET ?'
+                    parameters = (limit, offset)
+                rows = list(c.execute(sql, parameters))
+                return {"tracks": self._track_page(c, rows), "total": total, "revision": state}
             if name == "tracks.get":
                 track = self._track(c, _text(args, "id"))
                 return {"track": track, "revision": track["revision"], "state_revision": state}

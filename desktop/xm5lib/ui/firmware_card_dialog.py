@@ -26,7 +26,7 @@ _TEXT = {
     "confirm": ("确认", "Confirm"),
     "cancel": ("取消", "Cancel"),
     "loading": ("正在检查固件并查找可移动盘…", "Checking firmware and finding removable drives…"),
-    "ready": ("先备份目标盘，再选择要制作更新盘的盘。", "Back up the target drive, then select the drive to prepare."),
+    "ready": ("选择目标盘。仅复制 update.bin，保留其他文件。", "Select a drive. Only update.bin is copied; other files are preserved."),
     "no_drives": ("没有找到可移动盘或 USB 存储。连接读卡器后点击刷新。", "No removable drive or USB storage found. Connect a card reader and refresh."),
     "unavailable": ("无法使用配套固件：{0}", "Paired firmware unavailable: {0}"),
     "unavailable_reason": ("缺少固件或固件校验未通过。", "Firmware is missing or failed verification."),
@@ -34,20 +34,19 @@ _TEXT = {
     "drive_info": ("{0} · 可用 {1} · {2}", "{0} · {1} free · {2}"),
     "unnamed": ("未命名", "Unnamed"),
     "unknown": ("未知", "Unknown"),
-    "planning": ("正在检查选中的盘；尚未删除任何文件…", "Inspecting the selected drive; no files have been removed…"),
-    "warning": ("所选盘 {0} 的全部内容将被删除。完成后仅保留 update.bin。", "ALL contents of the selected drive {0} will be removed. Only update.bin will remain."),
-    "plan_details": ("卷标：{0}\n容量：{1}\n将删除：{2} 个文件，{3}\n配套固件：{4}", "Label: {0}\nCapacity: {1}\nTo remove: {2} files, {3}\nPaired firmware: {4}"),
-    "backup": ("请先手动备份目标盘。也可<a href=\"export\">打开 TF 卡导出页面</a>。", "Back up the selected drive manually before continuing. You can also <a href=\"export\">open TF Card Export</a>."),
+    "planning": ("正在检查选中的盘和 update.bin…", "Inspecting the selected drive and update.bin…"),
+    "warning": ("所选盘 {0} 已有 update.bin。是否替换？其他文件将保留。", "Drive {0} already contains update.bin. Replace it? Other files will be preserved."),
+    "plan_details": ("卷标：{0}\n容量：{1}\n原 update.bin：{2}\n配套固件：{3}", "Label: {0}\nCapacity: {1}\nExisting update.bin: {2}\nPaired firmware: {3}"),
+    "backup": ("如需整理音乐，可<a href=\"export\">打开 TF 卡导出页面</a>。", "To prepare music, <a href=\"export\">open TF Card Export</a>."),
     "cancelled": ("已取消。目标盘未作更改。", "Cancelled. No changes were made to the drive."),
     "working": ("正在制作更新盘。请勿断开目标盘；完成前不能关闭此窗口。", "Creating the update card. Keep the drive connected; this window must stay open until completion."),
     "wait": ("请等待当前操作完成后再关闭窗口。", "Wait for the current operation to finish before closing this window."),
-    "phase_clear": ("正在清空目标盘…", "Clearing the target drive…"),
     "phase_copy": ("正在复制 update.bin…", "Copying update.bin…"),
     "phase_verify": ("正在校验已复制的固件…", "Verifying the copied firmware…"),
     "phase_prepare": ("正在重新检查目标盘…", "Rechecking the target drive…"),
     "success": ("更新盘已制作完成：{0}\n已复制文件的 SHA-256：{1}\n请安全弹出目标盘，然后按照官方 XM5 升级步骤安装固件。", "Update card ready: {0}\nCopied file SHA-256: {1}\nSafely eject the drive, then follow the official XM5 update procedure to install the firmware."),
-    "failed": ("制作更新盘失败：{0}\n目标盘可能已被部分清空。请检查目标盘并恢复备份后再使用。", "Creating the update card failed: {0}\nThe drive may be partially cleared. Inspect it and restore your backup before using it."),
-    "inspect_failed": ("无法检查目标盘或固件：{0}\n未开始清空目标盘。", "Could not inspect the drive or firmware: {0}\nClearing the drive has not started."),
+    "failed": ("制作更新盘失败：{0}\n其他文件不会被清空。请检查 update.bin 后重试。", "Creating the update card failed: {0}\nOther files are not cleared. Inspect update.bin before retrying."),
+    "inspect_failed": ("无法检查目标盘或固件：{0}\n未开始复制。", "Could not inspect the drive or firmware: {0}\nCopying has not started."),
     "jobs_busy": ("请先等待扫描或导入任务完成。", "Wait for the scan or import job to finish first."),
     "export_busy": ("请先等待 TF 卡任务完成。", "Wait for the TF card job to finish first."),
     "playback_busy": ("请先停止电脑端播放，再制作更新盘。", "Stop desktop playback before creating an update card."),
@@ -98,7 +97,7 @@ class _FirmwareTask(QThread):
 
 
 class _FirmwareConfirmation(QDialog):
-    """The sole destructive confirmation, after a read-only service plan."""
+    """Confirm replacement of one existing file after a read-only plan."""
 
     def __init__(self, plan: dict, parent):
         super().__init__(parent)
@@ -108,7 +107,7 @@ class _FirmwareConfirmation(QDialog):
         self.export_requested = False
         layout = QVBoxLayout(self)
         self.warning = QLabel(text("warning", plan["root"]))
-        self.warning.setObjectName("firmwareClearWarning")
+        self.warning.setObjectName("firmwareReplaceWarning")
         self.warning.setTextFormat(Qt.PlainText)
         self.warning.setWordWrap(True)
         font = self.warning.font()
@@ -116,8 +115,8 @@ class _FirmwareConfirmation(QDialog):
         self.warning.setFont(font)
         layout.addWidget(self.warning)
         details = QLabel(text("plan_details", plan.get("label") or text("unnamed"),
-                             _size(plan.get("capacity")), plan.get("files_count", 0),
-                             _size(plan.get("bytes_to_remove")), plan["firmware_version"]))
+                             _size(plan.get("capacity")), _size(plan.get("existing_size")),
+                             plan["firmware_version"]))
         details.setTextFormat(Qt.PlainText)
         details.setWordWrap(True)
         layout.addWidget(details)
@@ -152,7 +151,7 @@ class FirmwareCardDialog(QDialog):
     """A modal, single-operation view over FirmwareCardService.
 
     ``service`` is injectable so widget tests cannot discover or write real cards.
-    All volume validation, planning, copying and deletion belong to that service.
+    All volume validation, planning and copying belong to that service.
     """
 
     def __init__(self, ctl, *, service=None, app_root: Path | None = None):
@@ -335,6 +334,10 @@ class FirmwareCardDialog(QDialog):
         if reason:
             self.status.setText(reason)
             return
+        if not plan.get("existing_update"):
+            self.status.setText(text("working"))
+            self._start("execute", lambda progress: self._service.execute(plan["token"], progress=progress))
+            return
         dialog = _FirmwareConfirmation(plan, self)
         self._confirmation = dialog
         self._update_controls()
@@ -359,7 +362,7 @@ class FirmwareCardDialog(QDialog):
     def _progress(self, value) -> None:
         if not isinstance(value, dict):
             return
-        phase = {"clear": "phase_clear", "delete": "phase_clear", "copy": "phase_copy",
+        phase = {"copy": "phase_copy",
                  "verify": "phase_verify", "prepare": "phase_prepare", "validate": "phase_prepare"}.get(value.get("phase"))
         if phase:
             self.status.setText(text(phase) + "\n" + text("working"))

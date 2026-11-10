@@ -2,7 +2,7 @@
 
 The Windows adapter only admits removable media and USB-backed drive roots.
 Tests inject a volume provider backed by owned temporary directories. This is
-file deletion/copying, not formatting, partitioning, ejecting or flashing.
+file copying, not clearing, formatting, partitioning, ejecting or flashing.
 """
 from __future__ import annotations
 
@@ -201,89 +201,74 @@ class FirmwareCardService:
         return result
 
     @staticmethod
-    def _inventory(root):
-        rows, total = [], 0
-        def walk(folder):
-            nonlocal total
-            with _directory(folder):
-                for path in sorted(folder.iterdir()):
-                    info = path.lstat()
-                    rows.append((path.relative_to(root).as_posix(), info.st_mode, info.st_size, info.st_mtime_ns,
-                                 getattr(info, 'st_file_attributes', 0)))
-                    if stat.S_ISDIR(info.st_mode) and not _linked(info):
-                        walk(path)
-                    else:
-                        total += info.st_size
-        walk(root)
-        return hashlib.sha256(json.dumps(rows).encode()).hexdigest(), len(rows), total
+    def _destination(path):
+        """Inspect only update.bin; unrelated files are never traversed."""
+        try:
+            before = path.lstat()
+        except FileNotFoundError:
+            return None
+        if _linked(before) or not stat.S_ISREG(before.st_mode) or before.st_nlink > 1:
+            raise FirmwareCardError('update.bin must be an ordinary regular file, not a link or directory.')
+        signature = lambda s: (s.st_dev, s.st_ino, s.st_size, s.st_mtime_ns, s.st_ctime_ns)
+        digest = _hash(path)
+        after = path.lstat()
+        if _linked(after) or signature(before) != signature(after):
+            raise FirmwareCardError('update.bin changed while checking it. Preview again.')
+        return {'identity': signature(after), 'sha256': digest, 'size': after.st_size}
 
     def plan(self, target_id: str):
         firmware, _ = self._firmware()
         row, root = self._target(target_id)
-        if row['capacity'] < firmware['size'] + 1024 * 1024:
-            raise FirmwareCardError('The selected drive is too small.')
-        fingerprint, count, size = self._inventory(root)
+        if row['free'] < firmware['size'] + 1024 * 1024:
+            raise FirmwareCardError('Not enough free space for a verified temporary firmware copy.')
+        with _directory(root):
+            destination = self._destination(root / 'update.bin')
         token = uuid.uuid4().hex
         self._plans = {key: value for key, value in self._plans.items() if time.monotonic()-value['created'] < 600}
-        self._plans[token] = {'target': row, 'fingerprint': fingerprint, 'firmware': firmware, 'created': time.monotonic()}
+        self._plans[token] = {'target': row, 'destination': destination, 'firmware': firmware, 'created': time.monotonic()}
         return {'token': token, 'target_id': target_id, 'root': str(root), 'label': row['label'],
-                'capacity': row['capacity'], 'files_count': count, 'bytes_to_remove': size,
+                'capacity': row['capacity'], 'existing_update': destination is not None,
+                'existing_size': destination['size'] if destination else 0,
                 'firmware_version': firmware['version'], 'firmware_sha256': firmware['sha256']}
 
     def execute(self, token: str, *, confirmed: bool = False, progress=None):
-        if confirmed is not True:
-            raise FirmwareCardError('Explicit confirmation is required; no files were changed.')
         if not self._lock.acquire(blocking=False):
             raise FirmwareCardError('Another update-card operation is running.')
-        started = False
+        temporary = None
+        temporary_identity = None
+        published = False
         try:
-            plan = self._plans.pop(token, None)
+            plan = self._plans.get(token)
             if plan is None or time.monotonic()-plan['created'] >= 600:
                 raise FirmwareCardError('This confirmation expired or was already used. Preview again.')
+            if plan['destination'] is not None and confirmed is not True:
+                raise FirmwareCardError('Explicit replacement confirmation is required; no files were changed.')
+            self._plans.pop(token)
             firmware, source = self._firmware()
             if firmware != plan['firmware']:
                 raise FirmwareCardError('Bundled firmware changed. Preview again.')
             row, root = self._target(plan['target']['id'])
             if row['identity'] != plan['target']['identity'] or str(root) != str(Path(plan['target']['root']).absolute()):
                 raise FirmwareCardError('The volume changed. Preview again.')
-            if self._inventory(root)[0] != plan['fingerprint']:
-                raise FirmwareCardError('Drive contents changed after preview. Preview and confirm again.')
+            if row['free'] < firmware['size'] + 1024 * 1024:
+                raise FirmwareCardError('Not enough free space for a verified temporary firmware copy.')
             def check():
                 current, _ = self._target(row['id'])
                 if current['identity'] != row['identity']:
                     raise FirmwareCardError('The drive was removed or replaced.')
-            completed = 0
             def notify(phase):
                 if progress:
-                    progress({'phase': phase, 'completed': completed, 'total': 0})
-            def clear(folder):
-                nonlocal completed, started
-                with _directory(folder):
-                    for path in sorted(folder.iterdir()):
-                        check()
-                        info = path.lstat()
-                        if stat.S_ISDIR(info.st_mode) and not _linked(info):
-                            clear(path)
-                            check()
-                            started = True
-                            path.rmdir()
-                        elif stat.S_ISDIR(info.st_mode):
-                            started = True
-                            path.rmdir()  # Remove a junction itself, never its contents.
-                        else:
-                            started = True
-                            path.unlink()  # Unlink symlinks themselves, never their targets.
-                        completed += 1
-                        notify('clear')
+                    progress({'phase': phase, 'completed': 0, 'total': 0})
             with source.open('rb') as original, _directory(root):
-                clear(root)
                 check()
-                if any(root.iterdir()):
-                    raise FirmwareCardError('New files appeared while clearing the drive.')
+                destination = root / 'update.bin'
+                if self._destination(destination) != plan['destination']:
+                    raise FirmwareCardError('update.bin changed after preview. Preview and confirm again.')
                 notify('copy')
-                temporary = root / 'update.bin.tmp'
+                temporary = root / ('.xm5-update-' + uuid.uuid4().hex + '.tmp')
                 with temporary.open('xb') as output:
-                    started = True
+                    info = os.fstat(output.fileno())
+                    temporary_identity = (info.st_dev, info.st_ino)
                     while block := original.read(1024 * 1024):
                         check()
                         output.write(block)
@@ -293,13 +278,32 @@ class FirmwareCardService:
                 if _hash(temporary) != firmware['sha256']:
                     raise FirmwareCardError('Copied firmware failed verification.')
                 check()
-                temporary.rename(root / 'update.bin')
-                if {path.name for path in root.iterdir()} != {'update.bin'}:
-                    raise FirmwareCardError('Other files appeared on the drive. Inspect it before use.')
+                if self._destination(destination) != plan['destination']:
+                    raise FirmwareCardError('update.bin changed during copying. Preview and confirm again.')
+                if plan['destination'] is not None:
+                    os.replace(temporary, destination)
+                elif os.name == 'nt':
+                    # Windows rename fails if a same-name file appeared meanwhile.
+                    os.rename(temporary, destination)
+                else:
+                    # The production adapter is Windows-only. Keep fixture publication
+                    # no-clobber on POSIX too, rather than using overwriting rename.
+                    os.link(temporary, destination)
+                    temporary.unlink()
+                published = True
                 notify('complete')
             return {'root': str(root), 'sha256': firmware['sha256'], 'size': firmware['size'], 'status': 'complete'}
         except Exception as error:
-            suffix = ' The drive may be partially cleared; no rollback is promised.' if started else ' No files were changed.'
+            suffix = (' Firmware was copied; completion reporting failed.' if published else
+                      ' Firmware was not replaced. Other files were left unchanged.')
             raise FirmwareCardError(str(error)+suffix) from error
         finally:
+            if temporary is not None and temporary_identity is not None and not published:
+                try:
+                    check()
+                    info = temporary.lstat()
+                    if not _linked(info) and (info.st_dev, info.st_ino) == temporary_identity:
+                        temporary.unlink()
+                except (OSError, FirmwareCardError):
+                    pass  # A disconnected volume may retain only our partial copy.
             self._lock.release()
