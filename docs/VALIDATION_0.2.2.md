@@ -1,6 +1,6 @@
-# XM5 Studio 0.2.2 local candidate
+# XM5 Studio 0.2.2 validation
 
-This replacement candidate remains local until the owner requests publication. It includes Windows x64 portable/installed distribution, the XM5 Studio icon, optional copy-only profile import, non-clearing update-card preparation, data-preservation fixes and bounded directory artwork lookup. It has no Windows sign-in startup feature. See [the review decisions](REVIEW_FIXES_0.2.2.md).
+This pre-release includes Windows x64 portable/installed distribution, the XM5 Studio icon, optional copy-only profile import, non-clearing update-card preparation, data-preservation fixes and bounded directory artwork lookup. It has no Windows sign-in startup feature. See [the review decisions](REVIEW_FIXES_0.2.2.md).
 
 ## Software evidence
 
@@ -17,6 +17,8 @@ The original vector icon has transparent corners and ICO frames at 16, 24, 32, 4
 ## Firmware evidence
 
 Standalone and bundled firmware are **V2.43-LIB03**, SHA-256 `be16c472ba1bdcf46dc6a5b93e218ea74c8baf967aa6cc5e43505efd7ee8fdd9`. The UI executable changes the directory lookup and removes duplicate queries. Its fixed 32-job array occupies 66,560 bytes of BSS; two unsigned words hold the shared allowance. The kernel, audio executable, startup/rescue script and EQ resource remain byte-identical to LIB01. The independent package verifier passed, including permitted paths, hashes, ELF checks and Linux metadata preservation.
+
+The package identifier differs from the original updater's `V2.43` comparison string. The About page still displays `V2.43`. Same-package firmware reinstallation has not received a separate VM acceptance run; a package name alone does not establish that behavior.
 
 The real C directory-reader regression covers four 129-descendant cases, including valid art last behind stale-zero hints. Every case completes in three slices; no lookup or complete prepare scope opens more than 64 candidate songs. The latter shares one allowance across discovery and size lookups. Repeated requests do not expire a no-art result before its 120-second retry time. It also verifies completed-result reuse, in-place media changes and replacement-index invalidation. This host-GCC test does not measure MIPS filesystem latency.
 

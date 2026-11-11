@@ -1,7 +1,7 @@
 {
   "version": "0.2.2",
   "tag": "v0.2.2",
-  "stage": "local-candidate",
+  "stage": "prerelease",
   "firmware_tag": "V2.43-LIB03",
   "base_version": "ONIX XM5 V2.43",
   "update_sha256": "be16c472ba1bdcf46dc6a5b93e218ea74c8baf967aa6cc5e43505efd7ee8fdd9",
@@ -34,7 +34,7 @@
   "hardware_scope": "PEQ08 has one-device owner feedback. New storage firmware is software/VM validated; physical installation, long-duration behavior and recovery remain unvalidated.",
   "documentation": "docs/VALIDATION_0.2.2.md",
   "paired_firmware_release": "v0.2.2",
-  "change_scope": "Upgrade-space and recovery-name preflight; shared directory-probe allowance and 120-second result cache; local-only rebuilt 0.2.2.",
+  "change_scope": "Upgrade-space and recovery-name preflight; shared directory-probe allowance and 120-second result cache; Windows x64 portable and installer distribution.",
   "development_runtime": {
     "asset_filename": "XM5Library-Windows-x64-0.2.0.zip",
     "size": 121859733,
@@ -55,7 +55,7 @@
     "physical_new_firmware_tested": false
   },
   "product_name": "XM5 Studio",
-  "publication": "Not published; waiting for the owner to request publication.",
+  "publication": "GitHub pre-release v0.2.2: https://github.com/noxusCastrator/xm5-management/releases/tag/v0.2.2",
   "previous_desktop_validation": {
     "release": "v0.2.1",
     "public_non_gui_tests": 29,

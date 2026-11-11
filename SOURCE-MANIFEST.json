@@ -20,8 +20,8 @@
       "sha256": "fe886707672b1f47fec667bedbd747ca95ef03c99597f5b1fc5f5f9c2c1ff8fd"
     },
     "README.md": {
-      "size": 4686,
-      "sha256": "99498e47b0b7b5f5a631532f732f520017f8b89d9437c1d5e1d29aec74328f31"
+      "size": 4729,
+      "sha256": "76398531b7c670250654d8096d9fd3bb18cd61f260ca898e5cfe20ec9cbd1854"
     },
     "THIRD_PARTY.md": {
       "size": 1825,
@@ -3796,8 +3796,8 @@
       "sha256": "d5131d1b58db7216348dbaed6344970cdc5991a22eaf009791f6ec6d6be5a52f"
     },
     "docs/RELEASE_PROCESS.md": {
-      "size": 2516,
-      "sha256": "069b2e592446536cf4fd0d6d00f45a36add6a039e79b43f084ba364d13c6960e"
+      "size": 2938,
+      "sha256": "f83c69519e48ed8c9b126f0ad0228b60c32acb5b6bca13034a5bbff3098b765e"
     },
     "docs/REVIEW_FIXES_0.2.2.md": {
       "size": 6822,
@@ -3828,12 +3828,12 @@
       "sha256": "b98c931b824ad94f3b900cdf2d812c24231fd800550648ba99e14ddc8541f7f3"
     },
     "docs/VALIDATION_0.2.2.md": {
-      "size": 7635,
-      "sha256": "53e622ec037d03eb64d03d2c71d24b10ad2c3228ff05347478a072541cedd710"
+      "size": 7830,
+      "sha256": "1bf5e4050cf8f6525b96ac833e3201206749d643877046216283388fb5800778"
     },
     "release.json": {
-      "size": 4290,
-      "sha256": "c70c37b1b6cddaec3f8e44062c0183dbf4be9a9d797fec017a38558dbe0a9ab0"
+      "size": 4343,
+      "sha256": "ead27c0f94399b75de7af7538dc870dc3b384c68ba956b326d1834cfd68bf793"
     },
     "src/AI_CONTEXT.md": {
       "size": 3683,

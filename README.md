@@ -19,7 +19,7 @@ For PEQ with the factory music and artwork handling, use [xm5-peq](https://githu
 
 ## Usage
 
-Version 0.2.2 is a local candidate awaiting publication. Its release folder contains the installer, portable ZIP, standalone `update.bin`, project source archives and corresponding runtime source ZIP. The paired firmware includes a bounded directory-cover lookup to reduce repeated scans of large folders.
+Download [0.2.2](https://github.com/noxusCastrator/xm5-management/releases/tag/v0.2.2), available as a pre-release. It includes the installer, portable ZIP, standalone `update.bin`, project source archives and corresponding runtime source ZIP. The paired firmware includes a bounded directory-cover lookup to reduce repeated scans of large folders.
 
 1. Run the installer, or extract the complete portable ZIP and open `XM5Studio.exe`.
 2. To prepare the paired player firmware, open **Settings → Player firmware → Create update card**, or copy the standalone `update.bin` yourself. Follow the official XM5 update procedure.

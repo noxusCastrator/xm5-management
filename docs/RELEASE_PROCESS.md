@@ -4,15 +4,18 @@ The source repository and development workspace are separate. Only the reviewed 
 
 After integrating the final source, validate the actual compiled player and application path. Record host tests, target ABI tests, whole-system VM results, package checks and physical-device observations separately. A previous successful PEQ08 installation does not verify the later storage code on hardware. Hardware testing scope belongs in the release notes.
 
-The final package uses identifier `V2.43-LIB01` for project version `0.2.0`. Its exact four firmware overlays, original V2.43 input hash and final `update.bin` hash belong in `release.json`. A version name is not evidence of correctness.
+Version `0.2.2` uses firmware identifier `V2.43-LIB03`. The original `0.2.0` used `V2.43-LIB01`. The exact four firmware overlays, original V2.43 input hash and final `update.bin` hash belong in `release.json`. A version name is not evidence of correctness.
 
 Release assets are:
 
 - `update.bin`: the actual final firmware image.
-- `XM5-0.2.0-firmware.zip`: that same image with the release notes and checksums.
-- `XM5Library-Windows-x64-0.2.0.zip`: a clean, relocated portable application, only when its runtime distribution review is complete.
+- `XM5Studio-0.2.2-Windows-x64-Portable.zip`: a clean, relocated portable application with reviewed runtime dependencies.
+- `XM5Studio-0.2.2-Windows-x64-Setup.exe`: the matching Windows x64 installer.
+- `XM5Studio-0.2.2-source.zip` and `XM5Studio-0.2.2-source.tar.gz`: the project source at the tagged commit.
+- `XM5Studio-runtime-source-0.2.2.zip`: the corresponding source for bundled media executables.
 - `SHA256SUMS.txt`: hashes of the actual uploaded files.
-- The corresponding-source archives required by the exact bundled runtime, when applicable.
+
+Keep 0.2.2 marked as a pre-release. Software and VM acceptance do not establish physical-device acceptance. Upload all assets to a draft, compare their server-reported SHA-256 digests with the local checksums, then publish. Never overwrite an existing published tag or release to retry a failed upload.
 
 Before uploading, verify hashes after ZIP creation and extraction. The portable app must launch using its relative bundled paths from a fresh directory, with no development environment or user database included. Keep the firmware's warnings, supported presets and known limitations visible. Preserve Shanling's publication correspondence locally; its permission to put this project on GitHub is not a claim of product validation.
 
